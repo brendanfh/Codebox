@@ -1,0 +1,3 @@
+@mixin elevate($e, $col) {
+    box-shadow: 0px $e (3 * $e) ($e / 4) $col;
+}

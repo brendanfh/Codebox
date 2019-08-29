@@ -1,0 +1,24 @@
+@import '_vars';
+@import '_elevate';
+@import '_navbar';
+@import 'problem/_list.scss';
+@import 'problem/_sidebar.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 16px;
+}
+
+body {
+	font-family: sans-serif;
+
+	background: url(/static/imgs/grain_background.png);
+	background-color: #111;
+	background-repeat: repeat;
+	color: white;
+}

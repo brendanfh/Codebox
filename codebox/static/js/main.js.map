@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "main.js",
+  "sourceRoot": "..",
+  "sources": [
+    "coffee/main.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA;;EAAA,IAAA,GAAO,QAAA,CAAA,CAAA;WACN,OAAO,CAAC,GAAR,CAAY,cAAZ;EADM;AAAP",
+  "sourcesContent": [
+    "main = ->\n\tconsole.log \"Hello world!\"\n"
+  ]
+}

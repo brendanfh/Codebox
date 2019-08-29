@@ -1,0 +1,105 @@
+.navbar {
+  z-index: 10000;
+  width: 100%;
+  background: #0077c2;
+  height: 47px;
+  position: relative;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+}
+.navbar .navbar-logo {
+  padding-left: 8px;
+  text-align: center;
+}
+.navbar .navbar-logo img {
+  max-height: calc(47px - 2px);
+  display: inline;
+}
+.navbar ul {
+  display: block;
+  text-align: center;
+  font-size: 0;
+}
+.navbar ul a li {
+  margin: 0;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 24px;
+  list-style: none;
+  line-height: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 4px;
+  color: #f2f2f2;
+  border-top-color: #0077c2;
+  transition: 200ms all;
+}
+.navbar ul a li.selected, .navbar ul a li:hover {
+  border-bottom: 2px solid #ffe766;
+  color: white;
+}
+
+.sidebar-problem-list {
+  z-index: 50;
+  box-shadow: 0 10px 0 0 transparent, 0 10px 0 0 transparent, 10px 0 0 0 transparent, 0 8px 8px 2px rgba(0, 0, 0, 0.5);
+  background: #003252;
+  position: relative;
+  min-height: calc(100vh - 47px);
+}
+.sidebar-problem-list .sidebar-problem {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  border-left-width: 24px;
+  border-left-style: solid;
+  transition: background-color 200ms east-in-out;
+  transition: width 200ms east-in-out;
+  background-color: inherit;
+  cursor: pointer;
+}
+.sidebar-problem-list .sidebar-problem[selected], .sidebar-problem-list .sidebar-problem:hover {
+  width: calc(100% + 24px);
+}
+.sidebar-problem-list .sidebar-problem[selected] {
+  background-color: #42a5f5 !important;
+}
+.sidebar-problem-list .sidebar-problem:hover {
+  background-color: #128ef2;
+}
+.sidebar-problem-list .sidebar-problem-letter {
+  text-align: center;
+  background-color: #001929;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1.2rem;
+}
+.sidebar-problem-list .sidebar-problem-name {
+  text-align: left;
+  font-size: 1.2rem;
+  padding-left: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  font-family: sans-serif;
+  background: url(/static/imgs/grain_background.png);
+  background-color: #111;
+  background-repeat: repeat;
+  color: white;
+}
+
+/*# sourceMappingURL=core.css.map */

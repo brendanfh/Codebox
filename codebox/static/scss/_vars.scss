@@ -1,0 +1,21 @@
+$white: #fff;
+$black: #000;
+
+$content-background: #232323;
+
+$primary: #42a5f5;
+$primary-light: #80d6ff;
+$primary-dark: #0077c2;
+
+$secondary: #FFD700;
+$secondary-light: lighten(#FFD700, 20);
+$secondary-dark: darken(#FFD700, 20);
+
+$primary-text: $white;
+$secondary-text: $black;
+
+$test-case-good: #50ff50;
+$test-case-bad: #ff5050;
+$test-case-pending: #5050ff;
+
+$navbar-height: 47px;

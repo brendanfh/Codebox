@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+    codebox:
+        env_file:
+            - config.env
+        build:
+            context: .
+            dockerfile: ./docker/codebox/Dockerfile
+        ports:
+            - 8888:8888
+        volumes:
+            - ./codebox/app:/app/app
+            - ./codebox/views:/app/views
+            - ./codebox/flows:/app/flows
+            - ./codebox/middleware:/app/middleware
+            - ./codebox/models:/app/models
+            - ./codebox/controllers:/app/controllers
+            - ./codebox/utils:/app/utils
+            - ./codebox/services:/app/services
+            - ./codebox/facades:/app/facades
+            - ./codebox/static:/app/static
+        command: lapis server development
+        networks:
+            appnet:
+                ipv4_address: 192.168.0.3
+
+    executer:
+        env_file:
+            - config.env
+        build:
+            context: .
+            dockerfile: ./docker/executer/Dockerfile
+        volumes:
+            - ./executer/app:/app/app
+        command: node main.js
+        networks:
+            appnet:
+                ipv4_address: 192.168.0.4
+
+    postgres:
+        env_file:
+            - config.env
+        image: "postgres:12-alpine"
+        restart: always
+        networks:
+            appnet:
+                ipv4_address: 192.168.0.2
+        logging:
+            driver: none
+
+networks:
+    appnet:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.0.0/16
+
+#    mysql:
+#       build:
+#           context: .
+#           dockerfile: ./docker/mysql/Dockerfile
+#       environment:
+#           MYSQL_ROOT_PASSWORD: secret
+#           MYSQL_DATABASE: codebox
+#           MYSQL_USER: mysql
+#           MYSQL_PASSWORD: secret
+#       ports:
+#           - 3306:3306
+#       logging:
+#           driver: none
