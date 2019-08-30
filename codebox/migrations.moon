@@ -1,4 +1,4 @@
-import create_table, types from require "lapis.db.schema"
+import create_table, add_column, types from require "lapis.db.schema"
 
 {
 	[1]: =>
@@ -15,12 +15,14 @@ import create_table, types from require "lapis.db.schema"
 	[2]: =>
 		create_table "jobs", {
 			{ "id", types.serial },
+			{ "job_id", types.varchar unique: true },
 			{ "user_id", types.foreign_key },
 			{ "problem_id", types.foreign_key },
-			{ "status", types.text null: true },
+			{ "status", types.enum },
 			{ "lang", types.varchar },
 			{ "code", types.text null: true },
 			{ "time_initiated", types.time },
+			{ "data", types.text null: true },
 
 			"PRIMARY KEY (id)"
 		}
@@ -32,6 +34,16 @@ import create_table, types from require "lapis.db.schema"
 			{ "kind", types.enum },
 			{ "description", types.text null: true },
 			{ "time_limit", types.integer },
+
+			"PRIMARY KEY (id)"
+		}
+
+	[4]: =>
+		create_table "test_cases", {
+			{ "id", types.serial },
+			{ "problem_id", types.foreign_key },
+			{ "input", types.varchar },
+			{ "output", types.varchar },
 
 			"PRIMARY KEY (id)"
 		}

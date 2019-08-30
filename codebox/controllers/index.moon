@@ -7,5 +7,5 @@ make_controller
 
 	get: =>
 		@users = Users\select!
-		@jobs = @user\get_c_jobs!
+		@jobs = @user\get_jobs!
 		render: "index"

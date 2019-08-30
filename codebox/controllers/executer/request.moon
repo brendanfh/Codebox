@@ -1,6 +1,7 @@
 import make_controller from require "controllers.controller"
 import assert_valid from require "lapis.validate"
 import capture_errors from require 'lapis.application'
+import Problems from require 'models'
 
 make_controller
 	inject:
@@ -15,7 +16,13 @@ make_controller
 			{ 'problem_id', exists: true, is_integer: true }
 		}
 
-		id = @executer\request @params.lang, @params.code
+		problem = Problems\find @params.problem_id
+		unless problem
+			return json: { status: 'problem not found' }
+
+		test_cases = problem\get_test_cases!
+
+		id = @executer\request @params.lang, @params.code, @params.problem_id, test_cases, problem.time_limit
 
 		json: id
 	), =>

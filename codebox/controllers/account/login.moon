@@ -22,7 +22,7 @@ make_controller
 			{ "password", exists: true, min_length: 2 }
 		}
 
-		users = Users\select "where username = ? limit 1", @params.username
+		users = Users\find username: @params.username
 		if #users > 0
 			if @crypto.verify @params.password, users[1].password_hash
 				@session.user_id = users[1].id

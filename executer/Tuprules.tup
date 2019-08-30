@@ -1,1 +1,1 @@
-: *.coffee |> coffee -c -o %B.js %f |> %B.js
+: foreach *.coffee |> coffee -c -o %B.js %f |> %B.js
