@@ -1,1 +1,2 @@
 : foreach *.coffee |> coffee -c -o %B.js %f |> %B.js
+: foreach *.moon |> moonc %f |> %B.lua
