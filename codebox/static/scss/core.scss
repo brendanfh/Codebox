@@ -1,6 +1,7 @@
 @import '_vars';
 @import '_elevate';
 @import '_navbar';
+@import '_utils';
 @import 'problem/_list.scss';
 @import 'problem/_sidebar.scss';
 
@@ -14,6 +15,12 @@
 	font-size: 16px;
 }
 
+h1 {
+	width: 100%;
+	margin-top: 12px;
+	text-align: center;
+}
+
 body {
 	font-family: sans-serif;
 
@@ -21,4 +28,68 @@ body {
 	background-color: #111;
 	background-repeat: repeat;
 	color: white;
+}
+
+button {
+	@include elevate(2px, rgba(0, 0, 0, 0.7));
+	border: 1px solid $primary-dark;
+	background-color: $primary-dark;
+	color: white;
+
+	font-size: 1rem;
+	padding: .75rem;
+	margin-bottom: 12px;
+	display: inline-block;
+
+	&::placeholder {
+		color: #999;
+	}
+}
+
+form {
+	input, button, textarea {
+		@include elevate(2px, rgba(0, 0, 0, 0.7));
+		border: 1px solid $primary-dark;
+		background-color: $primary-dark;
+		color: white;
+
+		font-size: 1rem;
+		padding: .75rem;
+		margin-bottom: 12px;
+		display: inline-block;
+		width: 100%;
+
+		&::placeholder {
+			color: #999;
+		}
+	}
+
+	textarea {
+		background-color: #111;
+		height: 50vh;
+	}
+
+	label {
+		display: inline-block;
+		padding-left: 12px;
+		margin-top: 16px;
+		margin-bottom: 8px;
+	}
+}
+
+.error-list {
+	@extend .content;
+
+	ul li {
+		@include elevate(2px, rgba(0, 0, 0, 0.5));
+
+		list-style: none;
+		background-color: $secondary-dark;
+		padding: .5rem;
+		margin-bottom: .5rem;
+
+		&.success {
+			background-color: $primary-dark;
+		}
+	}
 }

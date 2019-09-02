@@ -1,5 +1,5 @@
 html = require "lapis.html"
-Navbar = require 'views.partials.navbar'
+AdminNavbar = require 'views.partials.admin_navbar'
 ErrorList = require 'views.partials.error_list'
 
 class DefaultLayout extends html.Widget
@@ -11,6 +11,6 @@ class DefaultLayout extends html.Widget
 				script type: "text/javascript", src: "/static/js/main.js"
 
 			body ->
-				widget Navbar
+				widget AdminNavbar
 				widget ErrorList
 				@content_for "inner"

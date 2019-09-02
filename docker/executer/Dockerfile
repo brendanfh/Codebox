@@ -8,8 +8,6 @@ COPY ./executer/package.json /app/package.json
 WORKDIR /app
 RUN yarn
 
-COPY ./executer/Tupfile /app/Tupfile
-COPY ./executer/Tuprules.tup /app/Tuprules.tup
 COPY ./executer/main.js /app/main.js
 COPY ./executer/app /app/app
 

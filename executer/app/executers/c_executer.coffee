@@ -24,7 +24,7 @@ class CExecuter extends BaseExecuter
 			return { status: 'SUCCESS', output: output, run_time: run_time }
 		else if res_code == 124 or res_code == 137
 			bash_shell.kill()
-			return { status: 'TIME_LIMIT_EXECEED' }
+			return { status: 'TIME_LIMIT_EXCEEDED' }
 		else
 			bash_shell.kill()
 			return { status: 'BAD_EXECUTION', err: err_output }

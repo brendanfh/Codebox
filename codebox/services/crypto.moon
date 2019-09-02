@@ -1,7 +1,5 @@
 bcrypt = require "bcrypt"
 
-import Users from require "models"
-
 ROUNDS = 10
 
 {

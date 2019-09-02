@@ -65,19 +65,21 @@ class Executer
 
 			switch (res.status)
 				when 'SUCCESS'
+					console.log test_case.output, res.output
 					output = clean_output res.output
 					expected = create_matchers (clean_output test_case.output)
 
 					worked = true
 					i = 0
 					for matcher in expected
+						console.log matcher.line, output[i]
 						unless matcher.test output[i]
 							worked = false
 							break
 
 						i++
 
-					unless i == output.length
+					if worked && i != output.length
 						worked = false
 
 					run_times[completed] = res.run_time

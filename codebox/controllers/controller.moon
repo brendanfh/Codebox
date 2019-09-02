@@ -14,7 +14,17 @@ bind = require 'utils.binding'
 				for middleware in *routes.middleware
 					require("#{@app.middleware_prefix}.#{middleware}") @
 
-			GET: => routes.get(@)
-			POST: => routes.post(@)
+			GET: =>
+				r = routes.get(@)
+				r.layout or= routes.layout
+				return r
+			POST: =>
+				r = routes.post(@)
+				r.layout or= routes.layout
+				return r
+			DELETE: =>
+				r = routes.delete(@)
+				r.layout or= routes.layout
+				return r
 		}
 }

@@ -1,4 +1,5 @@
 import create_table, add_column, types from require "lapis.db.schema"
+import insert from require "lapis.db"
 
 {
 	[1]: =>
@@ -30,6 +31,7 @@ import create_table, add_column, types from require "lapis.db.schema"
 	[3]: =>
 		create_table "problems", {
 			{ "id", types.serial },
+			{ "short_name", types.varchar unique: true },
 			{ "name", types.varchar },
 			{ "kind", types.enum },
 			{ "description", types.text null: true },
@@ -46,5 +48,13 @@ import create_table, add_column, types from require "lapis.db.schema"
 			{ "output", types.varchar },
 
 			"PRIMARY KEY (id)"
+		}
+
+	[5]: =>
+		insert "users", {
+			username: "admin"
+			password_hash: "$2b$10$uZasTmdngnbGO4ogkvY9b.S7bn.YxLJseCc3MufyX7S0wr5UpgNxy"
+			nickname: "admin"
+			email: "admin@admin.org"
 		}
 }

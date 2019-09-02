@@ -40,6 +40,28 @@
   color: white;
 }
 
+.content, .error-list {
+  width: 100%;
+  padding: 10px 10%;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .sidebar-problem-list {
   z-index: 50;
   box-shadow: 0 10px 0 0 transparent, 0 10px 0 0 transparent, 10px 0 0 0 transparent, 0 8px 8px 2px rgba(0, 0, 0, 0.5);
@@ -94,12 +116,68 @@
   font-size: 16px;
 }
 
+h1 {
+  width: 100%;
+  margin-top: 12px;
+  text-align: center;
+}
+
 body {
   font-family: sans-serif;
   background: url(/static/imgs/grain_background.png);
   background-color: #111;
   background-repeat: repeat;
   color: white;
+}
+
+button {
+  box-shadow: 0px 2px 6px 0.5px rgba(0, 0, 0, 0.7);
+  border: 1px solid #0077c2;
+  background-color: #0077c2;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+button::placeholder {
+  color: #999;
+}
+
+form input, form button, form textarea {
+  box-shadow: 0px 2px 6px 0.5px rgba(0, 0, 0, 0.7);
+  border: 1px solid #0077c2;
+  background-color: #0077c2;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  width: 100%;
+}
+form input::placeholder, form button::placeholder, form textarea::placeholder {
+  color: #999;
+}
+form textarea {
+  background-color: #111;
+  height: 50vh;
+}
+form label {
+  display: inline-block;
+  padding-left: 12px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.error-list ul li {
+  box-shadow: 0px 2px 6px 0.5px rgba(0, 0, 0, 0.5);
+  list-style: none;
+  background-color: #998100;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.error-list ul li.success {
+  background-color: #0077c2;
 }
 
 /*# sourceMappingURL=core.css.map */
