@@ -6,8 +6,8 @@
     "coffee/main.coffee"
   ],
   "names": [],
-  "mappings": ";AAAA;AAAA,MAAA;;EAAA,IAAA,GAAO,QAAA,CAAA,CAAA;WACN,OAAO,CAAC,GAAR,CAAY,cAAZ;EADM;AAAP",
+  "mappings": ";AAAA;EAAA,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA,EAAA,CAAlB;AAAA",
   "sourcesContent": [
-    "main = ->\n\tconsole.log \"Hello world!\"\n"
+    "$(document).ready ->\n"
   ]
 }

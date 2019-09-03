@@ -9,6 +9,10 @@ bind = require 'utils.binding'
 					for inj, dep in pairs routes.inject
 						@[inj] = bind\make dep
 
+				if routes.scripts
+					for s in *routes.scripts
+						table.insert @scripts, s
+
 				return if not routes.middleware
 
 				for middleware in *routes.middleware

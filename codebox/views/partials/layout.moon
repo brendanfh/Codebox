@@ -8,7 +8,11 @@ class DefaultLayout extends html.Widget
 			head ->
 				link rel: "stylesheet", href: "/static/css/core.css"
 
+				script type: "text/javascript", src: "/static/js/vendor/jquery.min.js"
 				script type: "text/javascript", src: "/static/js/main.js"
+
+				for s in *@scripts
+					script type: "text/javascript", src: "/static/js/#{s}.js"
 
 			body ->
 				widget Navbar

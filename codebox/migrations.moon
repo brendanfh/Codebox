@@ -43,7 +43,9 @@ import insert from require "lapis.db"
 	[4]: =>
 		create_table "test_cases", {
 			{ "id", types.serial },
+			{ "uuid", types.varchar unique: true },
 			{ "problem_id", types.foreign_key },
+			{ "testcase_order", types.integer, default: 1 }
 			{ "input", types.varchar },
 			{ "output", types.varchar },
 

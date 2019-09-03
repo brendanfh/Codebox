@@ -43,6 +43,6 @@ make_controller
 		}
 
 		if problem then
-			yield_error success: true, msg: "Successfully created problem #{@params.name}"
+			return redirect_to: (@url_for 'admin.problem.edit', problem_name: @params.short_name)
 		else
 			yield_error "There was an error creating the problem"

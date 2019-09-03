@@ -30,7 +30,7 @@ body {
 	color: white;
 }
 
-button {
+button, a.button {
 	@include elevate(2px, rgba(0, 0, 0, 0.7));
 	border: 1px solid $primary-dark;
 	background-color: $primary-dark;
@@ -41,6 +41,18 @@ button {
 	margin-bottom: 12px;
 	display: inline-block;
 
+	cursor: pointer;
+}
+
+input, button, textarea {
+	border: 1px solid $primary-dark;
+	background-color: $primary-dark;
+	color: white;
+
+	font-size: 1rem;
+	display: inline-block;
+	padding: .25rem;
+
 	&::placeholder {
 		color: #999;
 	}
@@ -49,19 +61,10 @@ button {
 form {
 	input, button, textarea {
 		@include elevate(2px, rgba(0, 0, 0, 0.7));
-		border: 1px solid $primary-dark;
-		background-color: $primary-dark;
-		color: white;
 
-		font-size: 1rem;
 		padding: .75rem;
 		margin-bottom: 12px;
-		display: inline-block;
 		width: 100%;
-
-		&::placeholder {
-			color: #999;
-		}
 	}
 
 	textarea {
@@ -91,5 +94,62 @@ form {
 		&.success {
 			background-color: $primary-dark;
 		}
+	}
+}
+
+.split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.test_case {
+	&:first-child {
+		border-right: 2px solid $primary-dark;
+	}
+
+	outline: none;
+
+	@include elevate(2px, rgba(0, 0, 0, 0.5));
+	resize: none;
+	border: none;
+
+	height: 200px;
+	padding: 8px;
+	background-color: #111;
+	color: $white;
+}
+
+.option-line {
+	@include elevate(2px, rgba(0, 0, 0, 0.5));
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	background-color: $primary-dark;
+	padding: 4px 12px 4px;
+
+	& > * {
+		line-height: 44px;
+		display: inline-block;
+	}
+
+	& > *:last-child {
+		text-align: right;
+	}
+}
+
+.button-list {
+	& > * {
+		margin: 0px 8px 0px;
+		background-color: $primary;
+		box-shadow: none;
+		border: none;
+		color: white;
+
+		font-size: 1rem;
+		line-height: 1.2rem;
+		padding: 4px 12px 4px;
+		display: inline-block;
+
+		cursor: pointer;
 	}
 }

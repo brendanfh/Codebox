@@ -5,8 +5,12 @@ import Problems from require 'models'
 
 make_controller
 	layout: require 'views.partials.admin_layout'
+	scripts: { 'admin_problem' }
 
 	middleware: { 'logged_in', 'admin_required' }
+
+	scripts:
+		'admin_problem'
 
 	get: =>
 		@navbar.selected = 1

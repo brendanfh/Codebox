@@ -9,5 +9,8 @@ class Problems extends Model
 
 	@relations: {
 		{ "jobs", has_many: 'Jobs' }
-		{ "test_cases", has_many: 'TestCases' }
+		{ "test_cases"
+			has_many: 'TestCases'
+			order: "testcase_order asc"
+		}
 	}

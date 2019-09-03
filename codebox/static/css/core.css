@@ -130,7 +130,7 @@ body {
   color: white;
 }
 
-button {
+button, a.button {
   box-shadow: 0px 2px 6px 0.5px rgba(0, 0, 0, 0.7);
   border: 1px solid #0077c2;
   background-color: #0077c2;
@@ -139,24 +139,26 @@ button {
   padding: 0.75rem;
   margin-bottom: 12px;
   display: inline-block;
+  cursor: pointer;
 }
-button::placeholder {
+
+input, button, textarea {
+  border: 1px solid #0077c2;
+  background-color: #0077c2;
+  color: white;
+  font-size: 1rem;
+  display: inline-block;
+  padding: 0.25rem;
+}
+input::placeholder, button::placeholder, textarea::placeholder {
   color: #999;
 }
 
 form input, form button, form textarea {
   box-shadow: 0px 2px 6px 0.5px rgba(0, 0, 0, 0.7);
-  border: 1px solid #0077c2;
-  background-color: #0077c2;
-  color: white;
-  font-size: 1rem;
   padding: 0.75rem;
   margin-bottom: 12px;
-  display: inline-block;
   width: 100%;
-}
-form input::placeholder, form button::placeholder, form textarea::placeholder {
-  color: #999;
 }
 form textarea {
   background-color: #111;
@@ -178,6 +180,53 @@ form label {
 }
 .error-list ul li.success {
   background-color: #0077c2;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.test_case {
+  outline: none;
+  box-shadow: 0px 2px 6px 0.5px rgba(0, 0, 0, 0.5);
+  resize: none;
+  border: none;
+  height: 200px;
+  padding: 8px;
+  background-color: #111;
+  color: #fff;
+}
+.test_case:first-child {
+  border-right: 2px solid #0077c2;
+}
+
+.option-line {
+  box-shadow: 0px 2px 6px 0.5px rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #0077c2;
+  padding: 4px 12px 4px;
+}
+.option-line > * {
+  line-height: 44px;
+  display: inline-block;
+}
+.option-line > *:last-child {
+  text-align: right;
+}
+
+.button-list > * {
+  margin: 0px 8px 0px;
+  background-color: #42a5f5;
+  box-shadow: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  padding: 4px 12px 4px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=core.css.map */

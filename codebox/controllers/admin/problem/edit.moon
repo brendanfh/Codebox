@@ -8,6 +8,8 @@ make_controller
 
 	middleware: { 'logged_in', 'admin_required' }
 
+	scripts: { 'admin_problem' }
+
 	get: capture_errors_json =>
 		@flow 'csrf_setup'
 
@@ -20,6 +22,8 @@ make_controller
 		@problem = Problems\find short_name: @params.problem_name
 		unless @problem
 			yield_error "Problem not found"
+
+		@test_cases = @problem\get_test_cases!
 
 		render: true
 
@@ -49,6 +53,3 @@ make_controller
 		}
 
 		redirect_to: (@url_for "admin.problem.edit", problem_name: @params.short_name)
-
-	delete: capture_errors_json =>
-		return json: @params

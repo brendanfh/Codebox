@@ -1,2 +1,1 @@
-main = ->
-	console.log "Hello world!"
+$(document).ready ->

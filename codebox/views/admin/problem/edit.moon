@@ -1,4 +1,5 @@
 html = require "lapis.html"
+TestCase = require "views.admin.problem.test_case"
 
 class AdminProblemEdit extends html.Widget
 	content: =>
@@ -22,3 +23,12 @@ class AdminProblemEdit extends html.Widget
 				input type: 'number', value: 500, name: 'time_limit', value: @problem.time_limit, ""
 
 				input type: 'submit', value: 'Update problem'
+
+			h2 style: 'margin: 48px 0 16px; padding-left: 12px', 'Test cases'
+
+			div class: 'test-cases', ->
+				for test_case in *@test_cases
+					widget (TestCase test_case.testcase_order, test_case.uuid, test_case.input, test_case.output)
+
+			button { 'data-new-tc': @problem.short_name }, 'New test case'
+			button { 'data-tc-save-all': true }, 'Save all'

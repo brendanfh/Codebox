@@ -1,2 +1,2 @@
 : scss/core.scss |> sass %f:css/%B.css |> css/%B.css css/%B.css.map
-: coffee/*.coffee |> coffee -c -m -o js/%B.js %f |> js/%B.js js/%B.js.map
+: foreach coffee/*.coffee |> coffee -c -m -o js/%B.js %f |> js/%B.js js/%B.js.map
