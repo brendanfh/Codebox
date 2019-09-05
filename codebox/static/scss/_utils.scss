@@ -19,3 +19,100 @@ a {
 	text-decoration: none;
 	color: inherit;
 }
+
+@for $i from 2 to 5 {
+	.split-#{$i} {
+		display: grid;
+		grid-template-columns: repeat(#{$i}, 1fr);
+	}
+}
+
+.split-lr {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	> * {
+		&:first-child {
+			text-align: left;
+		}
+
+		&:last-child {
+			text-align: right;
+		}
+	}
+}
+
+pre {
+	@include elevate(2px, rgba(0, 0, 0, 0.5));
+	font-size: 1rem;
+
+	.hljs-ln {
+		td {
+			//Bit of space between line numbers and code
+			padding-right: 8px;
+		}
+	}
+
+	.hljs-ln-line {
+		//THIS SHOULD BE PUT IN A PULL REQUEST TO THE HLJS REPO
+		//This prevents the line from bleeding out of the container
+		max-width: 200px !important;
+	}
+}
+
+.fixed-half-split {
+	display: grid;
+	grid-template-columns: 275px 1fr;
+}
+
+.tabbed-split {
+	display: grid;
+
+	&.tab-12 { grid-template-columns: 12px 1fr; }
+	&.tab-16 { grid-template-columns: 16px 1fr; }
+	&.tab-24 { grid-template-columns: 24px 1fr; }
+	&.tab-32 { grid-template-columns: 32px 1fr; }
+
+	&.primary { & > span { background-color: $primary; } }
+	&.primary-light { & > span { background-color: $primary-light; } }
+	&.primary-dark { & > span { background-color: $primary-dark; } }
+
+	&.secondary { & > span { background-color: $secondary; } }
+	&.secondary-light { & > span { background-color: $secondary-light; } }
+	&.secondary-dark { & > span { background-color: $secondary-dark; } }
+
+	&.error { & > span { background-color: $error; } }
+	&.error-light { & > span { background-color: $error-light; } }
+	&.error-dark { & > span { background-color: $error-dark; } }
+}
+
+.box {
+	@include elevate(2px, rgba(0, 0, 0, 0.5));
+	background-color: #111;
+
+	.highlight:hover {
+		background-color: #333;
+	}
+}
+
+.w50 {
+	width: 50%;
+}
+
+.w100 {
+	width: 100%;
+}
+
+@for $i from 1 to 24 {
+	.pad-#{$i} { padding: #{$i}px; }
+	.pad-l-#{$i} { padding-left: #{$i}px; }
+	.pad-r-#{$i} { padding-right: #{$i}px; }
+	.pad-t-#{$i} { padding-top: #{$i}px; }
+	.pad-b-#{$i} { padding-bottom: #{$i}px; }
+
+	.mar-#{$i} { margin: #{$i}px; }
+	.mar-l-#{$i} { margin-left: #{$i}px; }
+	.mar-r-#{$i} { margin-right: #{$i}px; }
+	.mar-t-#{$i} { margin-top: #{$i}px; }
+	.mar-b-#{$i} { margin-bottom: #{$i}px; }
+}

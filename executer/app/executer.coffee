@@ -44,7 +44,7 @@ class Executer
 		try
 			exec_file = await compiler.compile code
 		catch err
-			yield { status: 9, data: err }
+			yield { status: 9, data: err.substring(0, 4096) }
 			return
 
 		executer = @executers[lang]

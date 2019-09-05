@@ -9,9 +9,6 @@ make_controller
 
 	middleware: { 'logged_in', 'admin_required' }
 
-	scripts:
-		'admin_problem'
-
 	get: =>
 		@navbar.selected = 1
 

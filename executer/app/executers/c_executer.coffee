@@ -12,7 +12,7 @@ class CExecuter extends BaseExecuter
 		err_output = ""
 		bash_shell.stderr.on 'data', (data) => err_output += data.toString()
 
-		bash_shell.stdin.end "cat #{input} | timeout -s SIGKILL #{time_limit / 1000.0} #{path}"
+		bash_shell.stdin.end "echo #{input} | timeout -s SIGKILL #{time_limit / 1000.0} #{path}"
 
 		start_time = process.hrtime()
 		res_code = await on_child_exit bash_shell

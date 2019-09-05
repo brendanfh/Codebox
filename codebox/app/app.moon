@@ -1,7 +1,7 @@
 lapis = require "lapis"
 console = require "lapis.console"
 
-import Users from require "models"
+import Users, Competitions from require "models"
 bind = require "utils.binding"
 
 bind\bind_static 'executer', require 'facades.executer'
@@ -39,7 +39,11 @@ class extends lapis.Application
 	['executer.status_update': "/executer/status_update"]: require "controllers.executer.status_update"
 	['executer.request': '/executer/request']: require "controllers.executer.request"
 
-	['admin.user': "/admin/user"]: => "NOT IMPLEMENTED"
+	['admin': "/admin"]: => redirect_to: @url_for "admin.user"
+
+	['admin.user': "/admin/user"]: require "controllers.admin.user"
+	['admin.user.reset_password': "/admin/user/reset_password"]: require "controllers.admin.user.reset_password"
+	['admin.user.delete': "/admin/user/delete"]: require "controllers.admin.user.delete"
 
 	['admin.problem': "/admin/problem"]: require "controllers.admin.problem"
 	['admin.problem.new': "/admin/problem/new"]: require "controllers.admin.problem.new"
@@ -50,7 +54,17 @@ class extends lapis.Application
 	['admin.testcase.edit':   "/admin/testcase/edit"]:   require "controllers.admin.testcase.edit"
 	['admin.testcase.delete': "/admin/testcase/delete"]: require "controllers.admin.testcase.delete"
 
-	['admin.submission': "/admin/submission"]: => "NOT IMPLEMENTED"
-	['admin.competition': "/admin/competition"]: => "NOT IMPLEMENTED"
+	['admin.submission': "/admin/submission"]: require "controllers.admin.submission"
+	['admin.submission.edit': "/admin/submission/edit"]: require "controllers.admin.submission.edit"
+	['admin.submission.delete': "/admin/submission/delete"]: require "controllers.admin.submission.delete"
+
+	['admin.competition': "/admin/competition"]: require "controllers.admin.competition"
+	['admin.competition.new': "/admin/competition/new"]: require "controllers.admin.competition.new"
+
+	[test: '/test']: =>
+		user = Users\find 5
+		jobs = user\get_current_jobs!
+
+		json: jobs
 
 	"/console": console.make!

@@ -12,11 +12,11 @@ class TestCase extends html.Widget
 			div class: 'option-line', ->
 				div ->
 					span "Case  "
-					input { type: "number", min: 0, max: 1000, value: @order, 'data-tc-order-id': @id }, ''
+					input { style: "background-color: inherit", type: "number", min: 0, max: 1000, value: @order, 'data-tc-order-id': @id }, ''
 				div class: 'button-list', ->
 					button { 'data-tc-save': @id }, 'Save'
 					button { 'data-tc-delete': @id }, 'Delete'
 
 			div style: 'margin-bottom: 12px', class: 'split', ->
-				textarea { class: 'test_case', 'data-tc-input-id': @id }, @input
-				textarea { class: 'test_case', 'data-tc-output-id': @id }, @output
+				textarea { class: 'test-case', 'data-tc-input-id': @id }, @input
+				textarea { class: 'test-case', 'data-tc-output-id': @id }, @output

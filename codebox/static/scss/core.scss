@@ -4,6 +4,7 @@
 @import '_utils';
 @import 'problem/_list.scss';
 @import 'problem/_sidebar.scss';
+@import 'vendor/circle.scss';
 
 * {
 	margin: 0;
@@ -42,11 +43,15 @@ button, a.button {
 	display: inline-block;
 
 	cursor: pointer;
+
+	& + button, & + a.button {
+		margin-left: 12px;
+	}
 }
 
-input, button, textarea {
-	border: 1px solid $primary-dark;
-	background-color: $primary-dark;
+input, textarea {
+	border: none;
+	background-color: #111;
 	color: white;
 
 	font-size: 1rem;
@@ -59,7 +64,8 @@ input, button, textarea {
 }
 
 form {
-	input, button, textarea {
+	input, textarea {
+		z-index: 20;
 		@include elevate(2px, rgba(0, 0, 0, 0.7));
 
 		padding: .75rem;
@@ -73,10 +79,15 @@ form {
 	}
 
 	label {
+		z-index: 30;
+		@include elevate(2px, rgba(0, 0, 0, 0.7));
+		background-color: $primary-dark;
+		width: 100%;
+		line-height: 48px;
+
 		display: inline-block;
 		padding-left: 12px;
 		margin-top: 16px;
-		margin-bottom: 8px;
 	}
 }
 
@@ -102,7 +113,7 @@ form {
 	grid-template-columns: 1fr 1fr;
 }
 
-.test_case {
+.test-case {
 	&:first-child {
 		border-right: 2px solid $primary-dark;
 	}
@@ -119,18 +130,26 @@ form {
 	color: $white;
 }
 
-.option-line {
+.header-line {
 	@include elevate(2px, rgba(0, 0, 0, 0.5));
 
-	display: grid;
-	grid-template-columns: 1fr 1fr;
 	background-color: $primary-dark;
 	padding: 4px 12px 4px;
+	margin-top: 12px;
+	display: inline-block;
+	width: 100%;
 
 	& > * {
 		line-height: 44px;
 		display: inline-block;
 	}
+}
+
+.option-line {
+	@extend .header-line;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 
 	& > *:last-child {
 		text-align: right;
@@ -153,3 +172,4 @@ form {
 		cursor: pointer;
 	}
 }
+

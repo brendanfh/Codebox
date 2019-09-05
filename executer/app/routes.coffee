@@ -10,22 +10,25 @@ async function handle_job(job_id, lang, code, cases, time_limit) {
 	let processor = executer.process(lang, code, cases, time_limit)
 
 	for await (let status of processor) {
-		request.post('http://192.168.0.3:8888/executer/status_update',
-			{ json: true,
-			  form: {
-			  	  request_token: process.env.REQ_SECRET,
-				  job_id: job_id,
-				  status: JSON.stringify(status)
-			  }
-			},
-			(err, res, body) => {
-				if (err) {
-					return console.log(err)
-				}
+		await new Promise((resolve, rej) => {
+			request.post('http://192.168.0.3:8888/executer/status_update',
+				{ json: true,
+				  form: {
+					  request_token: process.env.REQ_SECRET,
+					  job_id: job_id,
+					  status: JSON.stringify(status)
+				  }
+				},
+				(err, res, body) => {
+					if (err) {
+						rej(-1);
+					}
 
-				console.log("Updated job: ", job_id, status.status)
-			}
-		)
+					console.log("Updated job: ", job_id, status.status)
+					resolve(1);
+				}
+			)
+		});
 	}
 }
 ```

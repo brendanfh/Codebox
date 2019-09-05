@@ -59,4 +59,21 @@ import insert from require "lapis.db"
 			nickname: "admin"
 			email: "admin@admin.org"
 		}
+
+	[6]: =>
+		create_table "competitions", {
+			{ "id", types.serial }
+			{ "start", types.time null: true }
+			{ "end", types.time null: true }
+			{ "name", types.varchar }
+			{ "active", types.boolean }
+		}
+
+	[7]: =>
+		create_table "competition_problems", {
+			{ "id", types.serial }
+			{ "competition_id", types.foreign_key }
+			{ "problem_id", types.foreign_key }
+			{ "letter", types.varchar }
+		}
 }

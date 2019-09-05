@@ -24,7 +24,8 @@ make_controller
 			status: status.status
 			data: to_json status.data
 		}
-
+	
+		print "Updated job: #{job.id}"
 		json: { status: 'success' }
 	), =>
 		json: { status: 'error', errors: @errors }

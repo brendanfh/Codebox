@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "admin_user.js",
+  "sourceRoot": "..",
+  "sources": [
+    "coffee/admin_user.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;EAAA,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA;IACjB,CAAA,CAAE,4BAAF,CAA+B,CAAC,KAAhC,CAAsC,QAAA,CAAC,CAAD,CAAA;AACrC,UAAA,YAAA,EAAA;MAAA,QAAA,GAAW,CAAA,CAAE,CAAC,CAAC,MAAJ,CAAW,CAAC,IAAZ,CAAiB,0BAAjB;MAEX,YAAA,GAAe,MAAA,CAAO,cAAP;MACf,IAAO,sBAAJ,IAAqB,YAAA,KAAgB,EAAxC;AACC,eADD;;aAGA,CAAC,CAAC,IAAF,CAAO,4BAAP,EAAqC;QAAE,UAAA,EAAY,QAAd;QAAwB,UAAA,EAAY;MAApC,CAArC,EAAyF,QAAA,CAAC,IAAD,CAAA;QACxF,IAAG,oBAAH;UACC,KAAA,CAAM,CAAA,CAAA,CAAG,QAAH,CAAY,uBAAZ,CAAN,EADD;;eAGA,OAAO,CAAC,GAAR,CAAY,IAAZ;MAJwF,CAAzF;IAPqC,CAAtC;WAaA,CAAA,CAAE,oBAAF,CAAuB,CAAC,KAAxB,CAA8B,QAAA,CAAC,CAAD,CAAA;AAC7B,UAAA;MAAA,QAAA,GAAW,CAAA,CAAE,CAAC,CAAC,MAAJ,CAAW,CAAC,IAAZ,CAAiB,kBAAjB;aAEX,CAAC,CAAC,IAAF,CAAO,oBAAP,EAA6B;QAAE,UAAA,EAAY;MAAd,CAA7B,EAAuD,QAAA,CAAC,IAAD,CAAA;QACtD,IAAG,oBAAH;UACC,KAAA,CAAM,CAAA,CAAA,CAAG,QAAH,CAAY,YAAZ,CAAN,EADD;;eAGA,MAAM,CAAC,QAAQ,CAAC,MAAhB,CAAA;MAJsD,CAAvD;IAH6B,CAA9B;EAdiB,CAAlB;AAAA",
+  "sourcesContent": [
+    "$(document).ready ->\n\t$('[data-user-reset-password]').click (e) ->\n\t\tusername = $(e.target).attr 'data-user-reset-password'\n\n\t\tnew_password = prompt 'New password'\n\t\tif not new_password? or new_password == \"\"\n\t\t\treturn\n\n\t\t$.post '/admin/user/reset_password', { 'username': username, 'password': new_password }, (data) ->\n\t\t\tif data.success?\n\t\t\t\talert(\"#{username}'s password was changed\")\n\n\t\t\tconsole.log(data)\n\n\t$('[data-user-delete]').click (e) ->\n\t\tusername = $(e.target).attr 'data-user-delete'\n\n\t\t$.post '/admin/user/delete', { 'username': username }, (data) ->\n\t\t\tif data.success?\n\t\t\t\talert \"#{username} was deleted\"\n\n\t\t\twindow.location.reload()\n"
+  ]
+}

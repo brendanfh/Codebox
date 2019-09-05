@@ -5,7 +5,7 @@ class Jobs extends Model
 		queued: 1
 		compiling: 2
 		running: 3
-		completed: 4
+		correct: 4
 		wrong_answer: 5
 		timed_out: 6
 		bad_language: 7
