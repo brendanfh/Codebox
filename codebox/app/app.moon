@@ -15,7 +15,11 @@ bind\bind_static 'uuidv4', ->
 			v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
 			string.format '%x', v
 
-
+-- Helper function that sppeds up requests by
+-- delaying the requiring of the controllers
+controller = (cont) ->
+	return =>
+		return (require ("controllers.#{cont}")) @
 
 class extends lapis.Application
 	layout: require "views.partials.layout"
@@ -30,36 +34,36 @@ class extends lapis.Application
 
 		@scripts = {}
 
-	['index':    		 "/"]: 		   require "controllers.index"
+	['index':    		 "/"]: 		   controller "index"
 
-	['account.login':    "/login"]:    require "controllers.account.login"
-	['account.logout':   "/logout"]:   require "controllers.account.logout"
-	['account.register': "/register"]: require "controllers.account.register"
+	['account.login':    "/login"]:    controller "account.login"
+	['account.logout':   "/logout"]:   controller "account.logout"
+	['account.register': "/register"]: controller "account.register"
 
-	['executer.status_update': "/executer/status_update"]: require "controllers.executer.status_update"
-	['executer.request': '/executer/request']: require "controllers.executer.request"
+	['executer.status_update': "/executer/status_update"]: controller "executer.status_update"
+	['executer.request': '/executer/request']: controller "executer.request"
 
 	['admin': "/admin"]: => redirect_to: @url_for "admin.user"
 
-	['admin.user': "/admin/user"]: require "controllers.admin.user"
-	['admin.user.reset_password': "/admin/user/reset_password"]: require "controllers.admin.user.reset_password"
-	['admin.user.delete': "/admin/user/delete"]: require "controllers.admin.user.delete"
+	['admin.user': "/admin/user"]: controller "admin.user"
+	['admin.user.reset_password': "/admin/user/reset_password"]: controller "admin.user.reset_password"
+	['admin.user.delete': "/admin/user/delete"]: controller "admin.user.delete"
 
-	['admin.problem': "/admin/problem"]: require "controllers.admin.problem"
-	['admin.problem.new': "/admin/problem/new"]: require "controllers.admin.problem.new"
-	['admin.problem.edit': "/admin/problem/edit/:problem_name"]: require "controllers.admin.problem.edit"
-	['admin.problem.delete': "/admin/problem/delete"]: require "controllers.admin.problem.delete"
+	['admin.problem': "/admin/problem"]: controller "admin.problem"
+	['admin.problem.new': "/admin/problem/new"]: controller "admin.problem.new"
+	['admin.problem.edit': "/admin/problem/edit/:problem_name"]: controller "admin.problem.edit"
+	['admin.problem.delete': "/admin/problem/delete"]: controller "admin.problem.delete"
 
-	['admin.testcase.new':    "/admin/testcase/new"]:    require "controllers.admin.testcase.new"
-	['admin.testcase.edit':   "/admin/testcase/edit"]:   require "controllers.admin.testcase.edit"
-	['admin.testcase.delete': "/admin/testcase/delete"]: require "controllers.admin.testcase.delete"
+	['admin.testcase.new':    "/admin/testcase/new"]:    controller "admin.testcase.new"
+	['admin.testcase.edit':   "/admin/testcase/edit"]:   controller "admin.testcase.edit"
+	['admin.testcase.delete': "/admin/testcase/delete"]: controller "admin.testcase.delete"
 
-	['admin.submission': "/admin/submission"]: require "controllers.admin.submission"
-	['admin.submission.edit': "/admin/submission/edit"]: require "controllers.admin.submission.edit"
-	['admin.submission.delete': "/admin/submission/delete"]: require "controllers.admin.submission.delete"
+	['admin.submission': "/admin/submission"]: controller "admin.submission"
+	['admin.submission.edit': "/admin/submission/edit"]: controller "admin.submission.edit"
+	['admin.submission.delete': "/admin/submission/delete"]: controller "admin.submission.delete"
 
-	['admin.competition': "/admin/competition"]: require "controllers.admin.competition"
-	['admin.competition.new': "/admin/competition/new"]: require "controllers.admin.competition.new"
+	['admin.competition': "/admin/competition"]: controller "admin.competition"
+	['admin.competition.new': "/admin/competition/new"]: controller "admin.competition.new"
 
 	[test: '/test']: =>
 		user = Users\find 5
