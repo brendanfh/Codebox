@@ -33,10 +33,10 @@ class AdminCompetitionEdit extends html.Widget
 										div class: 'pad-12', -> text "#{cp.name}"
 
 									div class: 'pad-12 button-list', ->
-										a 'Remove'
+										a href: (@url_for "admin.competition.delete_problem", {}, { competition_id: @comp.id, problem_id: cp.problem_id }), 'Remove'
 
 					h2 class: 'mar-t-32', "Add problem"
-					form method: 'POST', action: '/test', ->
+					form method: 'POST', action: (@url_for 'admin.competition.add_problem'), ->
 						input type: 'hidden', name: 'competition_id', value: "#{@comp.id}", ""
 
 						label for: 'problem_name', 'Problem name'
@@ -45,7 +45,7 @@ class AdminCompetitionEdit extends html.Widget
 								option value: "#{prob.short_name}", "#{prob.name}"
 
 						label for: 'letter', 'Problem letter'
-						element 'select', ->
+						element 'select', name: 'letter', ->
 							for i = 0, 25, 1
 								letter = string.char (65 + i)
 								option value: "#{letter}", "#{letter}"

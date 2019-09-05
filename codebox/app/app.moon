@@ -66,6 +66,8 @@ class extends lapis.Application
 	['admin.competition.new': "/admin/competition/new"]: controller "admin.competition.new"
 	['admin.competition.edit': "/admin/competition/edit/:competition_id"]: controller "admin.competition.edit"
 	['admin.competition.delete': "/admin/competition/delete/:competition_id"]: controller "admin.competition.delete"
+	['admin.competition.add_problem': "/admin/competition/add_problem"]: controller "admin.competition.add_problem"
+	['admin.competition.delete_problem': "/admin/competition/delete_problem"]: controller "admin.competition.delete_problem"
 
 	[test: '/test']: =>
 		user = Users\find 5
