@@ -14,6 +14,7 @@ class Problems extends Model
 			has_many: 'TestCases'
 			order: "testcase_order asc"
 		}
+		{ "competitions", has_many: "CompetitionProblems" }
 		{ "correct_jobs", fetch: =>
 			db.query "select count(job_id) from jobs where problem_id=? and status=4", @id
 		}

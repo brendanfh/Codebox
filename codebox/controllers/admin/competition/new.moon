@@ -29,4 +29,4 @@ make_controller
 			end: @params.end_time
 		}
 
-		redirect_to: @url_for 'admin.compeition'
+		redirect_to: @url_for 'admin.competition'

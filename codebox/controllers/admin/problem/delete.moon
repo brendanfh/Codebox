@@ -20,6 +20,16 @@ make_controller
 			for tc in *test_cases
 				tc\delete!
 
+		competition_problems = problem\get_competitions!
+		if competition_problems
+			for cp in *competition_problems
+				cp\delete!
+
+		jobs = problem\get_jobs!
+		if jobs
+			for job in *jobs
+				job\delete!
+
 		problem\delete!
 
 		json: { success: true }

@@ -9,8 +9,11 @@ class AdminCompetition extends html.Widget
 				-> text 'Create a competition'
 
 			for comp in *@competitions
-				div class: 'header-line', ->
+				div class: 'option-line', ->
 					span comp.name
+					div class: 'button-list', ->
+						a href: (@url_for "admin.competition.edit", { competition_id: comp.id }), "Edit"
+						a href: (@url_for "admin.competition.delete", { competition_id: comp.id}), 'Delete'
 
 				div class: 'box', ->
 					div class: 'highlight pad-12 split-lr', ->
@@ -20,5 +23,3 @@ class AdminCompetition extends html.Widget
 					div class: 'highlight pad-12 split-lr', ->
 						span 'End time'
 						span comp.end
-
-

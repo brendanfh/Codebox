@@ -24,6 +24,14 @@ a {
 	.split-#{$i} {
 		display: grid;
 		grid-template-columns: repeat(#{$i}, 1fr);
+
+		& > *:first-child {
+			margin-right: 12px;
+		}
+
+		& > *:last-child {
+			margin-left: 12px;
+		}
 	}
 }
 
@@ -103,7 +111,7 @@ pre {
 	width: 100%;
 }
 
-@for $i from 1 to 24 {
+@for $i from 1 to 50 {
 	.pad-#{$i} { padding: #{$i}px; }
 	.pad-l-#{$i} { padding-left: #{$i}px; }
 	.pad-r-#{$i} { padding-right: #{$i}px; }

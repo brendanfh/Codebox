@@ -56,14 +56,14 @@ class JobResultView extends html.Widget
 							div "Status:"
 							div "#{@status_str}"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
+							div "User:"
+							div "#{@username}"
+						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Problem:"
 							div "#{@problem}"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Time submittted:"
 							div "#{@time_started}"
-						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
-							div "Bytes:"
-							div "N/A"
 			div ->
 				if @show_slash
 					div class: 'header-line', ->
