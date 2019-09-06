@@ -15,10 +15,7 @@ make_controller
 
 		@problems = Problems\select!
 
-		return {
-			layout: require 'views.partials.admin_layout'
-			render: 'admin.problem.new'
-		}
+		render: 'admin.problem.new'
 
 	post: capture_errors =>
 		@flow 'csrf_validate'

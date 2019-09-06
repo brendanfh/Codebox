@@ -19,6 +19,9 @@ class AdminProblems extends html.Widget
 
 					div class: 'box', ->
 						div class: 'highlight pad-12 split-lr', ->
+							span "Id:"
+							span "#{problem.id}"
+						div class: 'highlight pad-12 split-lr', ->
 							span "Short name:"
 							span "#{problem.short_name}"
 						div class: 'highlight pad-12 split-lr', ->

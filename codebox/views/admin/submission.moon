@@ -18,11 +18,11 @@ class AdminSubmission extends html.Widget
 							span 'Status:'
 							span Jobs.statuses\to_name job.status
 						div class: 'highlight pad-12 split-lr', ->
-							span 'Username:'
-							span job\get_user!.username
+							span 'User id:'
+							span job.user_id
 						div class: 'highlight pad-12 split-lr', ->
-							span 'Problem:'
-							span job\get_problem!.short_name
+							span 'Problem id:'
+							span job.problem_id
 						div class: 'highlight pad-12 split-lr', ->
 							span 'Language:'
 							span job.lang

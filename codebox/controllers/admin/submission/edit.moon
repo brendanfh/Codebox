@@ -21,6 +21,3 @@ make_controller
 			yield_error "Job not found"
 
 		render: "admin.submission.edit"
-
-	post: capture_errors_json =>
-		json: { 'success': true }

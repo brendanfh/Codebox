@@ -14,6 +14,9 @@ class AdminUsers extends html.Widget
 							button { 'data-user-delete': user.username }, 'Delete'
 					div class: 'box', ->
 						div class: 'highlight pad-12 split-lr', ->
+							span "Id:"
+							span "#{user.id}"
+						div class: 'highlight pad-12 split-lr', ->
 							span "Nickname:"
 							span "#{user.nickname}"
 						div class: 'highlight pad-12 split-lr', ->

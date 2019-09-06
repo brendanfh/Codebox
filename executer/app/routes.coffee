@@ -34,11 +34,6 @@ async function handle_job(job_id, lang, code, cases, time_limit) {
 ```
 
 module.exports = (app) ->
-	app.get '/', (req, res) ->
-		res.json {
-			test: 'This is test data'
-		}
-
 	app.post '/request', (req, res) ->
 		cases = JSON.parse req.body.test_cases
 		job_id = uuid()

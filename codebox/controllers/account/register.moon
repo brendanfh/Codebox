@@ -17,7 +17,7 @@ make_controller
 		@flow 'csrf_validate'
 
 		assert_valid @params, {
-			{ "username", exists: true, min_length: 2 }
+			{ "username", exists: true, min_length: 2, matches_pattern: "%S+" }
 			{ "nickname", exists: true, min_length: 2 }
 			{ "email", exists: true, min_length: 4, matches_pattern: "%S+@%S+%.%S+" }
 			{ "password", exists: true, min_length: 2 }

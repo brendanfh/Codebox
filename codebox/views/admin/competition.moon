@@ -12,10 +12,15 @@ class AdminCompetition extends html.Widget
 				div class: 'option-line', ->
 					span comp.name
 					div class: 'button-list', ->
+						a href: (@url_for "admin.competition.activate", { competition_id: comp.id }), "Make active"
 						a href: (@url_for "admin.competition.edit", { competition_id: comp.id }), "Edit"
 						a href: (@url_for "admin.competition.delete", { competition_id: comp.id}), 'Delete'
 
 				div class: 'box', ->
+					if comp.active
+						div class: 'highlight pad-12', ->
+							span 'Active'
+
 					div class: 'highlight pad-12 split-lr', ->
 						span 'Start time'
 						span comp.start
