@@ -41,8 +41,12 @@ services:
     postgres:
         env_file:
             - config.env
+        environment:
+            PGDATA: /var/lib/postgresql/data/pgdata
         image: "postgres:12-alpine"
         restart: always
+        volumes:
+            - ./data:/var/lib/postgresql/data/pgdata
         networks:
             appnet:
                 ipv4_address: 192.168.0.2
