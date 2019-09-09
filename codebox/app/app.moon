@@ -6,14 +6,7 @@ bind = require "utils.binding"
 
 bind\bind_static 'executer', require 'facades.executer'
 bind\bind_static 'crypto', -> require 'services.crypto'
-
-bind\bind_static 'uuidv4', ->
-	math.randomseed os.time!
-	return ->
-		template ='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-		return string.gsub template, '[xy]', (c) ->
-			v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
-			string.format '%x', v
+bind\bind_static 'uuidv4', require 'services.uuid'
 
 -- Helper function that sppeds up requests by
 -- delaying the requiring of the controllers
@@ -39,6 +32,9 @@ class extends lapis.Application
 	['account.login':    "/login"]:    controller "account.login"
 	['account.logout':   "/logout"]:   controller "account.logout"
 	['account.register': "/register"]: controller "account.register"
+
+	['problem': '/problem']: controller "problem"
+	['problem_description': '/problem/:problem_name']: controller "problem"
 
 	['executer.status_update': "/executer/status_update"]: controller "executer.status_update"
 	['executer.request': '/executer/request']: controller "executer.request"

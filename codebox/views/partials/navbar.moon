@@ -8,5 +8,5 @@ class Navigation extends html.Widget
 
 			ul ->
 				a -> li class: { 'selected': @navbar.selected == 0 }, 'Leaderboard'
-				a -> li class: { 'selected': @navbar.selected == 1 }, 'Problems'
+				a href: (@url_for 'problem'), -> li class: { 'selected': @navbar.selected == 1 }, 'Problems'
 				a -> li class: { 'selected': @navbar.selected == 2 }, 'Submissions'

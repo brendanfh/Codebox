@@ -74,12 +74,14 @@ pre {
 }
 
 .tabbed-split {
-	display: grid;
+	display: grid !important;
 
 	&.tab-12 { grid-template-columns: 12px 1fr; }
 	&.tab-16 { grid-template-columns: 16px 1fr; }
 	&.tab-24 { grid-template-columns: 24px 1fr; }
 	&.tab-32 { grid-template-columns: 32px 1fr; }
+	&.tab-48 { grid-template-columns: 48px 1fr; }
+	&.tab-64 { grid-template-columns: 64px 1fr; }
 
 	&.primary { & > span { background-color: $primary; } }
 	&.primary-light { & > span { background-color: $primary-light; } }
