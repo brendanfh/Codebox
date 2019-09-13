@@ -5,8 +5,9 @@ import Users, Competitions from require "models"
 bind = require "utils.binding"
 
 bind\bind_static 'executer', require 'facades.executer'
-bind\bind_static 'crypto', -> require 'services.crypto'
+bind\bind_static 'crypto', require 'services.crypto'
 bind\bind_static 'uuidv4', require 'services.uuid'
+bind\bind_static 'queries', require 'services.queries'
 
 -- Helper function that sppeds up requests by
 -- delaying the requiring of the controllers
@@ -33,8 +34,9 @@ class extends lapis.Application
 	['account.logout':   "/logout"]:   controller "account.logout"
 	['account.register': "/register"]: controller "account.register"
 
-	['problem': '/problem']: controller "problem"
-	['problem_description': '/problem/:problem_name']: controller "problem"
+	['problem': '/problem']: controller "problem.problem"
+	['problem.description': '/problem/:problem_name']: controller "problem.problem"
+	['problem.submit': '/problem/:problem_name/submit']: controller "problem.submit"
 
 	['executer.status_update': "/executer/status_update"]: controller "executer.status_update"
 	['executer.request': '/executer/request']: controller "executer.request"
@@ -67,9 +69,11 @@ class extends lapis.Application
 	['admin.competition.activate': "/admin/competition/activate/:competition_id"]: controller "admin.competition.activate"
 
 	[test: '/test']: =>
-		user = Users\find 5
-		jobs = user\get_current_jobs!
-
-		json: jobs
+		table.insert @scripts, "vendor/ace/ace"
+		@html ->
+			div style: 'position: relative; width: 100%; height: 15rem', id: 'editor', ->
+				text "function test() {
+					console.log('Hello World!');
+				}"
 
 	"/console": console.make!

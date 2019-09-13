@@ -6,8 +6,8 @@
     "coffee/main.coffee"
   ],
   "names": [],
-  "mappings": ";AAAA;EAAA,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA,EAAA,CAAlB;AAAA",
+  "mappings": ";AAAA;EAAA,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA;WACd,CAAA,CAAE,cAAF,CAAiB,CAAC,IAAlB,CAAuB,QAAA,CAAC,CAAD,EAAI,CAAJ,CAAA;AACnB,UAAA,EAAA,EAAA;MAAA,MAAA,GAAS,GAAG,CAAC,IAAJ,CAAS,aAAT;MAET,MAAM,CAAC,QAAP,CAAgB,iBAAhB;MACA,MAAM,CAAC,kBAAP,CAA0B,KAA1B;MACA,MAAM,CAAC,WAAP,CAAmB,EAAnB;MAEA,EAAA,GAAK,CAAA,CAAE,CAAF;MACL,IAAG,EAAE,CAAC,IAAH,CAAQ,WAAR,CAAH;QACI,MAAM,CAAC,OAAO,CAAC,OAAf,CAAuB,CAAA,SAAA,CAAA,CAAY,EAAE,CAAC,IAAH,CAAQ,WAAR,CAAZ,CAAA,CAAvB,EADJ;;MAGA,IAAG,EAAE,CAAC,IAAH,CAAQ,eAAR,CAAH;eACI,MAAM,CAAC,WAAP,CAAmB,IAAnB,EADJ;;IAXmB,CAAvB;EADc,CAAlB;AAAA",
   "sourcesContent": [
-    "$(document).ready ->\n"
+    "$(document).ready ->\n    $('#code-editor').each (_, v) ->\n        editor = ace.edit 'code-editor'\n\n        editor.setTheme 'ace/theme/chaos'\n        editor.setShowPrintMargin false\n        editor.setFontSize 16\n\n        $v = $ v\n        if $v.attr 'data-lang'\n            editor.session.setMode \"ace/mode/#{$v.attr 'data-lang'}\"\n\n        if $v.attr 'data-readonly'\n            editor.setReadOnly true"
   ]
 }

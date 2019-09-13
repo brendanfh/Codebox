@@ -13,12 +13,21 @@
 
 		border-left-width: 24px;
 		border-left-style: solid;
+		border-left-color: $primary-dark;
 
-		transition: background-color 200ms east-in-out;
-		transition: width 200ms east-in-out;
+		transition: background-color 200ms ease-in-out;
+		transition: width 200ms ease-in-out;
 		background-color: inherit;
 
 		cursor: pointer;
+
+		&[correct] {
+			border-left-color: #00ff00;
+		}
+
+		&[wrong] {
+			border-left-color: #ff0000;
+		}
 
 		&[selected], &:hover {
 			width: calc(100% + 24px);

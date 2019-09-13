@@ -20,7 +20,7 @@ class ExecuterFacade
 
 		job = Jobs\create {
 			job_id: job_id
-			user_id: 5
+			user_id: 1
 			problem_id: problem_id
 			status: Jobs.statuses\for_db 'queued'
 			lang: lang

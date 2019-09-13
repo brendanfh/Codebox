@@ -114,9 +114,6 @@ class Executer
 		# Completed successfully
 		yield { status: 4, data: { completed: completed, total: total_cases, run_times: run_times } }
 
-
-
-
 module.exports = {
 	Executer: Executer
 }

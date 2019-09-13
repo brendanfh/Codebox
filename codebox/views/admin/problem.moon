@@ -29,11 +29,11 @@ class AdminProblems extends html.Widget
 							span "#{problem.time_limit}ms"
 						div class: 'highlight pad-12 split-lr', ->
 							span "Correct submissions:"
-							span "#{problem\get_correct_jobs![1].count}"
+							span "#{problem\get_correct_jobs!}"
 						div class: 'highlight pad-12 split-lr', ->
 							span "Wrong submissions:"
-							span "#{problem\get_wrong_answer_jobs![1].count}"
+							span "#{problem\get_wrong_answer_jobs!}"
 						div class: 'highlight pad-12 split-lr', ->
 							span "Timed out submissions:"
-							span "#{problem\get_timed_out_jobs![1].count}"
+							span "#{problem\get_timed_out_jobs!}"
 

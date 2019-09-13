@@ -7,7 +7,7 @@ make_controller
 	layout: require "views.partials.admin_layout"
 	middleware: { 'logged_in', 'admin_required' }
 
-	scripts: { "vendor/highlight.pack", "vendor/highlight-line-numbers" }
+	scripts: { "vendor/ace/ace" }
 
 	get: capture_errors_json =>
 		@navbar.selected = 2

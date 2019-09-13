@@ -18,7 +18,8 @@ RUN apt-get update \
 	# && luarocks install luasocket \
 	# && luarocks install mimetypes \
 	&& luarocks install luacrypto \
-	&& luarocks install bcrypt
+	&& luarocks install bcrypt \
+	&& luarocks install markdown
 
 COPY codebox/ /app
 
