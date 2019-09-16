@@ -2,18 +2,20 @@
 (function() {
   $(document).ready(function() {
     return $('piechart').each(function(_, p) {
-      var $p, anim, canvas, ctx, fill_perc, i, j, ref, segments, total;
+      var $p, anim, canvas, ctx, fill_perc, half_size, i, j, ref, segments, size, total;
       $p = $(p);
       segments = $p.attr('data-segments');
+      size = ($p.attr('data-size')) || 256;
       canvas = document.createElement("canvas");
-      canvas.width = 256;
-      canvas.height = 256;
+      canvas.width = size;
+      canvas.height = size;
       $p.append(canvas);
       ctx = canvas.getContext("2d");
       total = 0;
       for (i = j = 1, ref = segments; (1 <= ref ? j <= ref : j >= ref); i = 1 <= ref ? ++j : --j) {
         total += parseInt($p.attr(`data-segment-${i}`));
       }
+      half_size = size / 2;
       fill_perc = 0.01;
       anim = function() {
         var acc, color, k, ratio, ref1;
@@ -22,8 +24,8 @@
           ratio = (parseInt($p.attr(`data-segment-${i}`))) * fill_perc;
           color = $p.attr(`data-segment-${i}-color`);
           ctx.beginPath();
-          ctx.moveTo(128, 128);
-          ctx.arc(128, 128, 128, -2 * Math.PI * (ratio + acc) / total, -2 * Math.PI * acc / total);
+          ctx.moveTo(half_size, half_size);
+          ctx.arc(half_size, half_size, half_size, -2 * Math.PI * (ratio + acc) / total, -2 * Math.PI * acc / total);
           ctx.closePath();
           ctx.fillStyle = color;
           ctx.fill();

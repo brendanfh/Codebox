@@ -9,7 +9,7 @@ class ProblemSubmit extends html.Widget
 			div class: 'content', ->
                 h1 "Submit to '#{@problem.name}'"
 
-                div class: 'header-line', -> text "Code Editor"
+                div class: 'header-line', -> div "Code Editor"
                 div class: 'box', ->
                     div class: 'split-lr', ->
                         div class: 'mar-l-12', ->

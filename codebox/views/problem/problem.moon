@@ -13,7 +13,7 @@ class Problems extends html.Widget
 				else
 					h1 @problem.name
 					div class: 'problem-info', ->
-						a style: "width: 100%; text-align: center", class: 'button', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
+						a style: "text-align: center", class: 'button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
 							text "Make a submission"
 
 						div style: 'font-size: 1.3rem; margin-top: 0', class: 'header-line', -> text "Stats for #{@problem.name}"

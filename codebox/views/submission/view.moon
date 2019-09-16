@@ -9,4 +9,11 @@ class SubmissionView extends html.Widget
 			div class: 'header-line', ->
 				div -> text "#{@job.lang\upper!} code"
 
-			pre { id: 'code-editor', 'data-lang': 'c_cpp', 'data-readonly': 'true' }, -> text @job.code
+            lang = ''
+            switch @job.lang
+                when 'c' then lang = 'c_cpp'
+                when 'cpp' then lang = 'c_cpp'
+                when 'py' then lang = 'python'
+                when 'lua' then lang = 'lua'
+
+			pre { id: 'code-editor', 'data-lang': lang, 'data-readonly': 'true' }, -> text @job.code

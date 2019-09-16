@@ -25,12 +25,14 @@ a {
 		display: grid;
 		grid-template-columns: repeat(#{$i}, 1fr);
 
-		& > *:first-child {
-			margin-right: 12px;
-		}
+		@if ($i == 2) {
+			& > *:first-child {
+				margin-right: 12px;
+			}
 
-		& > *:last-child {
-			margin-left: 12px;
+			& > *:last-child {
+				margin-left: 12px;
+			}
 		}
 	}
 }
@@ -46,6 +48,15 @@ a {
 
 		&:last-child {
 			text-align: right;
+		}
+	}
+}
+
+@for $i from 1 to 5 {
+	@for $j from 1 to 5 {
+		.split-#{$i}-#{$j} {
+			display: grid;
+			grid-template-columns: #{$i}fr #{$j}fr;	
 		}
 	}
 }
@@ -90,6 +101,8 @@ pre {
 	&.secondary { & > span { background-color: $secondary; } }
 	&.secondary-light { & > span { background-color: $secondary-light; } }
 	&.secondary-dark { & > span { background-color: $secondary-dark; } }
+
+	&.success { & > span { background-color: #00ff00; } }
 
 	&.error { & > span { background-color: $error; } }
 	&.error-light { & > span { background-color: $error-light; } }

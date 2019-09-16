@@ -10,5 +10,12 @@ class Competitions extends Model
 			inner join competitions on competition_problems.competition_id = competitions.id
 			where competitions.id=? order by competition_problems.letter asc", @id
 		}
+		{ "problem_ids", fetch: =>
+			db.select "problems.id AS id
+			from problems
+			inner join competition_problems on problems.id = competition_problems.problem_id
+			inner join competitions on competition_problems.competition_id = competitions.id
+			where competitions.id=? order by competition_problems.letter asc", @id
+		}
 		{ "competition_problems", has_many: "CompetitionProblems" }
 	}

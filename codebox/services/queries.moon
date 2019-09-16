@@ -23,4 +23,7 @@ import Jobs from require 'models'
             }), user_id, problem_name
         
         return count[1].count > 0
+
+    get_jobs_by_user_and_problem: (user_id, problem_id) ->
+        db.select "* from jobs where user_id=? and problem_id=? order by time_initiated desc", user_id, problem_id
 }

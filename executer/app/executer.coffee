@@ -1,9 +1,11 @@
 { make_matcher } = require './matchers'
 { TempFile } = require './temp_file'
 
+{ BaseCompiler } = require './compilers/base_compiler'
 { CCompiler } = require './compilers/c_compiler'
 { CPPCompiler } = require './compilers/cpp_compiler'
 { CExecuter } = require './executers/c_executer'
+{ PyExecuter } = require './executers/py_executer'
 
 clean_output = (otpt) ->
 	otpt.split '\n'
@@ -16,12 +18,14 @@ create_matchers = (otpt) ->
 class Executer
 	compilers: {
 		'c': new CCompiler(),
-		'cpp': new CPPCompiler()
+		'cpp': new CPPCompiler(),
+		'py': new BaseCompiler()
 	}
 
 	executers: {
 		'c': new CExecuter(),
-		'cpp': new CExecuter()
+		'cpp': new CExecuter(),
+		'py': new PyExecuter()
 	}
 
 	process: (lang, code, test_cases, time_limit) ->

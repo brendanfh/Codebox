@@ -34,6 +34,11 @@ class JobResultView extends html.Widget
 			when Jobs.statuses.bad_language then @show_slash = false
 			when Jobs.statuses.bad_problem then @show_slash = false
 
+		@message = 'Error'
+		switch @job.status
+			when Jobs.statuses.compiling then @message = 'Compiling'
+			when Jobs.statuses.queued then @message = 'Queued'
+
 		if @show_slash and type(@json_data) == "table"
 			@completed_percentage = math.floor(100 * (@json_data.completed / @json_data.total))
 
@@ -44,7 +49,7 @@ class JobResultView extends html.Widget
 					if @show_slash and type(@json_data) == "table"
 						span -> text "#{@json_data.completed} / #{@json_data.total}"
 					else
-						span -> text "Error"
+						span -> text @message
 
 					div class: 'slice', ->
 						div class: 'bar', ''
@@ -102,7 +107,7 @@ class JobResultView extends html.Widget
 											p "Run time: #{@json_data.run_times[i] / 1000000}s"
 				else
 					div class: 'header-line', ->
-						div 'Errors'
+						div @message
 
 					div class: 'box', ->
 						return unless @job.data
