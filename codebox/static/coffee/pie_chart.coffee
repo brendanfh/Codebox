@@ -13,7 +13,7 @@ $(document).ready ->
         for i in [1..segments]
             total += parseInt ($p.attr "data-segment-#{i}")
         
-        fill_perc = 0
+        fill_perc = 0.01
 
         anim = ->
             acc = 0
@@ -30,7 +30,7 @@ $(document).ready ->
 
                 acc += ratio
 
-            fill_perc += 0.05
+            fill_perc += fill_perc / 10 + 0.01
 
             if fill_perc >= 1
                 fill_perc = 1

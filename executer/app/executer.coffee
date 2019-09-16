@@ -15,13 +15,13 @@ create_matchers = (otpt) ->
 
 class Executer
 	compilers: {
-		'C': new CCompiler(),
-		'CPP': new CPPCompiler()
+		'c': new CCompiler(),
+		'cpp': new CPPCompiler()
 	}
 
 	executers: {
-		'C': new CExecuter(),
-		'CPP': new CExecuter()
+		'c': new CExecuter(),
+		'cpp': new CExecuter()
 	}
 
 	process: (lang, code, test_cases, time_limit) ->
@@ -33,9 +33,9 @@ class Executer
 		await return
 
 	process_code: (lang, code, test_cases, time_limit) ->
-		compiler = @compilers[lang]
+		compiler = @compilers[lang.toLowerCase()]
 		unless compiler?
-			yield { status: 8 }
+			yield { status: 7 }
 			return
 
 		yield { status: 2 }
@@ -51,17 +51,23 @@ class Executer
 		unless executer?
 			exec_file.delete_file()
 
-			yield { status: 8 }
+			yield { status: 7 }
 			return
 
 		total_cases = test_cases.length
 		run_times = new Array total_cases
 		completed = 0
 
+		# Wait a second so the submission page looks cooler
+		await new Promise (res) ->
+			setTimeout res, 500
+
 		yield { status: 3, data: { completed: completed, total: total_cases, run_times: run_times } }
 
 		for test_case in test_cases
 			res = await executer.execute exec_file.file_path, test_case.input, time_limit
+			await new Promise (res) ->
+				setTimeout res, 200
 
 			switch (res.status)
 				when 'SUCCESS'

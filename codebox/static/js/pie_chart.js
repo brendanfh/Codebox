@@ -14,7 +14,7 @@
       for (i = j = 1, ref = segments; (1 <= ref ? j <= ref : j >= ref); i = 1 <= ref ? ++j : --j) {
         total += parseInt($p.attr(`data-segment-${i}`));
       }
-      fill_perc = 0;
+      fill_perc = 0.01;
       anim = function() {
         var acc, color, k, ratio, ref1;
         acc = 0;
@@ -29,7 +29,7 @@
           ctx.fill();
           acc += ratio;
         }
-        fill_perc += 0.05;
+        fill_perc += fill_perc / 10 + 0.01;
         if (fill_perc >= 1) {
           fill_perc = 1;
           window.requestAnimationFrame(anim);

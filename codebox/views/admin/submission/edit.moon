@@ -9,7 +9,7 @@ class AdminSubmissionEdit extends html.Widget
 			widget (require('views.ssr.job_result')(@job))
 
 			div class: 'header-line', ->
-				div -> text "#{@job.lang} code"
+				div -> text "#{@job.lang\upper!} code"
 
 			pre { id: 'code-editor', 'data-lang': 'c_cpp', 'data-readonly': 'true' }, -> text @job.code
 

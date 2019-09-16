@@ -12,8 +12,11 @@ class JobResultView extends html.Widget
 
 		@username = @job\get_user!.username
 		@problem = @job\get_problem!.name
-		@json_data = from_json @job.data
 		@time_started = @job.time_initiated
+		if @job.data
+			@json_data = from_json @job.data
+		else
+			@json_data = nil
 
 		@ring_color = ''
 		switch @job.status
@@ -31,14 +34,14 @@ class JobResultView extends html.Widget
 			when Jobs.statuses.bad_language then @show_slash = false
 			when Jobs.statuses.bad_problem then @show_slash = false
 
-		if @show_slash
+		if @show_slash and type(@json_data) == "table"
 			@completed_percentage = math.floor(100 * (@json_data.completed / @json_data.total))
 
 	content: =>
 		div class: 'fixed-half-split', ->
 			div ->
 				span class: "mar-t-12 mar-l-12 c100 p#{@completed_percentage} big dark #{@ring_color}", ->
-					if @show_slash
+					if @show_slash and type(@json_data) == "table"
 						span -> text "#{@json_data.completed} / #{@json_data.total}"
 					else
 						span -> text "Error"
@@ -70,6 +73,8 @@ class JobResultView extends html.Widget
 						div 'Test cases'
 
 					div class: 'box', ->
+						return unless type(@json_data) == "table"
+
 						for i = 1, @json_data.total
 							tc_status = 'secondary'
 							if i <= @json_data.completed
@@ -94,10 +99,11 @@ class JobResultView extends html.Widget
 											p "---------"
 
 										if type(@json_data.run_times[i]) == 'number'
-											p "Run time: #{@json_data.run_times[i]}s"
+											p "Run time: #{@json_data.run_times[i] / 1000000}s"
 				else
 					div class: 'header-line', ->
 						div 'Errors'
 
 					div class: 'box', ->
+						return unless @job.data
 						pre (process_str @job.data)

@@ -6,7 +6,7 @@ import format_date from require 'lapis.db'
 import Jobs from require 'models'
 
 class ExecuterFacade
-	request: (lang, code, problem_id, test_cases, time_limit) =>
+	request: (lang, code, user_id, problem_id, test_cases, time_limit) =>
 		body = http.simple "#{config.executer_addr}/request", {
 			:lang
 			:code
@@ -20,7 +20,7 @@ class ExecuterFacade
 
 		job = Jobs\create {
 			job_id: job_id
-			user_id: 1
+			user_id: user_id
 			problem_id: problem_id
 			status: Jobs.statuses\for_db 'queued'
 			lang: lang

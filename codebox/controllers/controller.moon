@@ -20,15 +20,18 @@ bind = require 'utils.binding'
 
 			GET: =>
 				r = routes.get(@)
-				r.layout or= routes.layout
+				if type(r) == "table"
+					r.layout or= routes.layout
 				return r
 			POST: =>
 				r = routes.post(@)
-				r.layout or= routes.layout
+				if type(r) == "table"
+					r.layout or= routes.layout
 				return r
 			DELETE: =>
 				r = routes.delete(@)
-				r.layout or= routes.layout
+				if type(r) == "table"
+					r.layout or= routes.layout
 				return r
 		}
 }

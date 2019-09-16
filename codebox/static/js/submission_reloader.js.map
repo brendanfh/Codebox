@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "submission_reloader.js",
+  "sourceRoot": "..",
+  "sources": [
+    "coffee/submission_reloader.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,aAAA,EAAA;;EAAA,aAAA,GAAgB,CAAC,IAAI,eAAJ,CAAoB,MAAM,CAAC,QAAQ,CAAC,MAApC,CAAD,CAA4C,CAAC,GAA7C,CAAiD,eAAjD;;EAEhB,YAAA,GAAe,QAAA,CAAA,CAAA;WACX,CAAC,CAAC,GAAF,CAAM,qBAAN,EAA6B;MAAE,aAAA,EAAe;IAAjB,CAA7B,EAA+D,QAAA,CAAC,IAAD,EAAO,CAAP,EAAU,IAAV,CAAA;MAC3D,CAAA,CAAE,mBAAF,CAAsB,CAAC,IAAvB,CAA4B,IAA5B;MAEA,IAAG,IAAI,CAAC,MAAL,KAAe,GAAlB;eACI,UAAA,CAAW,YAAX,EAAyB,GAAzB,EADJ;;IAH2D,CAA/D;EADW;;EAOf,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA;WACd,YAAA,CAAA;EADc,CAAlB;AATA",
+  "sourcesContent": [
+    "submission_id = (new URLSearchParams window.location.search).get 'submission_id'\n\nupdateStatus = ->\n    $.get '/submissions/status', { submission_id: submission_id }, (html, _, data) ->\n        $('#status-container').html html\n\n        if data.status == 200\n            setTimeout updateStatus, 100\n\n$(document).ready ->\n    updateStatus()"
+  ]
+}

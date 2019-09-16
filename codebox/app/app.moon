@@ -34,9 +34,13 @@ class extends lapis.Application
 	['account.logout':   "/logout"]:   controller "account.logout"
 	['account.register': "/register"]: controller "account.register"
 
-	['problem': '/problem']: controller "problem.problem"
-	['problem.description': '/problem/:problem_name']: controller "problem.problem"
-	['problem.submit': '/problem/:problem_name/submit']: controller "problem.submit"
+	['problem': '/problems']: controller "problem.problem"
+	['problem.description': '/problems/:problem_name']: controller "problem.problem"
+	['problem.submit': '/problems/:problem_name/submit']: controller "problem.submit"
+
+	['submission.list': '/submissions']: controller "submission.list"
+	['submission.view': '/submissions/view']: controller "submission.view"
+	['submission.status': '/submissions/status']: controller "submission.status"
 
 	['executer.status_update': "/executer/status_update"]: controller "executer.status_update"
 	['executer.request': '/executer/request']: controller "executer.request"
@@ -47,33 +51,25 @@ class extends lapis.Application
 	['admin.user.reset_password': "/admin/user/reset_password"]: controller "admin.user.reset_password"
 	['admin.user.delete': "/admin/user/delete"]: controller "admin.user.delete"
 
-	['admin.problem': "/admin/problem"]: controller "admin.problem"
-	['admin.problem.new': "/admin/problem/new"]: controller "admin.problem.new"
-	['admin.problem.edit': "/admin/problem/edit/:problem_name"]: controller "admin.problem.edit"
-	['admin.problem.delete': "/admin/problem/delete"]: controller "admin.problem.delete"
+	['admin.problem': "/admin/problems"]: controller "admin.problem"
+	['admin.problem.new': "/admin/problems/new"]: controller "admin.problem.new"
+	['admin.problem.edit': "/admin/problems/edit/:problem_name"]: controller "admin.problem.edit"
+	['admin.problem.delete': "/admin/problems/delete"]: controller "admin.problem.delete"
 
-	['admin.testcase.new':    "/admin/testcase/new"]:    controller "admin.testcase.new"
-	['admin.testcase.edit':   "/admin/testcase/edit"]:   controller "admin.testcase.edit"
-	['admin.testcase.delete': "/admin/testcase/delete"]: controller "admin.testcase.delete"
+	['admin.testcase.new':    "/admin/testcases/new"]:    controller "admin.testcase.new"
+	['admin.testcase.edit':   "/admin/testcases/edit"]:   controller "admin.testcase.edit"
+	['admin.testcase.delete': "/admin/testcases/delete"]: controller "admin.testcase.delete"
 
-	['admin.submission': "/admin/submission"]: controller "admin.submission"
-	['admin.submission.edit': "/admin/submission/edit"]: controller "admin.submission.edit"
-	['admin.submission.delete': "/admin/submission/delete"]: controller "admin.submission.delete"
+	['admin.submission': "/admin/submissions"]: controller "admin.submission"
+	['admin.submission.edit': "/admin/submissions/edit"]: controller "admin.submission.edit"
+	['admin.submission.delete': "/admin/submissions/delete"]: controller "admin.submission.delete"
 
-	['admin.competition': "/admin/competition"]: controller "admin.competition"
-	['admin.competition.new': "/admin/competition/new"]: controller "admin.competition.new"
-	['admin.competition.edit': "/admin/competition/edit/:competition_id"]: controller "admin.competition.edit"
-	['admin.competition.delete': "/admin/competition/delete/:competition_id"]: controller "admin.competition.delete"
-	['admin.competition.add_problem': "/admin/competition/add_problem"]: controller "admin.competition.add_problem"
-	['admin.competition.delete_problem': "/admin/competition/delete_problem"]: controller "admin.competition.delete_problem"
-	['admin.competition.activate': "/admin/competition/activate/:competition_id"]: controller "admin.competition.activate"
-
-	[test: '/test']: =>
-		table.insert @scripts, "vendor/ace/ace"
-		@html ->
-			div style: 'position: relative; width: 100%; height: 15rem', id: 'editor', ->
-				text "function test() {
-					console.log('Hello World!');
-				}"
+	['admin.competition': "/admin/competitions"]: controller "admin.competition"
+	['admin.competition.new': "/admin/competitions/new"]: controller "admin.competition.new"
+	['admin.competition.edit': "/admin/competitions/edit/:competition_id"]: controller "admin.competition.edit"
+	['admin.competition.delete': "/admin/competitions/delete/:competition_id"]: controller "admin.competition.delete"
+	['admin.competition.add_problem': "/admin/competitions/add_problem"]: controller "admin.competition.add_problem"
+	['admin.competition.delete_problem': "/admin/competitions/delete_problem"]: controller "admin.competition.delete_problem"
+	['admin.competition.activate': "/admin/competitions/activate/:competition_id"]: controller "admin.competition.activate"
 
 	"/console": console.make!

@@ -22,7 +22,7 @@ make_controller
 
 		test_cases = problem\get_test_cases!
 
-		id = @executer\request @params.lang, @params.code, @params.problem_id, test_cases, problem.time_limit
+		id = @executer\request @params.lang, @params.code, 1, @params.problem_id, test_cases, problem.time_limit
 
 		json: id
 	), =>
