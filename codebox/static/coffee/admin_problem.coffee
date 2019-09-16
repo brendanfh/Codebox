@@ -3,7 +3,7 @@ save_testcase = (test_case_id) ->
 	output = $("[data-tc-output-id=\"#{test_case_id}\"]").val()
 	order = $("[data-tc-order-id=\"#{test_case_id}\"]").val()
 
-	$.post '/admin/testcase/edit', {
+	$.post '/admin/testcases/edit', {
 		"test_case_id": test_case_id,
 		"input": input || "",
 		"output": output || "",
@@ -29,13 +29,13 @@ setup_handlers = ->
 
 	$('[data-tc-delete]').click (e) ->
 		test_case_id = $(e.target).attr 'data-tc-delete'
-		$.post '/admin/testcase/delete', { "test_case_id": test_case_id }, (data) ->
+		$.post '/admin/testcases/delete', { "test_case_id": test_case_id }, (data) ->
 			$("[data-testcase=\"#{test_case_id}\"]").remove()
 			console.log data
 
 	$('[data-new-tc]').click (e) ->
 		problem_name = $(e.target).attr 'data-new-tc'
-		$.post '/admin/testcase/new', { short_name: problem_name }, (data) ->
+		$.post '/admin/testcases/new', { short_name: problem_name }, (data) ->
 			console.log data
 			$('.test-cases').after data.html
 
@@ -44,7 +44,7 @@ setup_handlers = ->
 			return
 		problem_name = $(e.target).attr 'data-problem-delete'
 
-		$.post '/admin/problem/delete', { short_name: problem_name }, (data) ->
+		$.post '/admin/problems/delete', { short_name: problem_name }, (data) ->
 			alert "Deleted #{problem_name}."
 			window.location.reload()
 

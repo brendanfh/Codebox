@@ -8,7 +8,7 @@
       if ((new_password == null) || new_password === "") {
         return;
       }
-      return $.post('/admin/user/reset_password', {
+      return $.post('/admin/users/reset_password', {
         'username': username,
         'password': new_password
       }, function(data) {
@@ -21,7 +21,7 @@
     return $('[data-user-delete]').click(function(e) {
       var username;
       username = $(e.target).attr('data-user-delete');
-      return $.post('/admin/user/delete', {
+      return $.post('/admin/users/delete', {
         'username': username
       }, function(data) {
         if (data.success != null) {

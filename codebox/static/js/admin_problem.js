@@ -7,7 +7,7 @@
     input = $(`[data-tc-input-id="${test_case_id}"]`).val();
     output = $(`[data-tc-output-id="${test_case_id}"]`).val();
     order = $(`[data-tc-order-id="${test_case_id}"]`).val();
-    return $.post('/admin/testcase/edit', {
+    return $.post('/admin/testcases/edit', {
       "test_case_id": test_case_id,
       "input": input || "",
       "output": output || "",
@@ -39,7 +39,7 @@
     $('[data-tc-delete]').click(function(e) {
       var test_case_id;
       test_case_id = $(e.target).attr('data-tc-delete');
-      return $.post('/admin/testcase/delete', {
+      return $.post('/admin/testcases/delete', {
         "test_case_id": test_case_id
       }, function(data) {
         $(`[data-testcase="${test_case_id}"]`).remove();
@@ -49,7 +49,7 @@
     $('[data-new-tc]').click(function(e) {
       var problem_name;
       problem_name = $(e.target).attr('data-new-tc');
-      return $.post('/admin/testcase/new', {
+      return $.post('/admin/testcases/new', {
         short_name: problem_name
       }, function(data) {
         console.log(data);
@@ -62,7 +62,7 @@
         return;
       }
       problem_name = $(e.target).attr('data-problem-delete');
-      return $.post('/admin/problem/delete', {
+      return $.post('/admin/problems/delete', {
         short_name: problem_name
       }, function(data) {
         alert(`Deleted ${problem_name}.`);
