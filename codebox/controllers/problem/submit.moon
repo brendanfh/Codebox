@@ -35,8 +35,9 @@ make_controller
             return json: { status: 'problem not found' }
         
         test_cases = problem\get_test_cases!
+        competition = Competitions\find active: true
 
-        id = @executer\request @params.lang, @params.code, @user.id, problem.id, test_cases, problem.time_limit
+        id = @executer\request @params.lang, @params.code, @user.id, problem.id, competition.id, test_cases, problem.time_limit
 
         json: id
 

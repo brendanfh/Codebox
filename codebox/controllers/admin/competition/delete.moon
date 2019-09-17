@@ -20,6 +20,11 @@ make_controller
             for cp in *comp_problems
                 cp\delete!
 
+        jobs = comp\get_jobs!
+        if jobs
+            for job in *jobs
+                job\delete!
+
         comp\delete!
 
 		redirect_to: @url_for 'admin.competition'

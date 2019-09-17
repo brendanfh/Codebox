@@ -17,20 +17,34 @@ class Problems extends Model
 		}
 		{ "competitions", has_many: "CompetitionProblems" }
 		{ "correct_jobs", fetch: =>
-			(db.query "select count(job_id) from jobs where problem_id=? and status=4", @id)[1].count
+			(db.query "select count(job_id) from jobs
+			inner join competitions on jobs.competition_id = competitions.id
+			where competitions.active=TRUE and jobs.problem_id=? and jobs.status=4", @id)[1].count
 		}
 		{ "wrong_answer_jobs", fetch: =>
-			(db.query "select count(job_id) from jobs where problem_id=? and status=5", @id)[1].count
+			(db.query "select count(job_id) from jobs
+			inner join competitions on jobs.competition_id = competitions.id
+			where competitions.active=TRUE and jobs.problem_id=? and jobs.status=5", @id)[1].count
 		}
 		{ "timed_out_jobs", fetch: =>
-			(db.query "select count(job_id) from jobs where problem_id=? and status=6", @id)[1].count
+			(db.query "select count(job_id) from jobs
+			inner join competitions on jobs.competition_id = competitions.id
+			where competitions.active=TRUE and jobs.problem_id=? and jobs.status=6", @id)[1].count
 		}
 		{ "error_jobs", fetch: =>
-			(db.query "select count(job_id) from jobs where problem_id=? and status in ?", @id,
+			(db.query "select count(job_id) from jobs
+			inner join competitions on jobs.competition_id = competitions.id
+			where competitions.active=TRUE and jobs.problem_id=? and jobs.status in ?", @id,
 				db.list {
 					Jobs.statuses\for_db 'compile_err'
 					Jobs.statuses\for_db 'error'
 				}
 			)[1].count
+		},
+		{ "is_active", fetch: =>
+			(db.select "count(problems.id) from problems
+			inner join competition_problems on competition_problems.problem_id = problems.id
+			inner join competitions on competitions.id = competition_problems.competition_id
+			where competitions.active=TRUE and problem_id=?", @id)[1].count > 0
 		}
 	}

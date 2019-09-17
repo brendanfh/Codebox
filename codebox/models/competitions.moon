@@ -18,4 +18,5 @@ class Competitions extends Model
 			where competitions.id=? order by competition_problems.letter asc", @id
 		}
 		{ "competition_problems", has_many: "CompetitionProblems" }
+		{ "jobs", has_many: "Jobs" }
 	}

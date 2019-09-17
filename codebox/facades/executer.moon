@@ -6,7 +6,7 @@ import format_date from require 'lapis.db'
 import Jobs from require 'models'
 
 class ExecuterFacade
-	request: (lang, code, user_id, problem_id, test_cases, time_limit) =>
+	request: (lang, code, user_id, problem_id, competition_id, test_cases, time_limit) =>
 		body = http.simple "#{config.executer_addr}/request", {
 			:lang
 			:code
@@ -22,10 +22,11 @@ class ExecuterFacade
 			job_id: job_id
 			user_id: user_id
 			problem_id: problem_id
+			competition_id: competition_id
 			status: Jobs.statuses\for_db 'queued'
 			lang: lang
 			code: code
-			time_initiated: format_date!
+			time_initiated: os.time!
 		}
 
 		job_id

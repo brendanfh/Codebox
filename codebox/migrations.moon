@@ -19,10 +19,11 @@ import insert from require "lapis.db"
 			{ "job_id", types.varchar unique: true },
 			{ "user_id", types.foreign_key },
 			{ "problem_id", types.foreign_key },
+			{ "competition_id", types.foreign_key },
 			{ "status", types.enum },
 			{ "lang", types.varchar },
 			{ "code", types.text null: true },
-			{ "time_initiated", types.time },
+			{ "time_initiated", types.integer },
 			{ "data", types.text null: true },
 
 			"PRIMARY KEY (id)"

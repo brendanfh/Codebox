@@ -9,7 +9,7 @@ class SubmissionList extends html.Widget
             for prob in *@problems
                 div class: 'header-line', -> div prob.name
                 div class: 'box', ->
-                    jobs = @queries.get_jobs_by_user_and_problem @user.id, prob.id
+                    jobs = @queries.get_jobs_by_user_and_problem_and_competition @user.id, prob.id, @competition.id
                     if #jobs == 0
                         div class: 'pad-12', "No submissions to this problem."
                         return
@@ -25,7 +25,7 @@ class SubmissionList extends html.Widget
                                             div Jobs.statuses\to_name job.status
                                             div job.lang\upper!
                                             div "Average run time"
-                                            div job.time_initiated
+                                            div (os.date '%c', job.time_initiated)
 
                         correct = 0
                         wrong = 0

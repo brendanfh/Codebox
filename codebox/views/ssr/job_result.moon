@@ -72,7 +72,7 @@ class JobResultView extends html.Widget
 							div "#{@problem}"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Time submittted:"
-							div "#{@time_started}"
+							div "#{ os.date '%c', @time_started }"
 			div ->
 				if @show_slash
 					div class: 'header-line', ->

@@ -24,6 +24,9 @@ class AdminSubmission extends html.Widget
 							span 'Problem id:'
 							span job.problem_id
 						div class: 'highlight pad-12 split-lr', ->
+							span 'Competition id:'
+							span job.competition_id
+						div class: 'highlight pad-12 split-lr', ->
 							span 'Language:'
 							span job.lang
 
