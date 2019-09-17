@@ -3,6 +3,9 @@ markdown = require "markdown"
 
 class Problems extends html.Widget
 	content: =>
+		raw '<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+			<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
+
 		div class: 'sidebar-page-container', ->
 			div class: 'sidebar-problem-list', ->
 				widget (require 'views.partials.problem_sidebar')
@@ -56,4 +59,5 @@ class Problems extends html.Widget
 								p style: "color: #777777", -> text "Other error"
 								p "#{error}"
 
-					raw (markdown @problem.description)
+					div class: 'problem-description', ->
+						raw (markdown @problem.description)

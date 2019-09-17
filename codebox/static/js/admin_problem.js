@@ -56,7 +56,7 @@
         return $('.test-cases').after(data.html);
       });
     });
-    return $('[data-problem-delete]').click(function(e) {
+    $('[data-problem-delete]').click(function(e) {
       var problem_name;
       if (!confirm('Are you sure you want to delete this problem?')) {
         return;
@@ -66,6 +66,22 @@
         short_name: problem_name
       }, function(data) {
         alert(`Deleted ${problem_name}.`);
+        return window.location.reload();
+      });
+    });
+    return $('input[type=submit]').click(function(e) {
+      var edit, f, fields, i, len, ref;
+      e.preventDefault();
+      fields = {};
+      ref = $('form').serializeArray();
+      for (i = 0, len = ref.length; i < len; i++) {
+        f = ref[i];
+        fields[f.name] = f.value;
+      }
+      edit = ace.edit('code-editor');
+      fields.description = edit.getValue();
+      return $.post(window.location.pathname, fields, function() {
+        alert('Updated problem info');
         return window.location.reload();
       });
     });

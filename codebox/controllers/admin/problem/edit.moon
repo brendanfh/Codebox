@@ -8,7 +8,7 @@ make_controller
 
 	middleware: { 'logged_in', 'admin_required' }
 
-	scripts: { 'admin_problem' }
+	scripts: { 'admin_problem', 'vendor/ace/ace' }
 
 	get: capture_errors_json =>
 		@flow 'csrf_setup'

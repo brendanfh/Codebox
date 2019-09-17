@@ -48,6 +48,20 @@ setup_handlers = ->
 			alert "Deleted #{problem_name}."
 			window.location.reload()
 
+	$('input[type=submit]').click (e) ->
+		e.preventDefault()
+		fields = {}
+		for f in $('form').serializeArray()
+			fields[f.name] = f.value
+
+		edit = ace.edit 'code-editor'
+		fields.description = edit.getValue()
+
+		$.post window.location.pathname, fields, ->
+			alert 'Updated problem info'
+			window.location.reload()
+
+
 $(document).ready ->
 	setup_handlers()
 
