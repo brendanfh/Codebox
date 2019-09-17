@@ -27,4 +27,5 @@ make_controller
             when Jobs.statuses.running then status_code = 200
 
         status_widget = JobResult @job
+        status_widget\include_helper @
         return { layout: false, status: status_code, status_widget\render_to_string! }
