@@ -11,7 +11,7 @@ class JobResultView extends html.Widget
 		@status_str = Jobs.statuses\to_name @job.status
 
 		@username = @job\get_user!.username
-		@problem = @job\get_problem!.name
+		@problem = @job\get_problem!
 		@time_started = @job.time_initiated
 		if @job.data
 			@json_data = from_json @job.data
@@ -69,7 +69,7 @@ class JobResultView extends html.Widget
 							div "#{@username}"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Problem:"
-							div "#{@problem}"
+							a href: (@url_for 'problem.description', { problem_name: @problem.short_name }), "#{@problem.name}"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Time submittted:"
 							div "#{ os.date '%c', @time_started }"
