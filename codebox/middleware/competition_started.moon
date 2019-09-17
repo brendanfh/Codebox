@@ -11,4 +11,4 @@ import Competitions from require 'models'
     start_time = time_to_number @competition.start
 
     unless start_time <= current_time
-        @write '<h1>Competition has not begun</h1>'
+        @write render: 'competition.not_started'
