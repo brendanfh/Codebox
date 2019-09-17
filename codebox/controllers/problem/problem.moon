@@ -8,7 +8,7 @@ make_controller
 	inject:
 		queries: 'queries'
 
-	middleware: { 'logged_in' }
+	middleware: { 'logged_in', 'competition_started' }
 	scripts: { "pie_chart" }
 
     get: capture_errors_json =>

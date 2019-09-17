@@ -9,7 +9,7 @@ make_controller
 		queries: 'queries'
         executer: 'executer'
 
-	middleware: { 'logged_in' }
+	middleware: { 'logged_in', 'during_competition' }
     scripts: { 'vendor/ace/ace', 'problem_submit' }
 
     get: capture_errors_json =>
@@ -35,9 +35,8 @@ make_controller
             return json: { status: 'problem not found' }
         
         test_cases = problem\get_test_cases!
-        competition = Competitions\find active: true
 
-        id = @executer\request @params.lang, @params.code, @user.id, problem.id, competition.id, test_cases, problem.time_limit
+        id = @executer\request @params.lang, @params.code, @user.id, problem.id, @competition.id, test_cases, problem.time_limit
 
         json: id
 
