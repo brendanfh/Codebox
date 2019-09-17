@@ -28,7 +28,7 @@ class extends lapis.Application
 
 		@scripts = {}
 
-	['index':    		 "/"]: 		   controller "index"
+	['index':    		 "/"]: => redirect_to: @url_for 'problem'
 
 	['account.login':    "/login"]:    controller "account.login"
 	['account.logout':   "/logout"]:   controller "account.logout"
