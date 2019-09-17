@@ -11,7 +11,7 @@ class SubmissionList extends html.Widget
                 div class: 'box', ->
                     jobs = @queries.get_jobs_by_user_and_problem @user.id, prob.id
                     if #jobs == 0
-                        text "No submissions to this problem."
+                        div class: 'pad-12', "No submissions to this problem."
                         return
 
                     div class: 'split-4-1', ->
@@ -19,7 +19,7 @@ class SubmissionList extends html.Widget
                             for job in *jobs
                                 tab_color = job.status == Jobs.statuses.correct and 'success' or 'error'
                                 a href: (@url_for 'submission.view', {}, { submission_id: job.job_id }), ->
-                                    div class: "highlight tabbed-split tab-32 #{tab_color}", ->
+                                    div class: "highlight tabbed-split tab-24 #{tab_color}", ->
                                         span ""
                                         div class: 'pad-12 split-4', ->
                                             div Jobs.statuses\to_name job.status

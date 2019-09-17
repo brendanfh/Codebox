@@ -13,10 +13,14 @@ class Problems extends html.Widget
 				else
 					h1 @problem.name
 					div class: 'problem-info', ->
-						a style: "text-align: center", class: 'button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
+						a style: "text-align: center; margin-bottom: 0", class: 'button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
 							text "Make a submission"
 
-						div style: 'font-size: 1.3rem; margin-top: 0', class: 'header-line', -> text "Stats for #{@problem.name}"
+						div class: 'box split-lr pad-12', ->
+							div "Time limit:"
+							div "#{@problem.time_limit}ms"
+
+						div style: 'font-size: 1.3rem;', class: 'header-line', -> text "Stats for #{@problem.name}"
 
 						correct = @problem\get_correct_jobs!
 						wrong = @problem\get_wrong_answer_jobs!

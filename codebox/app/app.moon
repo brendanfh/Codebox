@@ -33,6 +33,7 @@ class extends lapis.Application
 	['account.login':    "/login"]:    controller "account.login"
 	['account.logout':   "/logout"]:   controller "account.logout"
 	['account.register': "/register"]: controller "account.register"
+	['account.account': "/account"]: controller "account.account"
 
 	['problem': '/problems']: controller "problem.problem"
 	['problem.description': '/problems/:problem_name']: controller "problem.problem"

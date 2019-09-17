@@ -20,6 +20,7 @@ class JobResultView extends html.Widget
 
 		@ring_color = ''
 		switch @job.status
+			when Jobs.statuses.correct then @ring_color = 'success'
 			when Jobs.statuses.wrong_answer then @ring_color = 'error'
 			when Jobs.statuses.timed_out then @ring_color = 'error'
 			when Jobs.statuses.bad_language then @ring_color = 'error'
@@ -81,9 +82,9 @@ class JobResultView extends html.Widget
 						return unless type(@json_data) == "table"
 
 						for i = 1, @json_data.total
-							tc_status = 'secondary'
+							tc_status = 'primary'
 							if i <= @json_data.completed
-								tc_status = 'primary'
+								tc_status = 'success'
 							if @ring_color == 'error' and i == @json_data.completed + 1
 								tc_status = 'error'
 
@@ -101,7 +102,7 @@ class JobResultView extends html.Widget
 												when Jobs.statuses.error then p "Execution error"
 												when Jobs.statuses.running then p "Running"
 										else
-											p "---------"
+											p "------------"
 
 										if type(@json_data.run_times[i]) == 'number'
 											p "Run time: #{@json_data.run_times[i] / 1000000}s"

@@ -24,4 +24,4 @@ class Register extends html.Widget
 				label for: 'nickname', 'Display name'
 				p -> input type: 'text', placeholder: 'Display Name', name: 'nickname', required: true, ''
 
-				input type: 'submit', value: 'Submit', ''
+				input class: 'mar-t-24', type: 'submit', value: 'Submit', ''

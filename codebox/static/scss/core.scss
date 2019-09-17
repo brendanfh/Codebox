@@ -74,8 +74,11 @@ form {
 		@include elevate(2px, rgba(0, 0, 0, 0.7));
 
 		padding: .75rem;
-		margin-bottom: 12px;
 		width: 100%;
+
+		& ~ label {
+			margin-top: 24px;
+		}
 	}
 
 	textarea {

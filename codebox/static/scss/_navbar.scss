@@ -49,4 +49,54 @@
 			}
 		}
 	}
+
+	.navbar-username {
+        position: relative;
+        max-height: $navbar-height;
+
+        font-size: 24px;
+        line-height: 40px;
+
+        text-align: center;
+        padding-top: 4px;
+
+        cursor: pointer;
+
+        background-color: darken($primary-dark, 20);
+		transition: background-color 150ms;
+
+        &:hover, &.selected {
+            background-color: darken($primary-dark, 10);
+
+            .navbar-username-dropdown {
+				display: block;
+            }
+        }
+
+        a {
+            display: block;
+            width: 100%;
+        }
+
+        .navbar-username-dropdown {
+			display: none;
+
+            position: absolute;
+            top: 100%;
+            left: 0;
+			width: 100%;
+
+            .navbar-username-dropdown-option {
+                border-bottom: 1px solid darken($primary-dark, 10);
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                background: darken($primary-dark, 20);
+                &:hover {
+                    background-color: darken($primary-dark, 10);
+                }
+            }
+		}
+	}
 }

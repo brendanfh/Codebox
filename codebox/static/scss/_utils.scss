@@ -127,15 +127,15 @@ pre {
 }
 
 @for $i from 1 to 50 {
-	.pad-#{$i} { padding: #{$i}px; }
-	.pad-l-#{$i} { padding-left: #{$i}px; }
-	.pad-r-#{$i} { padding-right: #{$i}px; }
-	.pad-t-#{$i} { padding-top: #{$i}px; }
-	.pad-b-#{$i} { padding-bottom: #{$i}px; }
+	.pad-#{$i} { padding: #{$i}px !important; }
+	.pad-l-#{$i} { padding-left: #{$i}px !important; }
+	.pad-r-#{$i} { padding-right: #{$i}px !important; }
+	.pad-t-#{$i} { padding-top: #{$i}px !important; }
+	.pad-b-#{$i} { padding-bottom: #{$i}px !important; }
 
-	.mar-#{$i} { margin: #{$i}px; }
-	.mar-l-#{$i} { margin-left: #{$i}px; }
-	.mar-r-#{$i} { margin-right: #{$i}px; }
-	.mar-t-#{$i} { margin-top: #{$i}px; }
-	.mar-b-#{$i} { margin-bottom: #{$i}px; }
+	.mar-#{$i} { margin: #{$i}px !important; }
+	.mar-l-#{$i} { margin-left: #{$i}px !important; }
+	.mar-r-#{$i} { margin-right: #{$i}px !important; }
+	.mar-t-#{$i} { margin-top: #{$i}px !important; }
+	.mar-b-#{$i} { margin-bottom: #{$i}px !important; }
 }

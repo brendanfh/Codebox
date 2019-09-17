@@ -17,7 +17,7 @@ class ProblemSubmit extends html.Widget
                             element 'select', id: 'language', ->
                                 option value: 'c', -> text 'C'
                                 option value: 'cpp', -> text 'C++'
-                                option value: 'py', -> text 'Python'
+                                option value: 'py', -> text 'Python 3'
                                 option value: 'lua', -> text 'Lua'
                         div class: 'button-list', ->
                             button id: 'submit-btn', -> text "Submit"

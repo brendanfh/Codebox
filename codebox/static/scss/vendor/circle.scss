@@ -165,4 +165,19 @@
 			color: $error-dark;
 		}
     }
+    &.success {
+        background-color: darken(#00ff00, 50);
+        .bar,
+        .fill {
+            border-color: #00ff00 !important;
+        }
+        &:hover {
+            > span {
+                color: #00ff00;
+            }
+        }
+        > span {
+            color: darken(#00ff00, 20);
+        }
+    }
 }
