@@ -22,6 +22,8 @@ class extends lapis.Application
 	flows_prefix: 'flows'
 	middleware_prefix: 'middleware'
 
+	bind: bind
+
 	@before_filter =>
 		@navbar = {}
 		@navbar.selected = -1

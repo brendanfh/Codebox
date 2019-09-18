@@ -77,4 +77,24 @@ import insert from require "lapis.db"
 			{ "problem_id", types.foreign_key }
 			{ "letter", types.varchar }
 		}
+
+	[8]: =>
+		create_table "leaderboard_placements", {
+			{ "id", types.serial }
+			{ "competition_id", types.foreign_key }
+			{ "user_id", types.foreign_key }
+			{ "place", types.integer default: 1 }
+			{ "score", types.integer default: 0 }
+		}
+
+	[9]: =>
+		create_table "leaderboard_problems", {
+			{ "id", types.serial }
+			{ "leaderboard_placement_id", types.foreign_key }
+			{ "user_id", types.foreign_key }
+			{ "problem_id", types.foreign_key }
+			{ "points", types.integer default: 0 }
+			{ "attempts", types.integer default: 0 }
+			{ "status", types.enum default: 1 }
+		}
 }

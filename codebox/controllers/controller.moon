@@ -1,5 +1,4 @@
 import respond_to from require "lapis.application"
-bind = require 'utils.binding'
 
 {
 	make_controller: (routes) ->
@@ -7,7 +6,7 @@ bind = require 'utils.binding'
 			before: =>
 				if routes.inject
 					for inj, dep in pairs routes.inject
-						@[inj] = bind\make dep
+						@[inj] = @app.bind\make dep
 
 				if routes.scripts
 					for s in *routes.scripts

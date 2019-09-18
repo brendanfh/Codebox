@@ -19,4 +19,7 @@ class Competitions extends Model
 		}
 		{ "competition_problems", has_many: "CompetitionProblems" }
 		{ "jobs", has_many: "Jobs" }
+		{ "leaderboard", fetch: =>
+			db.select "* from leaderboard_placements where competition_id=? order by place asc", @id
+		}
 	}
