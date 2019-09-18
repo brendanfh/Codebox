@@ -69,7 +69,9 @@ class Executer
 		yield { status: 3, data: { completed: completed, total: total_cases, run_times: run_times } }
 
 		for test_case in test_cases
-			res = await executer.execute exec_file.file_path, test_case.input, time_limit
+			test_case_file = new TempFile test_case.input
+			res = await executer.execute exec_file.file_path, test_case_file.file_path, time_limit
+			test_case_file.delete_file()
 			await new Promise (res) ->
 				setTimeout res, 200
 

@@ -70,6 +70,9 @@ class JobResultView extends html.Widget
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Problem:"
 							a href: (@url_for 'problem.description', { problem_name: @problem.short_name }), "#{@problem.name}"
+						div class: 'hightlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr', ->
+							div "Time limit:"
+							div "#{@problem.time_limit}ms"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Time submittted:"
 							div "#{ os.date '%c', @time_started }"
@@ -105,7 +108,7 @@ class JobResultView extends html.Widget
 											p "------------"
 
 										if type(@json_data.run_times[i]) == 'number'
-											p "Run time: #{@json_data.run_times[i] / 1000000}s"
+											p "Run time: #{@json_data.run_times[i]}ms"
 				else
 					div class: 'header-line', ->
 						div @message

@@ -5,7 +5,7 @@ bodyParser = require 'body-parser'
 
 app = express()
 app.use (morgan 'dev')
-app.use bodyParser.urlencoded { extended: true }
+app.use bodyParser.urlencoded { extended: true, limit: '20mb' }
 
 routes = require './app/routes'
 routes(app)

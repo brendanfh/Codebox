@@ -47,8 +47,8 @@ import insert from require "lapis.db"
 			{ "uuid", types.varchar unique: true },
 			{ "problem_id", types.foreign_key },
 			{ "testcase_order", types.integer, default: 1 }
-			{ "input", types.varchar },
-			{ "output", types.varchar },
+			{ "input", types.text },
+			{ "output", types.text },
 
 			"PRIMARY KEY (id)"
 		}
