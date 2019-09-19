@@ -50,9 +50,9 @@ class extends lapis.Application
 
 	['admin': "/admin"]: => redirect_to: @url_for "admin.user"
 
-	['admin.user': "/admin/user"]: controller "admin.user"
-	['admin.user.reset_password': "/admin/user/reset_password"]: controller "admin.user.reset_password"
-	['admin.user.delete': "/admin/user/delete"]: controller "admin.user.delete"
+	['admin.user': "/admin/users"]: controller "admin.user"
+	['admin.user.reset_password': "/admin/users/reset_password"]: controller "admin.user.reset_password"
+	['admin.user.delete': "/admin/users/delete"]: controller "admin.user.delete"
 
 	['admin.problem': "/admin/problems"]: controller "admin.problem"
 	['admin.problem.new': "/admin/problems/new"]: controller "admin.problem.new"

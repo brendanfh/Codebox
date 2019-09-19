@@ -2,3 +2,33 @@
     float: right;
     width: 300px;
 }
+
+.problem-description {
+    h2 {
+        margin-top: 24px;
+    }
+
+    .example-container {
+        width: 100%; 
+
+        .example {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            @include elevate(2px, rgba(0, 0, 0, 0.5));
+
+            & > pre {
+                @extend .box;
+                box-shadow: none;
+                min-height: 14rem;
+                padding: 12px;
+                overflow: auto;
+
+                &:first-child {
+                    border-right: 2px solid #888888;
+                }
+            }
+        }
+    }
+}

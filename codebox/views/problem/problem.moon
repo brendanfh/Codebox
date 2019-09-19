@@ -15,7 +15,7 @@ class Problems extends html.Widget
 					h1 "Select a problem from the sidebar"
 				else
 					h1 @problem.name
-					div class: 'problem-info', ->
+					div class: 'problem-info mar-l-24 mar-b-24', ->
 						a style: "text-align: center; margin-bottom: 0", class: 'button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
 							text "Make a submission"
 
