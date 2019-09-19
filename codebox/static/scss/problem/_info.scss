@@ -9,7 +9,9 @@
     }
 
     .example-container {
-        width: 100%; 
+        width: 100%;
+        display: block;
+        float: right;
 
         .example {
             margin-top: 12px;
