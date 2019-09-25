@@ -1,10 +1,13 @@
 import make_controller from require "controllers.controller"
-import Jobs from require 'models'
+import Jobs, Problems from require 'models'
 import from_json, to_json from require 'lapis.util'
 import assert_valid from require 'lapis.validate'
 import capture_errors, yield_error from require 'lapis.application'
 
 make_controller
+    inject:
+        scoring: 'scoring'
+
 	middleware: { 'internal_request' }
 
 	post: capture_errors (=>
@@ -24,8 +27,12 @@ make_controller
 			status: status.status
 			data: to_json status.data
 		}
-	
-		print "Updated job: #{job.id}"
+
+        if status.status != Jobs.statuses.running
+            problem = Problems\find job.problem_id
+            @scoring\score_problem_for_user job.user_id, problem.short_name
+            @scoring\place!
+
 		json: { status: 'success' }
 	), =>
 		json: { status: 'error', errors: @errors }

@@ -22,6 +22,6 @@ class Navigation extends html.Widget
 				else
 					a href: (@url_for 'account.login'), "Log in"
 					div class: 'navbar-username-dropdown', ->
-						div class: 'navbar-username-dropdown-option', -> 
+						div class: 'navbar-username-dropdown-option', ->
 							a href: (@url_for 'account.register'), "Register"
 

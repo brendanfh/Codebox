@@ -3,8 +3,6 @@ import Users from require 'models'
 import assert_valid from require "lapis.validate"
 import capture_errors, yield_error from require "lapis.application"
 
-utils = require "lapis.util"
-
 make_controller
 	inject:
 		crypto: 'crypto'

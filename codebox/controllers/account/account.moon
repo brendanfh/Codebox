@@ -1,5 +1,4 @@
 import make_controller from require "controllers.controller"
-import Users from require 'models'
 import assert_valid from require "lapis.validate"
 import capture_errors, yield_error from require 'lapis.application'
 
@@ -23,7 +22,7 @@ make_controller
 
         if @user.username ~=@params.username
             yield_error 'You cannot change your username!'
-        
+
         @user\update
             nickname: @params.nickname
             email: @params.email

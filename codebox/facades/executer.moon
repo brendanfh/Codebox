@@ -2,7 +2,6 @@ config = (require 'lapis.config').get!
 http = require 'lapis.nginx.http'
 
 import from_json, to_json from require 'lapis.util'
-import format_date from require 'lapis.db'
 import Jobs from require 'models'
 
 class ExecuterFacade
@@ -18,7 +17,7 @@ class ExecuterFacade
 
 		job_id = from_json(body).id
 
-		job = Jobs\create {
+		Jobs\create {
 			job_id: job_id
 			user_id: user_id
 			problem_id: problem_id
@@ -30,4 +29,3 @@ class ExecuterFacade
 		}
 
 		job_id
-

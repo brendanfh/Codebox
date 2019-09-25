@@ -1,15 +1,15 @@
 lapis = require "lapis"
 console = require "lapis.console"
 
-import Users, Competitions from require "models"
 bind = require "utils.binding"
-
 bind\bind_static 'executer', require 'facades.executer'
 bind\bind_static 'crypto', require 'services.crypto'
 bind\bind_static 'uuidv4', require 'services.uuid'
 bind\bind_static 'queries', require 'services.queries'
+bind\bind_static 'scoring', require 'services.scoring'
+bind\bind_static 'time', require 'utils.time'
 
--- Helper function that sppeds up requests by
+-- Helper function that speeds up requests by
 -- delaying the requiring of the controllers
 controller = (cont) ->
 	return =>
@@ -35,7 +35,7 @@ class extends lapis.Application
 	['account.login':    "/login"]:    controller "account.login"
 	['account.logout':   "/logout"]:   controller "account.logout"
 	['account.register': "/register"]: controller "account.register"
-	['account.account': "/account"]: controller "account.account"
+	['account.account':  "/account"]:  controller "account.account"
 
 	['problem': '/problems']: controller "problem.problem"
 	['problem.description': '/problems/:problem_name']: controller "problem.problem"
