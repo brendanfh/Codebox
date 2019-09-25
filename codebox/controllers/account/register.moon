@@ -6,6 +6,7 @@ import capture_errors, yield_error from require 'lapis.application'
 make_controller
 	inject:
 		crypto: 'crypto'
+        scoring: 'scoring'
 
 	middleware: { 'logged_out' }
 
@@ -41,6 +42,8 @@ make_controller
 			@errors or= {}
 			table.insert @errors, 'Error creating account'
 			return render: 'account.register'
+
+        @scoring\rescore_everything!
 
 		@session.user_id = user_id
 		redirect_to: @url_for 'index'

@@ -1,15 +1,13 @@
 import Competitions from require 'models'
 
-{:time_to_number} = (require 'utils.time')!
-
 =>
     @competition = Competitions\find active: true
     unless @competition
         @write json: 'No active competition'
-    
+
     current_time = os.time()
-    start_time = time_to_number @competition.start
-    end_time = time_to_number @competition.end
+    start_time = @competition\get_start_time_num!
+    end_time = @competition\get_end_time_num!
 
     unless start_time <= current_time
         @write render: 'competition.not_started'

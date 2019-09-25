@@ -75,4 +75,6 @@ class extends lapis.Application
 	['admin.competition.delete_problem': "/admin/competitions/delete_problem"]: controller "admin.competition.delete_problem"
 	['admin.competition.activate': "/admin/competitions/activate/:competition_id"]: controller "admin.competition.activate"
 
+    ['admin.utils.score': "/admin/score"]: controller "admin.utils.score"
+
 	"/console": console.make!

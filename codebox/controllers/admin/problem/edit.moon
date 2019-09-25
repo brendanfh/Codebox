@@ -38,18 +38,20 @@ make_controller
 			{ "short_name", exists: true }
 			{ "description", exists: true }
 			{ "time_limit", exists: true, is_integer: true }
+            { "kind", exists: true }
 		}
 
-		problem = Problems\find @params.problem_id
-		unless problem
+		@problem = Problems\find @params.problem_id
+		unless @problem
 			yield_error "Problem with id '#{@params.problem_id}' not found"
 			return
 
-		problem\update {
+		@problem\update {
 			name: @params.name
 			short_name: @params.short_name
 			description: @params.description
 			time_limit: @params.time_limit
+            kind: Problems.kinds\for_db @params.kind
 		}
 
 		redirect_to: (@url_for "admin.problem.edit", problem_name: @params.short_name)

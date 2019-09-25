@@ -39,6 +39,10 @@ make_controller
 			{ "name", exists: true }
 			{ "start_time", exists: true }
 			{ "end_time", exists: true }
+            { "time_offset", exists: true }
+            { "programming_points", exists: true }
+            { "codegolf_points", exists: true }
+            { "word_points", exists: true }
 		}
 
 		@comp = Competitions\find @params.id
@@ -49,6 +53,10 @@ make_controller
 			name: @params.name
 			start: @params.start_time
 			end: @params.end_time
+            time_offset: @params.time_offset
+            programming_points: @params.programming_points
+            codegolf_points: @params.codegolf_points
+            word_points: @params.word_points
 		}
 		@comp\refresh!
 

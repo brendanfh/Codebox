@@ -1,5 +1,6 @@
 import Model from require 'lapis.db.model'
 db = require 'lapis.db'
+time = (require 'utils.time')!
 
 class Competitions extends Model
 	@relations: {
@@ -22,4 +23,10 @@ class Competitions extends Model
 		{ "leaderboard", fetch: =>
 			db.select "* from leaderboard_placements where competition_id=? order by place asc", @id
 		}
-	}
+        { "start_time_num", fetch: =>
+            (time.time_to_number @start) + @time_offset * 60
+        }
+	    { "end_time_num", fetch: =>
+            (time.time_to_number @['end']) + @time_offset * 60
+        }
+    }

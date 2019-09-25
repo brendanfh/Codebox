@@ -51,6 +51,17 @@ get_user_score = (user_id, competition_id) ->
     return 0 if #res == 0
     res[1].sum
 
+get_codegolf_leaders = (problem_id, competition_id) ->
+    db.select "user_id, problem_id, competition_id, status, time_initiated, char_length(code) as bytes
+        from jobs
+        where problem_id=? and competition_id=?
+        order by status asc, bytes asc, time_initiated asc", problem_id, competition_id
+
+clear_codegolf_scores = (problem_id, competition_id) ->
+    db.query "update leaderboard_problems
+        set points=0, status=1
+        from leaderboard_placements
+        where problem_id=? and leaderboard_placements.competition_id=?", problem_id, competition_id
 
 -> {
     :has_correct_submission
@@ -60,4 +71,6 @@ get_user_score = (user_id, competition_id) ->
     :get_first_correct_submission
     :delete_leaderboard_for_competition
     :get_user_score
+    :get_codegolf_leaders
+    :clear_codegolf_scores
 }

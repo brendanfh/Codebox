@@ -4,6 +4,9 @@ import capture_errors, capture_errors_json, yield_error from require 'lapis.appl
 import Competitions, Problems, CompetitionProblems from require 'models'
 
 make_controller
+    inject:
+        scoring: 'scoring'
+
 	middleware: { 'logged_in', 'admin_required' }
 
 	post: capture_errors_json =>
@@ -27,11 +30,13 @@ make_controller
         if #comp_prob > 0
             yield_error 'Problem already in competition'
             return
-        
+
         CompetitionProblems\create {
             competition_id: @params.competition_id
             problem_id: problem.id
             letter: @params.letter
         }
+
+        @scoring\rescore_everything!
 
 		redirect_to: @url_for 'admin.competition.edit', { competition_id: @params.competition_id }

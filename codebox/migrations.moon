@@ -97,4 +97,11 @@ import insert from require "lapis.db"
 			{ "attempts", types.integer default: 0 }
 			{ "status", types.enum default: 1 }
 		}
+
+    [10]: =>
+        add_column "competitions", "programming_points", (types.integer default: 1000)
+        add_column "competitions", "codegolf_points", (types.integer default: 750)
+        add_column "competitions", "word_points", (types.integer default: 500)
+
+        add_column "competitions", "time_offset", (types.integer default: 0)
 }

@@ -1,5 +1,6 @@
 html = require "lapis.html"
 TestCase = require "views.admin.problem.test_case"
+import Problems from require 'models'
 
 class AdminProblemEdit extends html.Widget
 	content: =>
@@ -15,14 +16,21 @@ class AdminProblemEdit extends html.Widget
 					label for: 'name', 'Problem name'
 					input type: 'text', name: 'name', placeholder: 'Problem name', value: @problem.name, ""
 
-					div class: 'split-2', ->
-						div ->
+					div class: 'split-3', ->
+						div class: 'mar-r-12', ->
 							label for: 'name', 'Short name'
 							input type: 'text', name: 'short_name', placeholder: 'Short URL name', value: @problem.short_name, ""
 
-						div ->
+						div class: 'mar-l-12 mar-r-12', ->
 							label for: 'name', 'Time limit'
 							input type: 'number', value: 500, name: 'time_limit', value: @problem.time_limit, ""
+
+                        div class: 'mar-l-12', ->
+                            label for: 'kind', 'Problem kind'
+                            element 'select', name: 'kind', ->
+                                option { value: 'code', selected: @problem.kind == Problems.kinds.code }, 'Programming'
+                                option { value: 'golf', selected: @problem.kind == Problems.kinds.golf }, 'Code Golf'
+                                option { value: 'word', selected: @problem.kind == Problems.kinds.word }, 'Word'
 
 					div class: 'header-line', -> div 'Problem description'
 					pre { style: 'height: 32rem;', id: 'code-editor', 'data-lang': 'markdown' }, @problem.description
@@ -30,7 +38,7 @@ class AdminProblemEdit extends html.Widget
 					input class: 'mar-t-24', type: 'submit', value: 'Update problem info'
 
 			div class: 'mar-t-24', ->
-				h2 class: 'pad-l-12', 'Test cases' 
+				h2 class: 'pad-l-12', 'Test cases'
 
 				div class: 'test-cases', ->
 					for test_case in *@test_cases
@@ -38,4 +46,3 @@ class AdminProblemEdit extends html.Widget
 
 				button { 'data-new-tc': @problem.short_name }, 'New test case'
 				button { 'data-tc-save-all': true }, 'Save all'
-	

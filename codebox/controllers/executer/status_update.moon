@@ -29,8 +29,7 @@ make_controller
 		}
 
         if status.status != Jobs.statuses.running
-            problem = Problems\find job.problem_id
-            @scoring\score_problem_for_user job.user_id, problem.short_name
+            @scoring\score job.user_id, job.problem_id
             @scoring\place!
 
 		json: { status: 'success' }
