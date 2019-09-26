@@ -1,5 +1,5 @@
 import create_table, add_column, types from require "lapis.db.schema"
-import insert from require "lapis.db"
+import insert, query from require "lapis.db"
 
 {
 	[1]: =>
@@ -104,4 +104,7 @@ import insert from require "lapis.db"
         add_column "competitions", "word_points", (types.integer default: 500)
 
         add_column "competitions", "time_offset", (types.integer default: 0)
+
+    [11]: =>
+        query "alter table jobs add column bytes int generated always as (char_length(code)) stored"
 }

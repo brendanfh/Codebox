@@ -12,6 +12,7 @@ class JobResultView extends html.Widget
 
 		@username = @job\get_user!.username
 		@problem = @job\get_problem!
+        @bytes = @job.bytes
 		@time_started = @job.time_initiated
 		if @job.data
 			@json_data = from_json @job.data
@@ -64,6 +65,9 @@ class JobResultView extends html.Widget
 						div class: "highlight pad-12 pad-b-4 split-lr", ->
 							div "Status:"
 							div "#{@status_str}"
+                        div class: "highlight pad-l-12 pad-r-12 pad-b-4 split-lr", ->
+                            div "Bytes:"
+                            div "#{@bytes}"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "User:"
 							div "#{@username}"
