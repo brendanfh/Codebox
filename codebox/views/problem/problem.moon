@@ -1,7 +1,8 @@
 html = require "lapis.html"
 markdown = require "markdown"
+import Problems from require 'models'
 
-class Problems extends html.Widget
+class ProblemsView extends html.Widget
 	content: =>
 		raw '<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 			<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
@@ -19,9 +20,14 @@ class Problems extends html.Widget
 						a style: "text-align: center; margin-bottom: 0", class: 'button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
 							text "Make a submission"
 
-						div class: 'box split-lr pad-12', ->
-							div "Time limit:"
-							div "#{@problem.time_limit}ms"
+						div class: 'box', ->
+                            div class: 'split-lr pad-12', ->
+                                div "Time limit:"
+                                div "#{@problem.time_limit}ms"
+                            div class: 'split-lr pad-12', ->
+                                div "Problem kind:"
+                                kind = Problems.kinds\to_name @problem.kind
+                                div "#{kind}"
 
 						div style: 'font-size: 1.3rem;', class: 'header-line', -> text "Stats for #{@problem.name}"
 
