@@ -24,7 +24,7 @@ class SubmissionList extends html.Widget
                                         div class: 'pad-12 split-4', ->
                                             div Jobs.statuses\to_name job.status
                                             div job.lang\upper!
-                                            div "Average run time"
+                                            div "Bytes: #{job.bytes}"
                                             div (os.date '%c', job.time_initiated)
 
                         correct = 0
