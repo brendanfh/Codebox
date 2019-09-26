@@ -1,0 +1,42 @@
+.leaderboard {
+    @include elevate(2px, rgba(0, 0, 0, 0.5));
+
+    text-align: center;
+    font-size: 1.2rem;
+
+    .placement, .placement-labels {
+        display: grid;
+        grid-template-columns: 1fr 7fr 10fr 3fr;
+
+        .problem { display: grid; }
+    }
+
+    .placement-labels {
+        background: $primary;
+        font-size: 1.4rem;
+        padding: 4px;
+    }
+
+    .placement {
+        padding: 0 4px;
+        &:nth-child(even) { background: $primary-dark; }
+        &:nth-child(odd)  { background: darken($primary-dark, 20); }
+
+        line-height: 36px;
+
+        :first-child { font-size: 1.2rem; }
+
+        .problem > div {
+            padding: 4px;
+
+            & :first-child { font-size: 1.2rem; }
+            & :last-child { font-size: .8rem; }
+
+            line-height: 18px;
+
+            &.correct { background: $test-case-good; color: #000000; }
+            &.wrong   { background: $test-case-bad;  color: #000000; }
+            &.attempted { background: #999999; color: #000000; }
+        }
+    }
+}

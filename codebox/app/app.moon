@@ -37,6 +37,8 @@ class extends lapis.Application
 	['account.register': "/register"]: controller "account.register"
 	['account.account':  "/account"]:  controller "account.account"
 
+    ['leaderboard': '/leaderboard']: controller "leaderboard.view"
+
 	['problem': '/problems']: controller "problem.problem"
 	['problem.description': '/problems/:problem_name']: controller "problem.problem"
 	['problem.submit': '/problems/:problem_name/submit']: controller "problem.submit"
