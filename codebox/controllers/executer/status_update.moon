@@ -7,6 +7,7 @@ import capture_errors, yield_error from require 'lapis.application'
 make_controller
     inject:
         scoring: 'scoring'
+		updater: 'updater'
 
 	middleware: { 'internal_request' }
 
@@ -31,6 +32,8 @@ make_controller
         if status.status != Jobs.statuses.running
             @scoring\score job.user_id, job.problem_id
             @scoring\place!
+
+		@updater\push_submission_update job.id
 
 		json: { status: 'success' }
 	), =>

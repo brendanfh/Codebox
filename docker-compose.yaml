@@ -38,6 +38,19 @@ services:
             appnet:
                 ipv4_address: 192.168.0.4
 
+    updater:
+        env_file:
+            - config.env
+        build:
+            context: .
+            dockerfile: ./docker/updater/Dockerfile
+        volumes:
+            - ./updater/app:/app/app
+        command: node main.js
+        networks:
+            appnet:
+                ipv4_address: 192.168.0.5
+
     postgres:
         env_file:
             - config.env

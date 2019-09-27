@@ -12,6 +12,10 @@ import respond_to from require "lapis.application"
 					for s in *routes.scripts
 						table.insert @scripts, s
 
+				if routes.raw_scripts
+					for s in *routes.raw_scripts
+						table.insert @raw_scripts, s
+
 				return if not routes.middleware
 
 				for middleware in *routes.middleware

@@ -118,13 +118,11 @@ class Scoring extends Injectable
 
 	score_user: (user_id) =>
         for p in *@comp_problems
-            problem = p\get_problem!
-            @score_problem_for_user user_id, problem
+            @score user_id, p.problem_id
 
-    score_problem: (problem_name) =>
-        problem = Problems\find short_name: problem_name
+    score_problem: (problem_id) =>
         for u in *@users
-            @score_problem_for_user u.id, problem
+            @score u.id, problem_id
 
     score_all: =>
         for p in *@comp_problems

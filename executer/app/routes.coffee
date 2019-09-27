@@ -24,7 +24,6 @@ async function handle_job(job_id, lang, code, cases, time_limit) {
 						rej(-1);
 					}
 
-					console.log("Updated job: ", job_id, status.status)
 					resolve(1);
 				}
 			)

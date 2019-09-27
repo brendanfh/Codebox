@@ -1,0 +1,13 @@
+{
+  "name": "codebox-socketio",
+  "version": "1.0.0",
+  "description": "SocketIO part of Codebox",
+  "main": "main.js",
+  "author": "Brendan Hansen",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

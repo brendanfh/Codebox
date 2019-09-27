@@ -3,6 +3,7 @@ console = require "lapis.console"
 
 bind = require "utils.binding"
 bind\bind_static 'executer', require 'facades.executer'
+bind\bind_static 'updater', require 'facades.updater'
 bind\bind_static 'crypto', require 'services.crypto'
 bind\bind_static 'uuidv4', require 'services.uuid'
 bind\bind_static 'queries', require 'services.queries'
@@ -29,6 +30,7 @@ class extends lapis.Application
 		@navbar.selected = -1
 
 		@scripts = {}
+		@raw_scripts = {}
 
 	['index':    		 "/"]: => redirect_to: @url_for 'problem'
 
@@ -38,6 +40,7 @@ class extends lapis.Application
 	['account.account':  "/account"]:  controller "account.account"
 
     ['leaderboard': '/leaderboard']: controller "leaderboard.view"
+    ['leaderboard.update': '/leaderboard/update']: controller "leaderboard.update"
 
 	['problem': '/problems']: controller "problem.problem"
 	['problem.description': '/problems/:problem_name']: controller "problem.problem"

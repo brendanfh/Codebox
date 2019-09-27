@@ -10,6 +10,7 @@ make_controller
 
 	middleware: { 'logged_in' }
     scripts: { 'vendor/ace/ace', 'submission_reloader' }
+	raw_scripts: { '/socket.io/socket.io.js' }
 
     get: capture_errors_json =>
 		@navbar.selected = 2

@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "leaderboard_update.js",
+  "sourceRoot": "..",
+  "sources": [
+    "coffee/leaderboard_update.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;EAAA,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA;WACd,OAAO,CAAC,GAAR,CAAY,QAAZ;EADc,CAAlB;AAAA",
+  "sourcesContent": [
+    "$(document).ready ->\n    console.log \"Hello!\"\n"
+  ]
+}

@@ -8,15 +8,17 @@
     return $.get('/submissions/status', {
       submission_id: submission_id
     }, function(html, _, data) {
-      $('#status-container').html(html);
-      if (data.status === 200) {
-        return setTimeout(updateStatus, 100);
-      }
+      return $('#status-container').html(html);
     });
   };
 
   $(document).ready(function() {
-    return updateStatus();
+    var socket;
+    socket = io();
+    socket.emit("request-submission-updates", submission_id);
+    return socket.on('update', function() {
+      return updateStatus();
+    });
   });
 
 }).call(this);

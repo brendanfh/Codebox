@@ -8,6 +8,10 @@ make_controller
 
 	middleware: { 'logged_in', 'competition_started' }
 	scripts: { "pie_chart" }
+	raw_scripts: {
+		"https://polyfill.io/v3/polyfill.min.js?features=es6"
+		"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+	}
 
     get: capture_errors_json =>
 		@navbar.selected = 1

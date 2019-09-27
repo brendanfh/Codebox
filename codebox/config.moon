@@ -7,6 +7,7 @@ config "development", ->
 	req_secret (os.getenv 'REQ_SECRET')
 
 	executer_addr 'http://192.168.0.4:8080'
+	updater_addr 'http://192.168.0.5:5000'
 
 	postgres ->
 		-- Have to use a fixed ip since the container name

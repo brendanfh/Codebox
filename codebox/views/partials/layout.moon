@@ -14,6 +14,9 @@ class DefaultLayout extends html.Widget
 				for s in *@scripts
 					script type: "text/javascript", src: "/static/js/#{s}.js"
 
+				for s in *@raw_scripts
+					script type: "text/javascript", src: s
+
 			body ->
 				widget Navbar
 				widget ErrorList
