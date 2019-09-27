@@ -28,3 +28,10 @@ class Competitions extends Model
             (time.time_to_number @['end']) + @time_offset * 60
         }
     }
+
+	@delete_leaderboard: (competition_id) =>
+		db.query "delete from leaderboard_problems
+			where leaderboard_placement_id in
+				(select id from leaderboard_placements where competition_id=?)", competition_id
+
+		db.delete "leaderboard_placements", competition_id: competition_id

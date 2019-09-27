@@ -1,5 +1,5 @@
 html = require 'lapis.html'
-import Competitions from require 'models'
+import Competitions, Users from require 'models'
 
 class ProblemSidebar extends html.Widget
     load_problems: =>
@@ -7,10 +7,10 @@ class ProblemSidebar extends html.Widget
     	@problems = @current_comp\get_problems!
 
 		for prob in *@problems
-			if @queries.has_correct_submission @user.id, prob.short_name
+			if Users\has_correct_submission @user.id, prob.short_name
 				prob.tag = "correct"
-			elseif @queries.has_incorrect_submission @user.id, prob.short_name
-				prob.tab = "incorrect"
+			elseif Users\has_incorrect_submission @user.id, prob.short_name
+				prob.tag = "incorrect"
 
     content: =>
         @load_problems!
@@ -20,7 +20,7 @@ class ProblemSidebar extends html.Widget
                 div {
                     selected: prob.short_name == @params.problem_name
                     correct: prob.tag == "correct"
-                    wrong: prob.tab == "incorrect"
+                    wrong: prob.tag == "incorrect"
                     class: 'sidebar-problem'
                 }, ->
                     div class: 'sidebar-problem-letter', -> text prob.letter

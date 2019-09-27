@@ -42,6 +42,7 @@ class UpdateForwarder
 
 update_forwarder = new UpdateForwarder()
 update_forwarder.add_channel "submission-updates"
+update_forwarder.add_channel "leaderboard-updates"
 
 io.on 'connection', (socket) ->
 	# data is the submission id
@@ -49,12 +50,21 @@ io.on 'connection', (socket) ->
 		socket.param = data
 		update_forwarder.join_channel "submission-updates", socket
 
+	socket.on 'request-leaderboard-updates', (data) ->
+		update_forwarder.join_channel "leaderboard-updates", socket
+
 	socket.once 'disconnect', ->
 		update_forwarder.leave socket
 
 app.get '/submission_update', (req, res) ->
 	submission_id = req.query.submission_id
 	update_forwarder.push_update "submission-updates", submission_id
+
+	res.status 200
+	res.end()
+
+app.get '/leaderboard_update', (req, res) ->
+	update_forwarder.push_update "leaderboard-updates"
 
 	res.status 200
 	res.end()

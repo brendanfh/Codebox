@@ -5,9 +5,6 @@ import capture_errors, capture_errors_json, yield_error from require 'lapis.appl
 import Competitions, Jobs from require 'models'
 
 make_controller
-	inject:
-		queries: 'queries'
-
 	middleware: { 'logged_in' }
     scripts: { 'vendor/ace/ace', 'submission_reloader' }
 	raw_scripts: { '/socket.io/socket.io.js' }

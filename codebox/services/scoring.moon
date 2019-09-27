@@ -4,8 +4,8 @@ require 'utils.table'
 
 class Scoring extends Injectable
 	new: =>
-		@queries = @make 'queries'
         @time = @make 'time'
+		@updater = @make 'updater'
 
         -- Get the currently active competition
         @competition = Competitions\find active: true
@@ -20,7 +20,7 @@ class Scoring extends Injectable
 
     setup_scoring_tables: =>
         -- Delete all old leaderboard entries for this competition
-        @queries.delete_leaderboard_for_competition @competition.id
+        Competitions\delete_leaderboard @competition.id
 
         -- Refetch the problems and users in case they have changed
         @comp_problems = @competition\get_competition_problems!
@@ -62,7 +62,7 @@ class Scoring extends Injectable
 
         -- Count the incorrect submissions, and if there are
         -- any, set the status of the problem to be wrong
-        attempts += @queries.count_incorrect_submission user_id, problem.short_name
+        attempts += Users\count_incorrect_submission user_id, problem.short_name
         if attempts > 0
             status = LeaderboardProblems.statuses.wrong
 
@@ -70,8 +70,8 @@ class Scoring extends Injectable
         -- (best for problem worth) and compute the points
         -- for this problem:
         --     points = programming_points * worth - 50 * wrong_attempts
-        if @queries.has_correct_submission user_id, problem.short_name
-            job = @queries.get_first_correct_submission user_id, problem.id, @competition.id
+        if Users\has_correct_submission user_id, problem.short_name
+            job = Users\get_first_correct_submission user_id, problem.id, @competition.id
 
             points += math.ceil (@competition.programming_points * @get_problem_worth job.time_initiated)
             points -= 50 * attempts
@@ -87,10 +87,10 @@ class Scoring extends Injectable
 
     score_codegolf: (problem) =>
         -- Clear the codegolf scores for this problem in this competition
-        @queries.clear_codegolf_scores problem.id, @competition.id
+        Problems\clear_codegolf_scores problem.id, @competition.id
 
         -- Get the best code golf submisssions
-        leaders = @queries.get_codegolf_leaders problem.id, @competition.id
+        leaders = Problems\get_codegolf_leaders problem.id, @competition.id
 
         points = @competition.codegolf_points
         third_points = points / 3
@@ -138,7 +138,7 @@ class Scoring extends Injectable
 
     place: =>
         for u in *@users
-            u.score = @queries.get_user_score u.id, @competition.id
+            u.score = Users\get_score u.id, @competition.id
 
         table.sort @users, (a, b) ->
             a.score > b.score
@@ -157,6 +157,8 @@ class Scoring extends Injectable
             lp\update
                 place: num
                 score: u.score
+
+		@updater\push_leaderboard_update!
 
     rescore_everything: =>
         -- Completely resets everything if a problem is

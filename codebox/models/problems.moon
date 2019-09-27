@@ -48,3 +48,15 @@ class Problems extends Model
 			where competitions.active=TRUE and problem_id=?", @id)[1].count > 0
 		}
 	}
+
+	@get_codegolf_leaders: (problem_id, competition_id) =>
+		db.select "user_id, problem_id, competition_id, status, time_initiated, char_length(code) as bytes
+			from jobs
+			where problem_id=? and competition_id=?
+			order by status asc, bytes asc, time_initiated asc", problem_id, competition_id
+
+	@clear_codegolf_scores: (problem_id, competition_id) =>
+		db.query "update leaderboard_problems
+			set points=0, status=1
+			from leaderboard_placements
+			where problem_id=? and leaderboard_placements.competition_id=?", problem_id, competition_id

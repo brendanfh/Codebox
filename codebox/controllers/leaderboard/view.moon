@@ -5,6 +5,8 @@ import LeaderboardProblems, LeaderboardPlacements from require 'models'
 
 make_controller
     middleware: { 'logged_in', 'competition_started' }
+	scripts: { 'leaderboard_update' }
+	raw_scripts: { '/socket.io/socket.io.js' }
 
     get: =>
         @navbar.selected = 0

@@ -6,7 +6,6 @@ import Competitions, Problems from require 'models'
 
 make_controller
 	inject:
-		queries: 'queries'
         executer: 'executer'
 
 	middleware: { 'logged_in', 'during_competition' }
@@ -22,7 +21,7 @@ make_controller
         @problem = Problems\find short_name: @params.problem_name
 
     	render: 'problem.submit'
-    
+
     post: capture_errors_json =>
         assert_valid @params, {
             { "problem_name", exists: true }
@@ -33,7 +32,7 @@ make_controller
         problem = Problems\find short_name: @params.problem_name
         unless problem
             return json: { status: 'problem not found' }
-        
+
         test_cases = problem\get_test_cases!
 
         id = @executer\request @params.lang, @params.code, @user.id, problem.id, @competition.id, test_cases, problem.time_limit

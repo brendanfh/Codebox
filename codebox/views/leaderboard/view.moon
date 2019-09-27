@@ -6,5 +6,5 @@ class LeaderboardView extends html.Widget
     content: =>
         h1 "#{@competition.name} - Leaderboard"
 
-        div class: 'content', ->
+        div id: 'leaderboard-container', class: 'content', ->
             widget (Leaderboard @placements)

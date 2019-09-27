@@ -1,5 +1,5 @@
 html = require 'lapis.html'
-import CompetitionProblems, LeaderboardProblems from require 'models'
+import CompetitionProblems, LeaderboardProblems, Problems from require 'models'
 
 class Leaderboard extends html.Widget
     new: (@placements) =>
@@ -14,6 +14,11 @@ class Leaderboard extends html.Widget
                     flip: true
                     local_key: 'problem_id'
                     where: { competition_id: @competition.id }
+				Problems\include_in @problems, 'id',
+					as: 'p'
+					flip: true
+					local_key: 'problem_id'
+					fields: 'id, kind'
                  -- Sort the problems by letter
                 prob.lnum = (prob.cp.letter\byte 1) for prob in *@problems
 
@@ -26,7 +31,10 @@ class Leaderboard extends html.Widget
                         div "Name"
                         div class: 'problem', style: "grid-template-columns: repeat(#{#@problems}, 1fr)", ->
                             for prob in *@problems
-                                div "#{prob.cp.letter}"
+                                div style: 'position: relative', ->
+									if prob.p.kind == Problems.kinds.golf
+										span style: "position: absolute; left: 0; top 0; font-size:.8rem", 'Golf'
+									div "#{prob.cp.letter}"
                         div "Score"
                     drawn_labels = true
 

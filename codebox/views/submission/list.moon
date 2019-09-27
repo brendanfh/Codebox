@@ -1,5 +1,5 @@
 html = require 'lapis.html'
-import Jobs from require 'models'
+import Jobs, Users from require 'models'
 
 class SubmissionList extends html.Widget
     content: =>
@@ -9,7 +9,7 @@ class SubmissionList extends html.Widget
             for prob in *@problems
                 div class: 'header-line', -> div prob.name
                 div class: 'box', ->
-                    jobs = @queries.get_jobs_by_user_and_problem_and_competition @user.id, prob.id, @competition.id
+                    jobs = Users\get_jobs_by_problem @user.id, prob.id, @competition.id
                     if #jobs == 0
                         div class: 'pad-12', "No submissions to this problem."
                         return

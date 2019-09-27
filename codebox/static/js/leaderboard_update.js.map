@@ -6,8 +6,8 @@
     "coffee/leaderboard_update.coffee"
   ],
   "names": [],
-  "mappings": ";AAAA;EAAA,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA;WACd,OAAO,CAAC,GAAR,CAAY,QAAZ;EADc,CAAlB;AAAA",
+  "mappings": ";AAAA;AAAA,MAAA;;EAAA,iBAAA,GAAoB,QAAA,CAAA,CAAA;WACnB,CAAC,CAAC,GAAF,CAAM,qBAAN,EAA6B,CAAA,CAA7B,EAAiC,QAAA,CAAC,IAAD,EAAO,CAAP,EAAU,IAAV,CAAA;aAChC,CAAA,CAAE,wBAAF,CAA2B,CAAC,IAA5B,CAAiC,IAAjC;IADgC,CAAjC;EADmB;;EAIpB,CAAA,CAAE,QAAF,CAAW,CAAC,KAAZ,CAAkB,QAAA,CAAA,CAAA;AACjB,QAAA;IAAA,MAAA,GAAS,EAAA,CAAA;IACT,MAAM,CAAC,IAAP,CAAY,6BAAZ;WAEA,MAAM,CAAC,EAAP,CAAU,QAAV,EAAoB,QAAA,CAAA,CAAA;aACnB,iBAAA,CAAA;IADmB,CAApB;EAJiB,CAAlB;AAJA",
   "sourcesContent": [
-    "$(document).ready ->\n    console.log \"Hello!\"\n"
+    "updateLeaderboard = ->\n\t$.get '/leaderboard/update', {}, (html, _, data) ->\n\t\t$('#leaderboard-container').html html\n\n$(document).ready ->\n\tsocket = io()\n\tsocket.emit \"request-leaderboard-updates\"\n\n\tsocket.on 'update', ->\n\t\tupdateLeaderboard()\n"
   ]
 }

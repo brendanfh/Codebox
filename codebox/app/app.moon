@@ -6,7 +6,6 @@ bind\bind_static 'executer', require 'facades.executer'
 bind\bind_static 'updater', require 'facades.updater'
 bind\bind_static 'crypto', require 'services.crypto'
 bind\bind_static 'uuidv4', require 'services.uuid'
-bind\bind_static 'queries', require 'services.queries'
 bind\bind_static 'scoring', require 'services.scoring'
 bind\bind_static 'time', require 'utils.time'
 
