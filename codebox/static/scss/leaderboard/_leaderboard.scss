@@ -22,6 +22,8 @@
         &:nth-child(even) { background: $primary-dark; }
         &:nth-child(odd)  { background: darken($primary-dark, 20); }
 
+		&.user { background: $secondary-light; color: black }
+
         line-height: 36px;
 
         :first-child { font-size: 1.2rem; }

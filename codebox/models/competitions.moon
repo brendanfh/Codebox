@@ -18,6 +18,7 @@ class Competitions extends Model
 			inner join competitions on competition_problems.competition_id = competitions.id
 			where competitions.id=? order by competition_problems.letter asc", @id
 		}
+		{ "competition_users", has_many: "CompetitionUsers" }
 		{ "competition_problems", has_many: "CompetitionProblems" }
 		{ "jobs", has_many: "Jobs" }
 		{ "leaderboard", has_many: "LeaderboardPlacements", order: "place asc" }

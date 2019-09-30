@@ -3,7 +3,7 @@ import capture_errors_json, yield_error from require 'lapis.application'
 import Problems from require 'models'
 
 make_controller
-	middleware: { 'logged_in', 'competition_started' }
+	middleware: { 'logged_in', 'joined_competition', 'competition_started' }
 	scripts: { "pie_chart" }
 	raw_scripts: {
 		"https://polyfill.io/v3/polyfill.min.js?features=es6"

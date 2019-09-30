@@ -1,7 +1,6 @@
 import Competitions from require 'models'
 
 =>
-    @competition = Competitions\find active: true
     unless @competition
         @write json: 'No active competition'
 

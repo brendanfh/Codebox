@@ -11,6 +11,7 @@ class Users extends Model
 			inner join competitions on competitions.id = competition_problems.competition_id
 			where competitions.active=? and jobs.user_id=?", db.TRUE, @id
 		}
+		{ "competitions", has_many: "CompetitionUsers" }
 	}
 
 	@has_correct_submission: (user_id, problem_name) =>

@@ -107,4 +107,11 @@ import insert, query from require "lapis.db"
 
     [11]: =>
         query "alter table jobs add column bytes int generated always as (char_length(code)) stored"
+
+	[12]: =>
+		create_table "competition_users", {
+			{ "id", types.serial }
+			{ "competition_id", types.foreign_key }
+			{ "user_id", types.foreign_key }
+		}
 }

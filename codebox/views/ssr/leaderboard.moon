@@ -38,7 +38,7 @@ class Leaderboard extends html.Widget
                         div "Score"
                     drawn_labels = true
 
-                div class: 'placement', ->
+                div class: "placement #{@user.id == place.user_id and "user" or ""}", ->
                     div "#{place.place}"
                     div "#{place\get_user!.nickname}"
 

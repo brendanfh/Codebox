@@ -38,6 +38,8 @@ class extends lapis.Application
 	['account.register': "/register"]: controller "account.register"
 	['account.account':  "/account"]:  controller "account.account"
 
+	['join_competition': '/join']: controller "account.join_competition"
+
     ['leaderboard': '/leaderboard']: controller "leaderboard.view"
     ['leaderboard.update': '/leaderboard/update']: controller "leaderboard.update"
 

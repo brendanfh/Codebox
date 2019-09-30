@@ -8,7 +8,7 @@ make_controller
 	inject:
         executer: 'executer'
 
-	middleware: { 'logged_in', 'during_competition' }
+	middleware: { 'logged_in', 'joined_competition', 'during_competition' }
     scripts: { 'vendor/ace/ace', 'problem_submit' }
 
     get: capture_errors_json =>

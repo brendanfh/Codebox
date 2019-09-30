@@ -4,7 +4,7 @@ import capture_errors, capture_errors_json, yield_error from require 'lapis.appl
 import LeaderboardProblems, LeaderboardPlacements from require 'models'
 
 make_controller
-    middleware: { 'logged_in', 'competition_started' }
+    middleware: { 'logged_in', 'joined_competition', 'competition_started' }
 	scripts: { 'leaderboard_update' }
 	raw_scripts: { '/socket.io/socket.io.js' }
 

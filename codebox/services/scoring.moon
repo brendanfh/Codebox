@@ -12,7 +12,7 @@ class Scoring extends Injectable
 
         -- Load the problems and users that are going to be scored
         @comp_problems = @competition\get_competition_problems!
-        @users = Users\select!
+        @users = @competition\get_competition_users!
 
         -- Get the start and end time in a UTC time number
         @competition_start = @competition\get_start_time_num!
@@ -24,19 +24,19 @@ class Scoring extends Injectable
 
         -- Refetch the problems and users in case they have changed
         @comp_problems = @competition\get_competition_problems!
-        @users = Users\select!
+        @users = @competition\get_competition_users!
 
         for user in *@users
             -- Create a placement on the leaderboard for each user
             placement = LeaderboardPlacements\create
                 competition_id: @competition.id
-                user_id: user.id
+                user_id: user.user_id
 
             for problem in *@comp_problems
                 -- Create a problem on the placement for each problem
                 LeaderboardProblems\create
                     leaderboard_placement_id: placement.id
-                    user_id: user.id
+                    user_id: user.user_id
                     problem_id: problem.problem_id
 
     get_problem_worth: (time_submitted) =>
@@ -122,12 +122,12 @@ class Scoring extends Injectable
 
     score_problem: (problem_id) =>
         for u in *@users
-            @score u.id, problem_id
+            @score u.user_id, problem_id
 
     score_all: =>
         for p in *@comp_problems
             for u in *@users
-                @score u.id, p.problem_id
+                @score u.user_id, p.problem_id
 
     score: (user_id, problem_id) =>
         problem = Problems\find problem_id
@@ -138,7 +138,7 @@ class Scoring extends Injectable
 
     place: =>
         for u in *@users
-            u.score = Users\get_score u.id, @competition.id
+            u.score = Users\get_score u.user_id, @competition.id
 
         table.sort @users, (a, b) ->
             a.score > b.score
@@ -153,7 +153,7 @@ class Scoring extends Injectable
                 num = act_num
                 last_score = u.score
 
-            lp = LeaderboardPlacements\find user_id: u.id, competition_id: @competition.id
+            lp = LeaderboardPlacements\find user_id: u.user_id, competition_id: @competition.id
             lp\update
                 place: num
                 score: u.score

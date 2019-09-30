@@ -1,4 +1,9 @@
-[X] Be able to add test cases to problems
-[X] Be able to delete problems
-[X] Be able to delete test cases
-[X] Be able to order test cases
+[X] Highlight logged in user on leaderboard
+[ ] Competition users table for enrolled users
+[ ] Competition settings table
+	* Active languages
+	* Points per problem type
+[ ] Word problems
+	* Use test case 1 for answer
+	* input doesn't matter
+	* Different UI for answering

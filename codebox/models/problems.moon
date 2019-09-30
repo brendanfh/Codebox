@@ -50,10 +50,10 @@ class Problems extends Model
 	}
 
 	@get_codegolf_leaders: (problem_id, competition_id) =>
-		db.select "user_id, problem_id, competition_id, status, time_initiated, char_length(code) as bytes
+		db.select "user_id, problem_id, competition_id, status, time_initiated, bytes, abs(4 - status) as sort_status
 			from jobs
 			where problem_id=? and competition_id=?
-			order by status asc, bytes asc, time_initiated asc", problem_id, competition_id
+			order by sort_status asc, bytes asc, time_initiated asc", problem_id, competition_id
 
 	@clear_codegolf_scores: (problem_id, competition_id) =>
 		db.query "update leaderboard_problems

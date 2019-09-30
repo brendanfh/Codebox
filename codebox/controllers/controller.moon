@@ -19,7 +19,7 @@ import respond_to from require "lapis.application"
 				return if not routes.middleware
 
 				for middleware in *routes.middleware
-					require("#{@app.middleware_prefix}.#{middleware}") @
+					pcall(require("#{@app.middleware_prefix}.#{middleware}"), @)
 
 			GET: =>
 				r = routes.get(@)
