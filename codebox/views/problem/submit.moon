@@ -1,4 +1,5 @@
 html = require 'lapis.html'
+require 'utils.string'
 
 class ProblemSubmit extends html.Widget
     content: =>
@@ -14,11 +15,17 @@ class ProblemSubmit extends html.Widget
                     div class: 'split-lr', ->
                         div class: 'mar-l-12', ->
                             span -> text "Language: "
+
+							blacklisted = string.split @problem.blacklisted_langs, ','
                             element 'select', id: 'language', ->
-                                option value: 'c', -> text 'C'
-                                option value: 'cpp', -> text 'C++'
-                                option value: 'py', -> text 'Python 3'
-                                option value: 'lua', -> text 'Lua'
+								unless table.contains blacklisted, 'c'
+									option value: 'c', -> text 'C'
+								unless table.contains blacklisted, 'cpp'
+									option value: 'cpp', -> text 'C++'
+								unless table.contains blacklisted, 'py'
+									option value: 'py', -> text 'Python 3'
+								unless table.contains blacklisted, 'lua'
+									option value: 'lua', -> text 'Lua'
                         div class: 'button-list', ->
                             button id: 'submit-btn', -> text "Submit"
 

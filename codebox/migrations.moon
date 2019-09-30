@@ -114,4 +114,7 @@ import insert, query from require "lapis.db"
 			{ "competition_id", types.foreign_key }
 			{ "user_id", types.foreign_key }
 		}
+
+	[13]: =>
+		add_column "problems", "blacklisted_langs", (types.varchar default: "")
 }

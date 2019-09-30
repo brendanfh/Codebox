@@ -33,6 +33,10 @@ make_controller
         unless problem
             return json: { status: 'problem not found' }
 
+		blacklisted = string.split problem.blacklisted_langs, ','
+		if table.contains blacklisted, @params.lang
+			return json: { status: 'Language is blacklisted for this problem' }
+
         test_cases = problem\get_test_cases!
 
         id = @executer\request @params.lang, @params.code, @user.id, problem.id, @competition.id, test_cases, problem.time_limit

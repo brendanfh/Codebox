@@ -39,6 +39,7 @@ make_controller
 			{ "description", exists: true }
 			{ "time_limit", exists: true, is_integer: true }
             { "kind", exists: true }
+			{ "blacklisted_langs", exists: true }
 		}
 
 		@problem = Problems\find @params.problem_id
@@ -52,6 +53,7 @@ make_controller
 			description: @params.description
 			time_limit: @params.time_limit
             kind: Problems.kinds\for_db @params.kind
+			blacklisted_langs: @params.blacklisted_langs
 		}
 
 		redirect_to: (@url_for "admin.problem.edit", problem_name: @params.short_name)

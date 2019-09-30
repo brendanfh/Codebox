@@ -1,8 +1,7 @@
 [X] Highlight logged in user on leaderboard
-[ ] Competition users table for enrolled users
-[ ] Competition settings table
-	* Active languages
-	* Points per problem type
+[X] Competition users table for enrolled users
+[X] Problem language blacklist
+[ ] Leaderboard timer and just better looking
 [ ] Word problems
 	* Use test case 1 for answer
 	* input doesn't matter

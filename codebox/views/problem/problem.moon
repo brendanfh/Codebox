@@ -25,6 +25,10 @@ class ProblemsView extends html.Widget
                                 div "Problem kind:"
                                 kind = Problems.kinds\to_name @problem.kind
                                 div "#{kind}"
+							unless @problem.blacklisted_langs == ""
+								div class: 'split-lr pad-12', ->
+									div "Language blacklist:"
+									div "#{@problem.blacklisted_langs}"
 
 						div style: 'font-size: 1.3rem;', class: 'header-line', -> text "Stats for #{@problem.name}"
 
