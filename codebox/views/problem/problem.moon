@@ -18,7 +18,7 @@ class ProblemsView extends html.Widget
 				else
 					h1 @problem.name
 					div 'data-setonload': 'left: 0', style: 'left: 500px', class: 'problem-info mar-l-24 mar-b-24', ->
-						a style: "margin-bottom: 0", class: 'ta-center button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
+						a style: "margin-bottom: 0; font-size: 1.4rem", class: 'ta-center button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
 							text "Make a submission"
 
 						div class: 'box', ->
