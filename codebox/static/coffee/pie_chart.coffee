@@ -1,6 +1,11 @@
 $(document).ready ->
     $('piechart').each (_, p) ->
         $p = $ p
+
+        wait_time = $p.attr 'data-anim-wait'
+        if wait_time? and wait_time > 0
+            await new Promise (res) -> setTimeout res, wait_time
+
         segments = $p.attr 'data-segments'
         size = ($p.attr 'data-size') || 256
 
@@ -13,7 +18,7 @@ $(document).ready ->
         total = 0
         for i in [1..segments]
             total += parseInt ($p.attr "data-segment-#{i}")
-        
+
         half_size = size / 2
         fill_perc = 0.01
         anim = ->
@@ -39,6 +44,6 @@ $(document).ready ->
 
             if fill_perc < 1
                 window.requestAnimationFrame anim
-        
+
         window.requestAnimationFrame anim
 

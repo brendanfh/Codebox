@@ -46,6 +46,7 @@ class ProblemsView extends html.Widget
 								piechart {
 									style: 'display: inline-block; width: 100%'
 									class: "pad-12 ta-center"
+									"data-anim-wait": 500,
 									"data-segments": 4,
 									"data-segment-1": correct,
 									"data-segment-1-color": "#44ff44",
