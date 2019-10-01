@@ -5,6 +5,8 @@
 	position: relative;
 	min-height: calc(100vh - #{$navbar-height});
 
+	transition: left 500ms ease-in-out;
+
 	.sidebar-problem {
 		width: 100%;
 

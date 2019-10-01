@@ -31,7 +31,14 @@
     text-align: center;
     font-size: 1.2rem;
 
+	position: relative;
+
     .placement, .placement-labels {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+
         display: grid;
         grid-template-columns: 1fr 7fr 10fr 3fr;
 
@@ -45,6 +52,8 @@
     }
 
     .placement {
+		transition: all 750ms ease-in-out;
+
         padding: 0 4px;
         &:nth-child(even) { background: $primary-dark; }
         &:nth-child(odd)  { background: darken($primary-dark, 20); }

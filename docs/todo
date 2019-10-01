@@ -3,7 +3,13 @@
 [X] Problem language blacklist
 [X] Leaderboard timer and just better looking
 [ ] Removing users from a competition
+[X] Animations throughout the site
 [ ] Word problems
 	* Use test case 1 for answer
 	* input doesn't matter
 	* Different UI for answering
+[ ] LEADERBOARD SCROLLING POSITION STUFF
+	* Send new position to updater
+	* Push place updates to clients
+	* Clients position the places
+	* When all updates are done, the clients refresh the leaderboard

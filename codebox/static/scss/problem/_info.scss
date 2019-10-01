@@ -1,6 +1,9 @@
 .problem-info {
     float: right;
     width: 300px;
+	position: relative;
+
+	transition: left 1s ease-in-out;
 }
 
 .problem-description {

@@ -2,11 +2,12 @@ html = require 'lapis.html'
 import CompetitionProblems, LeaderboardProblems, Problems from require 'models'
 
 class Leaderboard extends html.Widget
-    new: (@placements) =>
+    new: (@placements, @first_load) =>
 
     content: =>
         div class: 'leaderboard', ->
             drawn_labels = false
+			offset = 0
             for place in *@placements
                 @problems = place\get_problems!
                 CompetitionProblems\include_in @problems, "problem_id",
@@ -26,7 +27,7 @@ class Leaderboard extends html.Widget
                     a.lnum < b.lnum
 
                 unless drawn_labels
-                    div class: 'placement-labels', ->
+                    div style: "top: 0px; z-index: 1001", class: 'placement-labels', ->
                         div "Place"
                         div "Name"
                         div class: 'problem', style: "grid-template-columns: repeat(#{#@problems}, 1fr)", ->
@@ -36,9 +37,13 @@ class Leaderboard extends html.Widget
 										span style: "position: absolute; left: 0; top 0; font-size:.8rem", 'Golf'
 									div "#{prob.cp.letter}"
                         div "Score"
+					offset += 36
                     drawn_labels = true
 
-                div class: "placement #{@user.id == place.user_id and "user" or ""}", ->
+                div {
+					'data-setonload': "top:#{offset}px",
+					style: "top: #{if @first_load then '0' else offset}px; z-index: #{1000-place.place}",
+					class: "placement #{@user.id == place.user_id and "user" or ""}" }, ->
                     div "#{place.place}"
                     div "#{place\get_user!.nickname}"
 
@@ -54,3 +59,5 @@ class Leaderboard extends html.Widget
                                 div "#{prob.attempts}"
 
                     div "#{place.score}"
+
+					offset += 44

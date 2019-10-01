@@ -24,4 +24,4 @@ class LeaderboardView extends html.Widget
 					div id: 'progress-meter', class: 'progressbar-meter', style: 'width: 0px', ''
 
 			div id: 'leaderboard-container', ->
-				widget (Leaderboard @placements)
+				widget (Leaderboard @placements, true)

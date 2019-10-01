@@ -5,15 +5,19 @@ import Problems from require 'models'
 class ProblemsView extends html.Widget
 	content: =>
 		div class: 'sidebar-page-container', ->
-			div class: 'sidebar-problem-list', ->
-				widget (require 'views.partials.problem_sidebar')
+			unless @problem
+				div 'data-setonload': 'left:0', style: 'left: -250px', class: 'sidebar-problem-list', ->
+					widget (require 'views.partials.problem_sidebar')
+			else
+				div class: 'sidebar-problem-list', ->
+					widget (require 'views.partials.problem_sidebar')
 
-			div class: 'content', ->
+			div style: 'overflow:hidden', class: 'content', ->
 				unless @problem
 					h1 "Select a problem from the sidebar"
 				else
 					h1 @problem.name
-					div class: 'problem-info mar-l-24 mar-b-24', ->
+					div 'data-setonload': 'left: 0', style: 'left: 500px', class: 'problem-info mar-l-24 mar-b-24', ->
 						a style: "margin-bottom: 0", class: 'ta-center button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
 							text "Make a submission"
 
