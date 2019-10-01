@@ -53,6 +53,7 @@ class extends lapis.Application
 
 	['executer.status_update': "/executer/status_update"]: controller "executer.status_update"
 	['executer.request': '/executer/request']: controller "executer.request"
+	['executer.force_rescore': '/executer/force_rescore']: controller "executer.force_rescore"
 
 	['admin': "/admin"]: => redirect_to: @url_for "admin.user"
 

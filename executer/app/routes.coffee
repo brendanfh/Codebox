@@ -42,3 +42,10 @@ module.exports = (app) ->
 		res.json {
 			id: job_id
 		}
+
+	app.get '/rescore', (req, res) ->
+		request.get 'http://192.168.0.3:8888/executer/force_rescore', {}, (err, _, body) =>
+			res.status(200)
+			res.end body
+
+

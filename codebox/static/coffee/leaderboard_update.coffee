@@ -14,17 +14,22 @@ updateTime = ->
 
 	time_elapsed = curr_time - start_time
 	percent = time_elapsed / duration
+	if percent > 1 then percent = 1
 	$progress_meter.css 'width', "#{percent * 100}%"
 
 	time_left = end_time - curr_time
+	if time_left < 0
+		$time_left.html "Competition is over"
+		return
+
 	hours = Math.floor(time_left / (1000 * 60 * 60))
 	minutes = Math.floor(time_left / (1000 * 60)) - hours * 60
 	seconds = Math.floor(time_left / 1000) - hours * 60 * 60 - minutes * 60
 
 	msg = ""
-	if hours > 0 then msg += "#{hours} hours, "
-	if minutes > 0 or hours > 0 then msg += "#{minutes} minutes, "
-	msg += "#{seconds} seconds left"
+	if hours > 0 then msg += "#{hours} hour#{if hours != 1 then "s" else ""}, "
+	if minutes > 0 or hours > 0 then msg += "#{minutes} minute#{if minutes != 1 then "s" else ""}, "
+	msg += "#{seconds} second#{if seconds != 1 then "s" else ""} left"
 
 	$time_left.html msg
 

@@ -23,19 +23,26 @@
     curr_time = Date.now();
     time_elapsed = curr_time - start_time;
     percent = time_elapsed / duration;
+    if (percent > 1) {
+      percent = 1;
+    }
     $progress_meter.css('width', `${percent * 100}%`);
     time_left = end_time - curr_time;
+    if (time_left < 0) {
+      $time_left.html("Competition is over");
+      return;
+    }
     hours = Math.floor(time_left / (1000 * 60 * 60));
     minutes = Math.floor(time_left / (1000 * 60)) - hours * 60;
     seconds = Math.floor(time_left / 1000) - hours * 60 * 60 - minutes * 60;
     msg = "";
     if (hours > 0) {
-      msg += `${hours} hours, `;
+      msg += `${hours} hour${(hours !== 1 ? "s" : "")}, `;
     }
     if (minutes > 0 || hours > 0) {
-      msg += `${minutes} minutes, `;
+      msg += `${minutes} minute${(minutes !== 1 ? "s" : "")}, `;
     }
-    msg += `${seconds} seconds left`;
+    msg += `${seconds} second${(seconds !== 1 ? "s" : "")} left`;
     $time_left.html(msg);
     return setTimeout(updateTime, 1000);
   };

@@ -29,3 +29,7 @@ class ExecuterFacade
 		}
 
 		job_id
+
+	rescore: =>
+		res = http.simple "#{config.executer_addr}/rescore"
+		return res
