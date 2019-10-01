@@ -14,7 +14,7 @@ class ProblemsView extends html.Widget
 				else
 					h1 @problem.name
 					div class: 'problem-info mar-l-24 mar-b-24', ->
-						a style: "text-align: center; margin-bottom: 0", class: 'button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
+						a style: "margin-bottom: 0", class: 'ta-center button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
 							text "Make a submission"
 
 						div class: 'box', ->
@@ -40,8 +40,8 @@ class ProblemsView extends html.Widget
 						div class: 'box', ->
 							if (correct + wrong + timed_out + error) > 0
 								piechart {
-									style: 'display: inline-block; text-align: center; width: 100%'
-									class: "pad-12"
+									style: 'display: inline-block; width: 100%'
+									class: "pad-12 ta-center"
 									"data-segments": 4,
 									"data-segment-1": correct,
 									"data-segment-1-color": "#44ff44",

@@ -56,7 +56,7 @@ a {
 	@for $j from 1 to 5 {
 		.split-#{$i}-#{$j} {
 			display: grid;
-			grid-template-columns: #{$i}fr #{$j}fr;	
+			grid-template-columns: #{$i}fr #{$j}fr;
 		}
 	}
 }
@@ -138,4 +138,8 @@ pre {
 	.mar-r-#{$i} { margin-right: #{$i}px !important; }
 	.mar-t-#{$i} { margin-top: #{$i}px !important; }
 	.mar-b-#{$i} { margin-bottom: #{$i}px !important; }
+}
+
+.ta-center {
+	text-align: center;
 }

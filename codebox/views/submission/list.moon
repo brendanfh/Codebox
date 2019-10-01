@@ -42,8 +42,8 @@ class SubmissionList extends html.Widget
 
                         if (correct + wrong + timed_out + error) > 0
                             piechart {
-                                style: 'display: inline-block; text-align: center; width: 100%',
-                                class: "highlight pad-12",
+                                style: 'display: inline-block; width: 100%',
+                                class: "highlight pad-12 ta-center",
                                 "data-size": 200,
                                 "data-segments": 4,
                                 "data-segment-1": correct,

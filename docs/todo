@@ -1,7 +1,8 @@
 [X] Highlight logged in user on leaderboard
 [X] Competition users table for enrolled users
 [X] Problem language blacklist
-[ ] Leaderboard timer and just better looking
+[X] Leaderboard timer and just better looking
+[ ] Removing users from a competition
 [ ] Word problems
 	* Use test case 1 for answer
 	* input doesn't matter

@@ -19,9 +19,9 @@ class Leaderboard extends html.Widget
 					flip: true
 					local_key: 'problem_id'
 					fields: 'id, kind'
+
                  -- Sort the problems by letter
                 prob.lnum = (prob.cp.letter\byte 1) for prob in *@problems
-
                 table.sort @problems, (a, b) ->
                     a.lnum < b.lnum
 

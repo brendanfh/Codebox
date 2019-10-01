@@ -32,7 +32,7 @@ class Register extends html.Widget
 
 				div class: 'content', ->
 					h1 'Already have an account?'
-					div style: 'text-align: center', ->
+					div class: 'ta-center', ->
 						text "Log in "
 						a href: (@url_for 'account.login'), style: 'text-decoration: underline; color:#3333ff', 'here'
 						text '.'

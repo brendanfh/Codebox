@@ -14,6 +14,6 @@ require 'utils.string'
             month: tonumber(month)
             day: tonumber(day)
             hour: tonumber(hour)
-            minute: tonumber(minute)
-            second: tonumber(second)
+            min: tonumber(minute)
+            sec: tonumber(second)
 }

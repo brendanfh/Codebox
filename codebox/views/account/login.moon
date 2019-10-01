@@ -15,7 +15,7 @@ class Login extends html.Widget
 
 				div class: 'content', ->
 					h1 "Don't have an account?"
-					div style: 'text-align: center', ->
+					div class: 'ta-center', ->
 						text "Create one "
 						a href: (@url_for 'account.register'), style: 'text-decoration: underline; color: #3333ff', 'here'
 						text '.'

@@ -1,3 +1,30 @@
+.progressbar {
+	@include elevate(2px, rgba(0, 0, 0, 0.5));
+	background: #444;
+
+	height: 32px;
+	width: 100%;
+
+	.progressbar-meter {
+		background: $secondary-light;
+		height: 32px;
+
+		transition: width ease-in-out 1s;
+	}
+
+	.progressbar-labels {
+		position: relative;
+		width: 100%;
+
+		* {
+			position: absolute;
+		}
+
+		:first-child { top: -20px; left: 0; }
+		:last-child { top: -20px; right: 0; }
+	}
+}
+
 .leaderboard {
     @include elevate(2px, rgba(0, 0, 0, 0.5));
 
