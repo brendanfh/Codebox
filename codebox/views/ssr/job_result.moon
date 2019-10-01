@@ -112,7 +112,7 @@ class JobResultView extends html.Widget
 											p "------------"
 
 										if type(@json_data.run_times[i]) == 'number'
-											p "Run time: #{@json_data.run_times[i]}ms"
+											p "Run time: #{@json_data.run_times[i]}s"
 				else
 					div class: 'header-line', ->
 						div @message
