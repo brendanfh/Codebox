@@ -3,7 +3,7 @@ Leaderboard = require 'views.ssr.leaderboard'
 
 make_controller
     layout: false
-    middleware: { 'logged_in', 'joined_competition', 'competition_started' }
+    middleware: { 'logged_in', 'competition_started' }
 
     get: =>
         @placements = @competition\get_leaderboard!
