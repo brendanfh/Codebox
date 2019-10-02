@@ -6,42 +6,53 @@ class AdminCompetitionEdit extends html.Widget
 
 		div class: 'content', ->
 			div class: 'split-2-1', ->
-				form method: 'POST', ->
-					input type: 'hidden', name: 'id', value: "#{@comp.id}", ""
+				div ->
+					form method: 'POST', ->
+						input type: 'hidden', name: 'id', value: "#{@comp.id}", ""
 
-                    div class: 'split-3-1', ->
-                        div class: 'mar-r-24', ->
-                            label for: 'name', 'Competition name'
-                            input type: 'text', name: 'name', value: "#{@comp.name}", ""
-                        div ->
-                            label for: 'time_offset', 'Time offset (in minutes)'
-                            input type: 'number', name: 'time_offset', value: "#{@comp.time_offset}", ""
+						div class: 'split-3-1', ->
+							div class: 'mar-r-24', ->
+								label for: 'name', 'Competition name'
+								input type: 'text', name: 'name', value: "#{@comp.name}", ""
+							div ->
+								label for: 'time_offset', 'Time offset (in minutes)'
+								input type: 'number', name: 'time_offset', value: "#{@comp.time_offset}", ""
 
-                    div class: 'split-2', ->
-                        div ->
-                            label for: 'start_time', 'Start time'
-                            input type: 'datetime-local', name: 'start_time', value: "#{@comp.start}", ""
+						div class: 'split-2', ->
+							div ->
+								label for: 'start_time', 'Start time'
+								input type: 'datetime-local', name: 'start_time', value: "#{@comp.start}", ""
 
-                        div ->
-                            label for: 'end_time', 'End time'
-                            input type: 'datetime-local', name: 'end_time', value: "#{@comp.end}", ""
+							div ->
+								label for: 'end_time', 'End time'
+								input type: 'datetime-local', name: 'end_time', value: "#{@comp.end}", ""
 
-                    div class: 'mar-t-48', -> text ""
+						div class: 'mar-t-48', -> text ""
 
-                    div class: 'split-3', ->
-                        div class: 'mar-r-12', ->
-                            label for: 'programming_points', 'Programming points'
-                            input type: 'number', name: 'programming_points', value: "#{@comp.programming_points}", ""
+						div class: 'split-3', ->
+							div class: 'mar-r-12', ->
+								label for: 'programming_points', 'Programming points'
+								input type: 'number', name: 'programming_points', value: "#{@comp.programming_points}", ""
 
-                        div class: 'mar-r-12 mar-l-12', ->
-                            label for: 'codegolf_points', 'Code golf points'
-                            input type: 'number', name: 'codegolf_points', value: "#{@comp.codegolf_points}", ""
+							div class: 'mar-r-12 mar-l-12', ->
+								label for: 'codegolf_points', 'Code golf points'
+								input type: 'number', name: 'codegolf_points', value: "#{@comp.codegolf_points}", ""
 
-                        div class: 'mar-l-12', ->
-                            label for: 'word_points', 'Word points'
-                            input type: 'number', name: 'word_points', value: "#{@comp.word_points}", ""
+							div class: 'mar-l-12', ->
+								label for: 'word_points', 'Word points'
+								input type: 'number', name: 'word_points', value: "#{@comp.word_points}", ""
 
-					input class: 'mar-t-24', type: 'submit', value: 'Save competition'
+						input class: 'mar-t-24', type: 'submit', value: 'Save competition'
+
+					div class: 'header-line mar-t-48', ->
+						span "Joined users"
+
+					div class: 'box', ->
+						for user in *@comp_users
+							div class: 'highlight pad-12 split-lr', ->
+								div "#{user.u.username} - #{user.u.nickname}"
+								div class: 'button-list', ->
+									a href: (@url_for "admin.competition.remove_user", {}, { competition_id: @comp.id, user_id: user.user_id }), 'Remove'
 
 				div class: 'mar-l-24', ->
 					div class: 'header-line', ->

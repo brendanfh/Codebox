@@ -2,7 +2,7 @@
 [X] Competition users table for enrolled users
 [X] Problem language blacklist
 [X] Leaderboard timer and just better looking
-[ ] Removing users from a competition
+[X] Removing users from a competition
 [X] Animations throughout the site
 [ ] Word problems
 	* Use test case 1 for answer

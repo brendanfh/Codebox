@@ -1,7 +1,7 @@
 import make_controller from require "controllers.controller"
 import assert_valid from require "lapis.validate"
 import capture_errors, capture_errors_json, yield_error from require 'lapis.application'
-import Competitions, Problems from require 'models'
+import Competitions, Problems, Users from require 'models'
 
 make_controller
 	layout: require 'views.partials.admin_layout'
@@ -21,6 +21,11 @@ make_controller
 			return
 
 		@comp_problems = @comp\get_problems!
+		@comp_users = @comp\get_competition_users!
+		Users\include_in @comp_users, 'id',
+			flip: true
+			as: 'u'
+			local_key: 'user_id'
 		@all_problems = Problems\select!
 
 		-- Postgres puts a space between the date and time, need a T
