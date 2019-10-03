@@ -6,8 +6,8 @@ class AdminUsers extends html.Widget
 
 		div class: 'content', ->
 			div class: 'bcolor-pd pad-12 split-6', ->
-				span "Username"
 				span "Id"
+				span "Username"
 				span "Nickname"
 				span "Email"
 				span "Options"
@@ -15,8 +15,8 @@ class AdminUsers extends html.Widget
 			div class: 'box', ->
 				for user in *@users
 					div class: 'highlight pad-12 split-6', ->
-						span "#{user.username}"
 						span "#{user.id}"
+						span "#{user.username}"
 						span "#{user.nickname}"
 						span "#{user.email}"
 						span class: 'button-list', ->
