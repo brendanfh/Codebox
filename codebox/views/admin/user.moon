@@ -5,20 +5,21 @@ class AdminUsers extends html.Widget
 		h1 'Users'
 
 		div class: 'content', ->
-			for user in *@users
-				div class: 'w50 left pad-12', ->
-					div class: 'option-line', ->
+			div class: 'bcolor-pd pad-12 split-6', ->
+				span "Username"
+				span "Id"
+				span "Nickname"
+				span "Email"
+				span "Options"
+
+			div class: 'box', ->
+				for user in *@users
+					div class: 'highlight pad-12 split-6', ->
 						span "#{user.username}"
-						div class: 'button-list', ->
+						span "#{user.id}"
+						span "#{user.nickname}"
+						span "#{user.email}"
+						span class: 'button-list', ->
 							button { 'data-user-reset-password': user.username }, 'Reset password'
+						span class: 'button-list', ->
 							button { 'data-user-delete': user.username }, 'Delete'
-					div class: 'box', ->
-						div class: 'highlight pad-12 split-lr', ->
-							span "Id:"
-							span "#{user.id}"
-						div class: 'highlight pad-12 split-lr', ->
-							span "Nickname:"
-							span "#{user.nickname}"
-						div class: 'highlight pad-12 split-lr', ->
-							span "Email:"
-							span "#{user.email}"

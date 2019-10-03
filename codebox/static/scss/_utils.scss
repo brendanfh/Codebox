@@ -20,7 +20,7 @@ a {
 	color: inherit;
 }
 
-@for $i from 2 to 5 {
+@for $i from 2 to 7 {
 	.split-#{$i} {
 		display: grid;
 		grid-template-columns: repeat(#{$i}, 1fr);
@@ -52,8 +52,8 @@ a {
 	}
 }
 
-@for $i from 1 to 5 {
-	@for $j from 1 to 5 {
+@for $i from 1 to 6 {
+	@for $j from 1 to 6 {
 		.split-#{$i}-#{$j} {
 			display: grid;
 			grid-template-columns: #{$i}fr #{$j}fr;
@@ -143,3 +143,10 @@ pre {
 .ta-center {
 	text-align: center;
 }
+
+.bcolor-pl { background-color: $primary-light; }
+.bcolor-p  { background-color: $primary; }
+.bcolor-pd { background-color: $primary-dark; }
+.bcolor-sl { background-color: $secondary-light; }
+.bcolor-s  { background-color: $secondary; }
+.bcolor-sd { background-color: $secondary-dark; }
