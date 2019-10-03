@@ -6,12 +6,13 @@ class AdminSubmission extends html.Widget
 		h1 'Submissions'
 
 		div class: 'content', ->
-			div class: 'bcolor-pd pad-12 pad-l-44 split-5', ->
+			div class: 'bcolor-pd pad-12 pad-l-44 split-6', ->
 				span "Username"
 				span "Problem"
 				span "Competition ID"
 				span "Status"
 				span "Language"
+				span "Bytes"
 
 			div class: 'box', ->
 				Users\include_in @jobs, 'id',
@@ -34,10 +35,11 @@ class AdminSubmission extends html.Widget
 					div class: "tabbed-split tab-32 #{color}", ->
 						span ""
 						a href: (@url_for 'admin.submission.edit', {}, { submission_id: job.job_id }), ->
-							div class: 'highlight pad-12 split-5', ->
+							div class: 'highlight pad-12 split-6', ->
 								span "#{job.user.username}"
 								span "#{job.problem.short_name}"
 								span "#{job.competition_id}"
 								span "#{Jobs.statuses\to_name job.status}"
 								span "#{job.lang}"
+								span "#{job.bytes}"
 
