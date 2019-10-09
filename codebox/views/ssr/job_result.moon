@@ -58,7 +58,10 @@ class JobResultView extends html.Widget
 						div class: 'fill', ''
 
 				div class: 'mar-r-12', ->
-					div class: 'header-line', ->
+                    a href: (@url_for "problem.submit", { problem_name: @problem.short_name }), class: 'button w100 ta-center mar-t-12',
+                        "Create new submission"
+
+					div class: 'header-line mar-t-4', ->
 						div 'Stats'
 
 					div class: 'box', ->
@@ -80,6 +83,7 @@ class JobResultView extends html.Widget
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Time submittted:"
 							div "#{ os.date '%c', @time_started }"
+
 			div ->
 				if @show_slash
 					div class: 'header-line', ->
