@@ -59,12 +59,10 @@ services:
         image: "postgres:12-alpine"
         restart: always
         volumes:
-            - ../codebox-data:/var/lib/postgresql/data/pgdata
+            - ../codebox-data-new:/var/lib/postgresql/data/pgdata
         networks:
             appnet:
                 ipv4_address: 192.168.0.2
-        logging:
-            driver: none
 
 networks:
     appnet:

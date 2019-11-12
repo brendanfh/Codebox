@@ -7,7 +7,7 @@ class Leaderboard extends html.Widget
     content: =>
         div class: 'leaderboard', ->
             drawn_labels = false
-			offset = 0
+            offset = 0
             for place in *@placements
                 @problems = place\get_problems!
                 CompetitionProblems\include_in @problems, "problem_id",
@@ -15,11 +15,11 @@ class Leaderboard extends html.Widget
                     flip: true
                     local_key: 'problem_id'
                     where: { competition_id: @competition.id }
-				Problems\include_in @problems, 'id',
-					as: 'p'
-					flip: true
-					local_key: 'problem_id'
-					fields: 'id, kind'
+                Problems\include_in @problems, 'id',
+                    as: 'p'
+                    flip: true
+                    local_key: 'problem_id'
+                    fields: 'id, kind'
 
                  -- Sort the problems by letter
                 prob.lnum = (prob.cp.letter\byte 1) for prob in *@problems
@@ -33,17 +33,17 @@ class Leaderboard extends html.Widget
                         div class: 'problem', style: "grid-template-columns: repeat(#{#@problems}, 1fr)", ->
                             for prob in *@problems
                                 div style: 'position: relative', ->
-									if prob.p.kind == Problems.kinds.golf
-										span style: "position: absolute; left: 0; top 0; font-size:.8rem", 'Golf'
-									div "#{prob.cp.letter}"
+                                    if prob.p.kind == Problems.kinds.golf
+                                        span style: "position: absolute; left: 0; top 0; font-size:.8rem", 'Golf'
+                                    div "#{prob.cp.letter}"
                         div "Score"
-					offset += 36
+                    offset += 36
                     drawn_labels = true
 
                 div {
-					'data-setonload': "top:#{offset}px",
-					style: "top: #{if @first_load then '0' else offset}px; z-index: #{1000-place.place}",
-					class: "placement #{@user.id == place.user_id and "user" or ""}" }, ->
+                    'data-setonload': "top:#{offset}px",
+                    style: "top: #{if @first_load then '0' else offset}px; z-index: #{1000-place.place}",
+                    class: "placement #{@user.id == place.user_id and "user" or ""}" }, ->
                     div "#{place.place}"
                     div "#{place\get_user!.nickname}"
 
@@ -60,4 +60,4 @@ class Leaderboard extends html.Widget
 
                     div "#{place.score}"
 
-					offset += 44
+                    offset += 44

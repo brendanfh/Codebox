@@ -3,9 +3,9 @@ import Users, Jobs, Problems, Competitions, LeaderboardProblems, LeaderboardPlac
 require 'utils.table'
 
 class Scoring extends Injectable
-	new: =>
+    new: =>
         @time = @make 'time'
-		@updater = @make 'updater'
+        @updater = @make 'updater'
 
         -- Get the currently active competition
         @competition = Competitions\find active: true
@@ -116,7 +116,7 @@ class Scoring extends Injectable
                     points: 0
                     attempts: 0
 
-	score_user: (user_id) =>
+    score_user: (user_id) =>
         for p in *@comp_problems
             @score user_id, p.problem_id
 
@@ -158,7 +158,7 @@ class Scoring extends Injectable
                 place: num
                 score: u.score
 
-		@updater\push_leaderboard_update!
+        @updater\push_leaderboard_update!
 
     rescore_everything: =>
         -- Completely resets everything if a problem is

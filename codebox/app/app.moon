@@ -40,8 +40,8 @@ class extends lapis.Application
 
 	['join_competition': '/join']: controller "account.join_competition"
 
-    ['leaderboard': '/leaderboard']: controller "leaderboard.view"
-    ['leaderboard.update': '/leaderboard/update']: controller "leaderboard.update"
+	['leaderboard': '/leaderboard']: controller "leaderboard.view"
+	['leaderboard.update': '/leaderboard/update']: controller "leaderboard.update"
 
 	['problem': '/problems']: controller "problem.problem"
 	['problem.description': '/problems/:problem_name']: controller "problem.problem"
@@ -83,6 +83,6 @@ class extends lapis.Application
 	['admin.competition.activate': "/admin/competitions/activate/:competition_id"]: controller "admin.competition.activate"
 	['admin.competition.remove_user': "/admin/competitions/remove_user"]: controller "admin.competition.remove_user"
 
-    ['admin.utils.score': "/admin/score"]: controller "admin.utils.score"
+	['admin.utils.score': "/admin/score"]: controller "admin.utils.score"
 
 	"/console": console.make!

@@ -2,3 +2,6 @@ config.env
 .tup/
 .vscode/
 data/
+
+# ignore projector (my custom project manager) configuration files
+.projector.yml
