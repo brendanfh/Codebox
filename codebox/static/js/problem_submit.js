@@ -19,7 +19,7 @@
       editor = ace.edit('code-editor');
       return editor.session.setMode(`ace/mode/${editor_lang}`);
     });
-    return $('#submit-btn').click(function() {
+    $('#submit-btn').click(function() {
       var code, lang;
       lang = $('#language').val();
       code = (ace.edit('code-editor')).getValue();
@@ -28,6 +28,15 @@
         code: code
       }, function(data) {
         return window.location.replace(`/submissions/view?submission_id=${data}`);
+      });
+    });
+    return $('#word-problem-submit-btn').click(function() {
+      var answer;
+      answer = $('#answer').val();
+      return $.post(window.location.pathname, {
+        answer: answer
+      }, function(data) {
+        return setTimeout(1000, window.location.reload);
       });
     });
   });

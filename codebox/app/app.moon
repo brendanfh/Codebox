@@ -7,6 +7,7 @@ bind\bind_static 'updater', require 'facades.updater'
 bind\bind_static 'crypto', require 'services.crypto'
 bind\bind_static 'uuidv4', require 'services.uuid'
 bind\bind_static 'scoring', require 'services.scoring'
+bind\bind_static 'problem', require 'services.problem'
 bind\bind_static 'time', require 'utils.time'
 
 -- Helper function that speeds up requests by

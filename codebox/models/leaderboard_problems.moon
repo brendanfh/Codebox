@@ -6,6 +6,7 @@ class LeaderboardProblems extends Model
         attempted: 2
         correct: 3
         wrong: 4
+		hidden: 5
     }
 
     @relations: {

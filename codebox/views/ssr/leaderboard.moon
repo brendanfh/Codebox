@@ -1,6 +1,8 @@
 html = require 'lapis.html'
 import CompetitionProblems, LeaderboardProblems, Problems from require 'models'
 
+require 'utils.table'
+
 class Leaderboard extends html.Widget
     new: (@placements, @first_load) =>
 
@@ -10,6 +12,11 @@ class Leaderboard extends html.Widget
             offset = 0
             for place in *@placements
                 @problems = place\get_problems!
+
+				-- Filter out hidden problems
+				table.filter @problems, (p) ->
+					p.status ~= LeaderboardProblems.statuses.hidden
+
                 CompetitionProblems\include_in @problems, "problem_id",
                     as: 'cp'
                     flip: true

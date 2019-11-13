@@ -1,6 +1,6 @@
 html = require "lapis.html"
 markdown = require "markdown"
-import Problems from require 'models'
+import Users, Problems from require 'models'
 
 class ProblemsView extends html.Widget
 	content: =>
@@ -18,21 +18,38 @@ class ProblemsView extends html.Widget
 				else
 					h1 @problem.name
 					div 'data-setonload': 'left: 0', style: 'left: 500px', class: 'problem-info mar-l-24 mar-b-24', ->
-						a style: "margin-bottom: 0; font-size: 1.4rem", class: 'ta-center button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
-							text "Make a submission"
+						if @problem.kind == Problems.kinds.word
+							if Users\has_correct_submission @user.id, @problem.short_name
+								h2 class: 'ta-center pad-8 bcolor-c', "Correct answer"
+							elseif Users\has_incorrect_submission @user.id, @problem.short_name
+								h2 class: 'ta-center pad-8 bcolor-e', "Incorrect answer"
+							else
+								form ->
+									input id: 'answer', class: 'w100 pad-12', style: 'font-size: 1.1rem', placeholder: "Enter answer here"
+									button id: 'word-problem-submit-btn', style: "margin-bottom: 0; font-size: 1.2rem", class: 'ta-center button w100', ->
+											text 'Submit answer'
 
-						div class: 'box', ->
-                            div class: 'split-lr pad-12', ->
-                                div "Time limit:"
-                                div "#{@problem.time_limit}ms"
-                            div class: 'split-lr pad-12', ->
-                                div "Problem kind:"
-                                kind = Problems.kinds\to_name @problem.kind
-                                div "#{kind}"
-							unless @problem.blacklisted_langs == ""
+							div class: 'box', ->
 								div class: 'split-lr pad-12', ->
-									div "Language blacklist:"
-									div "#{@problem.blacklisted_langs}"
+									div "Problem kind:"
+									kind = Problems.kinds\to_name @problem.kind
+									div "#{kind}"
+						else
+							a style: "margin-bottom: 0; font-size: 1.4rem", class: 'ta-center button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
+								text "Make a submission"
+
+							div class: 'box', ->
+								div class: 'split-lr pad-12', ->
+									div "Time limit:"
+									div "#{@problem.time_limit}ms"
+								div class: 'split-lr pad-12', ->
+									div "Problem kind:"
+									kind = Problems.kinds\to_name @problem.kind
+									div "#{kind}"
+								unless @problem.blacklisted_langs == ""
+									div class: 'split-lr pad-12', ->
+										div "Language blacklist:"
+										div "#{@problem.blacklisted_langs}"
 
 						div style: 'font-size: 1.3rem;', class: 'header-line', -> text "Stats for #{@problem.name}"
 

@@ -4,10 +4,24 @@
 [X] Leaderboard timer and just better looking
 [X] Removing users from a competition
 [X] Animations throughout the site
-[ ] Word problems
-	* Use test case 1 for answer
-	* input doesn't matter
+
+[X] Word problems ------------------
+	X Use test case 1 for answer
+	X input doesn't matter
 	* Different UI for answering
+		X Don't use submission page
+		X Show result on problem page
+		* This could be better and not require a reload
+
+[ ] Multiple active competitions at a time
+	* When users visit root of site, display list of active competitions
+	* Users join each competition independently
+	* Shouldn't be much overhead, just removing all instances where searching for currently active competition
+
+[ ] Add shortcuts around the site
+	* Problem description -> Problem submissions
+	* Job result -> Problem description
+
 [ ] LEADERBOARD SCROLLING POSITION STUFF
 	* Send new position to updater
 	* Push place updates to clients

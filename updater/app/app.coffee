@@ -58,12 +58,15 @@ io.on 'connection', (socket) ->
 
 app.get '/submission_update', (req, res) ->
 	submission_id = req.query.submission_id
+
+	console.log "Pushing submission update for submission_id: #{submission_id}"
 	update_forwarder.push_update "submission-updates", submission_id
 
 	res.status 200
 	res.end()
 
 app.get '/leaderboard_update', (req, res) ->
+	console.log "Pushing leaderboard update"
 	update_forwarder.push_update "leaderboard-updates"
 
 	res.status 200

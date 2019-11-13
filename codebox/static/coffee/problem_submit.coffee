@@ -7,7 +7,7 @@ $(document).ready ->
             when 'cpp' then 'c_cpp'
             when 'py' then 'python'
             when 'lua' then 'lua'
-        
+
         editor = ace.edit 'code-editor'
         editor.session.setMode "ace/mode/#{editor_lang}"
 
@@ -19,4 +19,12 @@ $(document).ready ->
             lang: lang,
             code: code
         }, (data) ->
-            window.location.replace("/submissions/view?submission_id=#{data}");
+            window.location.replace("/submissions/view?submission_id=#{data}")
+
+    $('#word-problem-submit-btn').click ->
+        answer = $('#answer').val()
+
+        $.post window.location.pathname, {
+            answer: answer
+        }, (data) ->
+            setTimeout 1000, window.location.reload

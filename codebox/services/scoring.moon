@@ -116,6 +116,22 @@ class Scoring extends Injectable
                     points: 0
                     attempts: 0
 
+	score_word_for_user: (user_id, problem) =>
+		placement = LeaderboardPlacements\find user_id: user_id, competition_id: @competition.id
+		lp = LeaderboardProblems\find problem_id: problem.id, leaderboard_placement_id: placement.id
+
+		points = 0
+        status = LeaderboardProblems.statuses.hidden
+        if Users\has_correct_submission user_id, problem.short_name
+			points = @competition.word_points
+		elseif Users\has_incorrect_submission user_id, problem.short_name
+			points = 0
+
+		lp\update
+			status: status
+			points: points
+			attempts: 0
+
     score_user: (user_id) =>
         for p in *@comp_problems
             @score user_id, p.problem_id

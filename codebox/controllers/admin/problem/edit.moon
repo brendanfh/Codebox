@@ -39,13 +39,15 @@ make_controller
 			{ "description", exists: true }
 			{ "time_limit", exists: true, is_integer: true }
             { "kind", exists: true }
-			{ "blacklisted_langs", exists: true }
 		}
 
 		@problem = Problems\find @params.problem_id
 		unless @problem
 			yield_error "Problem with id '#{@params.problem_id}' not found"
 			return
+
+		unless @params.blacklisted_langs
+			@params.blacklisted_langs = ""
 
 		@problem\update {
 			name: @params.name

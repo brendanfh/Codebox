@@ -33,8 +33,9 @@ make_controller
             @scoring\score job.user_id, job.problem_id
             @scoring\place!
 
-		@updater\push_submission_update job.id
+		@updater\push_submission_update job.job_id
 
 		json: { status: 'success' }
 	), =>
+		print "Hit error in post of status_update #{@errors}"
 		json: { status: 'error', errors: @errors }

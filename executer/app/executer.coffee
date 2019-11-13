@@ -31,10 +31,18 @@ class Executer
 	process: (lang, code, test_cases, time_limit) ->
 		# Makes function async
 		if lang == "word"
-			throw 'WORD PROBLEMS NOT SUPPORTED YET'
+			yield from @process_word code, test_cases[0].output
 		else
 			yield from @process_code lang, code, test_cases, time_limit
 		await return
+
+	process_word: (answer, correct_answer) ->
+		matcher = create_matchers (clean_output correct_answer)
+		answer = clean_output answer
+		if matcher[0].test answer[0]
+			yield { status: 4 }
+		else
+			yield { status: 5 }
 
 	process_code: (lang, code, test_cases, time_limit) ->
 		compiler = @compilers[lang.toLowerCase()]
