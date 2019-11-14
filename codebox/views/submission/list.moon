@@ -1,5 +1,5 @@
 html = require 'lapis.html'
-import Jobs, Users from require 'models'
+import Jobs, Users, Problems from require 'models'
 
 class SubmissionList extends html.Widget
     content: =>
@@ -7,6 +7,8 @@ class SubmissionList extends html.Widget
 
         div class: 'content', ->
             for prob in *@problems
+				if prob.kind == Problems.kinds.word then continue
+
                 div class: 'header-line', -> div prob.name
                 div class: 'box', ->
                     jobs = Users\get_jobs_by_problem @user.id, prob.id, @competition.id

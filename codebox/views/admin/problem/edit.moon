@@ -38,7 +38,11 @@ class AdminProblemEdit extends html.Widget
 							label for: 'blacklisted_langs', 'Language blacklist (comma separated)'
 							input type: 'text', name: 'blacklisted_langs', value: @problem.blacklisted_langs, ""
 
-					div class: 'header-line', -> div 'Problem description'
+					div class: 'option-line', ->
+						div 'Problem description'
+						span class: 'button-list', ->
+							a href: (@url_for "admin.problem.preview", { problem_name: @problem.short_name }), "Preview"
+
 					pre { style: 'height: 32rem;', id: 'code-editor', 'data-lang': 'markdown' }, @problem.description
 
 					input class: 'mar-t-24', type: 'submit', value: 'Update problem info'

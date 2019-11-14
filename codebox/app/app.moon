@@ -66,6 +66,7 @@ class extends lapis.Application
 	['admin.problem.new': "/admin/problems/new"]: controller "admin.problem.new"
 	['admin.problem.edit': "/admin/problems/edit/:problem_name"]: controller "admin.problem.edit"
 	['admin.problem.delete': "/admin/problems/delete"]: controller "admin.problem.delete"
+	['admin.problem.preview': "/admin/problems/preview/:problem_name"]: controller "admin.problem.preview"
 
 	['admin.testcase.new':    "/admin/testcases/new"]:    controller "admin.testcase.new"
 	['admin.testcase.edit':   "/admin/testcases/edit"]:   controller "admin.testcase.edit"

@@ -13,6 +13,10 @@
 		X Show result on problem page
 		* This could be better and not require a reload
 
+[X] Problem preview
+	X Add button on problem edit page
+	X Add page that simply renders the problem in the same way as the existing problem description
+
 [ ] Multiple active competitions at a time
 	* When users visit root of site, display list of active competitions
 	* Users join each competition independently
