@@ -1,8 +1,8 @@
 FROM openresty/openresty:xenial
 
 RUN apt-get update \
-	&& apt-get -y install openssl libssl-dev git \
-	&& luarocks install lapis \
+	&& apt-get -y install openssl libssl-dev git libc6 libc6-dev
+RUN luarocks install lapis \
 	&& luarocks install lapis-console \
 	&& luarocks install moonscript \
 	# && luarocks install openssl \
