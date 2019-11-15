@@ -10,8 +10,9 @@ class CompetitionList extends html.Widget
 			for comp in *@competitions
 				continue unless current_time <= comp\get_end_time_num!
 
-				a class: 'button w100 ta-center', href: (@url_for "leaderboard", { competition_name: comp.short_name }), ->
-					text comp.name
+				div ->
+					a class: 'button w100 ta-center', href: (@url_for "leaderboard", { competition_name: comp.short_name }), ->
+						text comp.name
 
 		h1 "Past Competitions"
 
