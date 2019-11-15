@@ -4,7 +4,7 @@ import assert_valid from require "lapis.validate"
 import Problems from require 'models'
 
 make_controller
-	middleware: { 'logged_in', 'joined_competition', 'competition_started' }
+	middleware: { 'logged_in', 'joined_competition', 'competition_active', 'competition_started' }
 	scripts: { "pie_chart", 'problem_submit' }
 	raw_scripts: {
 		"https://polyfill.io/v3/polyfill.min.js?features=es6"

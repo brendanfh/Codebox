@@ -30,6 +30,7 @@ make_controller
 		}
 
         if status.status != Jobs.statuses.running
+			@scoring\initialize job.competition_id
             @scoring\score job.user_id, job.problem_id
             @scoring\place!
 

@@ -35,8 +35,12 @@ class ProblemsView extends html.Widget
 									kind = Problems.kinds\to_name @problem.kind
 									div "#{kind}"
 						else
-							a style: "margin-bottom: 0; font-size: 1.4rem", class: 'ta-center button w100', href: (@url_for 'problem.submit', { problem_name: @problem.short_name }), ->
-								text "Make a submission"
+							a {
+								style: "margin-bottom: 0; font-size: 1.4rem"
+								class: 'ta-center button w100'
+								href: (@url_for 'problem.submit', { competition_name: @competition.short_name, problem_name: @problem.short_name })
+								-> text "Make a submission"
+							}
 
 							div class: 'box', ->
 								div class: 'split-lr pad-12', ->

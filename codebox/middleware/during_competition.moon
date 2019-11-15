@@ -2,7 +2,7 @@ import Competitions from require 'models'
 
 =>
     unless @competition
-		@competition = Competitions\find active: true
+		@competition = Competitions\find short_name: @params.competition_name
 
 		unless @competition
 			@write json: 'No active competition'

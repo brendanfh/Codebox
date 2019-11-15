@@ -32,30 +32,33 @@ class extends lapis.Application
 		@scripts = {}
 		@raw_scripts = {}
 
-	['index':    		 "/"]: => redirect_to: @url_for 'problem'
+	['index':    		 "/"]: => redirect_to: @url_for 'competition'
 
 	['account.login':    "/login"]:    controller "account.login"
 	['account.logout':   "/logout"]:   controller "account.logout"
 	['account.register': "/register"]: controller "account.register"
 	['account.account':  "/account"]:  controller "account.account"
 
-	['join_competition': '/join']: controller "account.join_competition"
+	['competition':      '/competitions']: controller "competition.list"
+	['join_competition': '/:competition_name/join']: controller "account.join_competition"
 
-	['leaderboard': '/leaderboard']: controller "leaderboard.view"
-	['leaderboard.update': '/leaderboard/update']: controller "leaderboard.update"
+	['leaderboard': '/:competition_name/leaderboard']: controller "leaderboard.view"
+	['leaderboard.update': '/:competition_name/leaderboard/update']: controller "leaderboard.update"
 
-	['problem': '/problems']: controller "problem.problem"
-	['problem.description': '/problems/:problem_name']: controller "problem.problem"
-	['problem.submit': '/problems/:problem_name/submit']: controller "problem.submit"
+	['problem': '/:competition_name/problems']: controller "problem.problem"
+	['problem.description': '/:competition_name/problems/:problem_name']: controller "problem.problem"
+	['problem.submit': '/:competition_name/problems/:problem_name/submit']: controller "problem.submit"
 
-	['submission.list': '/submissions']: controller "submission.list"
-	['submission.view': '/submissions/view']: controller "submission.view"
-	['submission.status': '/submissions/status']: controller "submission.status"
+	['submission.list': '/:competition_name/submissions']: controller "submission.list"
+	['submission.view': '/:competition_name/submissions/view']: controller "submission.view"
+	['submission.status': '/:competition_name/submissions/status']: controller "submission.status"
 
+	-- Executer callbacks ----------------------------------
 	['executer.status_update': "/executer/status_update"]: controller "executer.status_update"
 	['executer.request': '/executer/request']: controller "executer.request"
 	['executer.force_rescore': '/executer/force_rescore']: controller "executer.force_rescore"
 
+	-- Admin ------------------------------------------------
 	['admin': "/admin"]: => redirect_to: @url_for "admin.user"
 
 	['admin.user': "/admin/users"]: controller "admin.user"
@@ -82,7 +85,7 @@ class extends lapis.Application
 	['admin.competition.delete': "/admin/competitions/delete/:competition_id"]: controller "admin.competition.delete"
 	['admin.competition.add_problem': "/admin/competitions/add_problem"]: controller "admin.competition.add_problem"
 	['admin.competition.delete_problem': "/admin/competitions/delete_problem"]: controller "admin.competition.delete_problem"
-	['admin.competition.activate': "/admin/competitions/activate/:competition_id"]: controller "admin.competition.activate"
+	['admin.competition.toggle_active': "/admin/competitions/toggle_active/:competition_id"]: controller "admin.competition.toggle_active"
 	['admin.competition.remove_user': "/admin/competitions/remove_user"]: controller "admin.competition.remove_user"
 
 	['admin.utils.score': "/admin/score"]: controller "admin.utils.score"

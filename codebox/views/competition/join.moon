@@ -10,5 +10,5 @@ class JoinCompetition extends html.Widget
 				p "Would you like to join the current competition?"
 				p "Your name will appear on the leaderboard and you will be able to see the problems for this competition."
 
-			a href: (@url_for 'join_competition'), class: 'button w100 ta-center', 'Join the competition'
+			a href: (@url_for 'join_competition', { competition_name: @competition.short_name }), class: 'button w100 ta-center', 'Join the competition'
 

@@ -18,9 +18,10 @@
 	X Add page that simply renders the problem in the same way as the existing problem description
 
 [ ] Multiple active competitions at a time
-	* When users visit root of site, display list of active competitions
-	* Users join each competition independently
-	* Shouldn't be much overhead, just removing all instances where searching for currently active competition
+	X When users visit root of site, display list of active competitions
+	X Users join each competition independently
+	X Shouldn't be much overhead, just removing all instances where searching for currently active competition
+	* Guarantee there will be errors somewhere to find
 
 [ ] Add shortcuts around the site
 	* Problem description -> Problem submissions

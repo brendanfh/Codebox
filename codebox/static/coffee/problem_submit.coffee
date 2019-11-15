@@ -15,11 +15,13 @@ $(document).ready ->
         lang = $('#language').val()
         code = (ace.edit 'code-editor').getValue()
 
+        comp_name = (window.location.pathname.split '/')[1]
+
         $.post window.location.pathname, {
             lang: lang,
             code: code
         }, (data) ->
-            window.location.replace("/submissions/view?submission_id=#{data}")
+            window.location.replace("/#{comp_name}/submissions/view?submission_id=#{data}")
 
     $('#word-problem-submit-btn').click ->
         answer = $('#answer').val()

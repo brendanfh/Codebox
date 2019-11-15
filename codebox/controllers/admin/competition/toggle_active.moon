@@ -16,10 +16,10 @@ make_controller
         unless comp
             yield_error "Competition not found"
 
-        db.query 'UPDATE competitions SET active=FALSE WHERE 1=1;'
+        -- db.query 'UPDATE competitions SET active=FALSE WHERE 1=1;'
 
         comp\update {
-            active: true
+            active: not comp.active
         }
 
         redirect_to: @url_for "admin.competition"

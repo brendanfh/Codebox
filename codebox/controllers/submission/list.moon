@@ -5,7 +5,7 @@ import capture_errors, yield_error from require 'lapis.application'
 import Competitions, Problems from require 'models'
 
 make_controller
-	middleware: { 'logged_in', 'joined_competition' }
+	middleware: { 'logged_in', 'joined_competition', 'competition_active' }
 	scripts: { 'pie_chart' }
 
     get: =>

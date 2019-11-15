@@ -1,4 +1,5 @@
 import make_controller from require "controllers.controller"
+import Competitions from require "models"
 
 make_controller
     inject:
@@ -7,8 +8,6 @@ make_controller
     middleware: { 'logged_in', 'admin_required' }
 
     get: =>
-        @scoring\setup_scoring_tables!
-        @scoring\score_all!
-        @scoring\place!
+		@scoring\rescore_everything!
 
         return json: 'Scored all users'

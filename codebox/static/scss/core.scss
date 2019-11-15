@@ -45,8 +45,14 @@ button, a.button {
 
 	cursor: pointer;
 
+	transition: background 0.2s;
+
 	& + button, & + a.button {
 		margin-left: 12px;
+	}
+
+	&:hover {
+		background-color: $primary;
 	}
 }
 

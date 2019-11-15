@@ -117,4 +117,7 @@ import insert, query from require "lapis.db"
 
     [13]: =>
         add_column "problems", "blacklisted_langs", (types.varchar default: "")
+
+	[14]: =>
+		add_column "competitions", "short_name", (types.varchar default: "unnamed")
 }

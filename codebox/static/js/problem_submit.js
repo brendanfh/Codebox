@@ -20,14 +20,15 @@
       return editor.session.setMode(`ace/mode/${editor_lang}`);
     });
     $('#submit-btn').click(function() {
-      var code, lang;
+      var code, comp_name, lang;
       lang = $('#language').val();
       code = (ace.edit('code-editor')).getValue();
+      comp_name = (window.location.pathname.split('/'))[1];
       return $.post(window.location.pathname, {
         lang: lang,
         code: code
       }, function(data) {
-        return window.location.replace(`/submissions/view?submission_id=${data}`);
+        return window.location.replace(`/${comp_name}/submissions/view?submission_id=${data}`);
       });
     });
     return $('#word-problem-submit-btn').click(function() {

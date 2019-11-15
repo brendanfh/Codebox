@@ -15,17 +15,21 @@ class AdminCompetitionEdit extends html.Widget
 								label for: 'name', 'Competition name'
 								input type: 'text', name: 'name', value: "#{@comp.name}", ""
 							div ->
-								label for: 'time_offset', 'Time offset (in minutes)'
-								input type: 'number', name: 'time_offset', value: "#{@comp.time_offset}", ""
+								label for: 'short_name', 'URL name'
+								input type: 'text', name: 'short_name', value: "#{@comp.short_name}", ""
 
-						div class: 'split-2', ->
-							div ->
+						div class: 'split-3', ->
+							div class: 'pad-r-6', ->
 								label for: 'start_time', 'Start time'
 								input type: 'datetime-local', name: 'start_time', value: "#{@comp.start}", ""
 
-							div ->
+							div class: 'pad-l-6 pad-r-6', ->
 								label for: 'end_time', 'End time'
 								input type: 'datetime-local', name: 'end_time', value: "#{@comp.end}", ""
+
+							div class: 'pad-l-6', ->
+								label for: 'time_offset', 'Time offset (in minutes)'
+								input type: 'number', name: 'time_offset', value: "#{@comp.time_offset}", ""
 
 						div class: 'mar-t-48', -> text ""
 

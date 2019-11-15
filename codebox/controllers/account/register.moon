@@ -11,7 +11,7 @@ make_controller
 	middleware: { 'logged_out' }
 
 	get: =>
-		@flow 'csrf_validate'
+		@flow 'csrf_setup'
 		render: 'account.register'
 
 	post: capture_errors =>
@@ -42,8 +42,6 @@ make_controller
 			@errors or= {}
 			table.insert @errors, 'Error creating account'
 			return render: 'account.register'
-
-        @scoring\rescore_everything!
 
 		@session.user_id = user_id
 		redirect_to: @url_for 'index'

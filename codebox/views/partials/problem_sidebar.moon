@@ -3,7 +3,7 @@ import Competitions, Users from require 'models'
 
 class ProblemSidebar extends html.Widget
     load_problems: =>
-        @current_comp = Competitions\find active: true
+        @current_comp = Competitions\find short_name: @params.competition_name
     	@problems = @current_comp\get_problems!
 
 		for prob in *@problems
@@ -16,7 +16,7 @@ class ProblemSidebar extends html.Widget
         @load_problems!
 
         for prob in *@problems
-            a href: (@url_for 'problem.description', problem_name: prob.short_name), ->
+            a href: (@url_for 'problem.description', { problem_name: prob.short_name, competition_name: @current_comp.short_name }), ->
                 div {
                     selected: prob.short_name == @params.problem_name
                     correct: prob.tag == "correct"

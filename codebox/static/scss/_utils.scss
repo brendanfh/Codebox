@@ -113,6 +113,11 @@ pre {
 	@include elevate(2px, rgba(0, 0, 0, 0.5));
 	background-color: #111;
 
+	.highlight {
+		background-color: #111;
+		transition: background 0.2s;
+	}
+
 	.highlight:hover {
 		background-color: #333;
 	}

@@ -48,6 +48,7 @@ make_controller
             { "programming_points", exists: true }
             { "codegolf_points", exists: true }
             { "word_points", exists: true }
+			{ "short_name", exists: true }
 		}
 
 		@comp = Competitions\find @params.id
@@ -62,6 +63,7 @@ make_controller
             programming_points: @params.programming_points
             codegolf_points: @params.codegolf_points
             word_points: @params.word_points
+			short_name: @params.short_name
 		}
 		@comp\refresh!
 

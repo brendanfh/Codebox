@@ -12,6 +12,7 @@ class JobResultView extends html.Widget
 
 		@username = @job\get_user!.username
 		@problem = @job\get_problem!
+		@competition = @job\get_competition!
         @bytes = @job.bytes
 		@time_started = @job.time_initiated
 		if @job.data
@@ -58,7 +59,7 @@ class JobResultView extends html.Widget
 						div class: 'fill', ''
 
 				div class: 'mar-r-12', ->
-                    a href: (@url_for "problem.submit", { problem_name: @problem.short_name }), class: 'button w100 ta-center mar-t-12',
+                    a href: (@url_for "problem.submit", { competition_name: @competition.short_name, problem_name: @problem.short_name }), class: 'button w100 ta-center mar-t-12',
                         "Create new submission"
 
 					div class: 'header-line mar-t-4', ->
@@ -76,7 +77,7 @@ class JobResultView extends html.Widget
 							div "#{@username}"
 						div class: "highlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr", ->
 							div "Problem:"
-							a href: (@url_for 'problem.description', { problem_name: @problem.short_name }), "#{@problem.name}"
+							a href: (@url_for 'problem.description', { competition_name: @competition.short_name, problem_name: @problem.short_name }), "#{@problem.name}"
 						div class: 'hightlight pad-l-12 pad-r-12 pad-t-4 pad-b-4 split-lr', ->
 							div "Time limit:"
 							div "#{@problem.time_limit}ms"

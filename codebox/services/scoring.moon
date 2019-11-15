@@ -7,8 +7,9 @@ class Scoring extends Injectable
         @time = @make 'time'
         @updater = @make 'updater'
 
+	initialize: (competition_id) =>
         -- Get the currently active competition
-        @competition = Competitions\find active: true
+        @competition = Competitions\find competition_id
 
         -- Load the problems and users that are going to be scored
         @comp_problems = @competition\get_competition_problems!
@@ -179,6 +180,10 @@ class Scoring extends Injectable
     rescore_everything: =>
         -- Completely resets everything if a problem is
         -- added or removed or if a user registers
-        @setup_scoring_tables!
-        @score_all!
-        @place!
+		comps = Competitions\select!
+
+		for comp in *comps
+			@initialize comp.id
+			@setup_scoring_tables!
+			@score_all!
+			@place!

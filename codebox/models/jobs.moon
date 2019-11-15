@@ -17,4 +17,5 @@ class Jobs extends Model
 	@relations: {
 		{ 'user', belongs_to: 'Users' }
 		{ 'problem', belongs_to: 'Problems' }
+		{ 'competition', belongs_to: 'Competitions' }
 	}

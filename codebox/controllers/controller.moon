@@ -6,7 +6,7 @@ import respond_to from require "lapis.application"
 			before: =>
 				if routes.inject
 					for inj, dep in pairs routes.inject
-						@[inj] = @app.bind\make dep
+						@[inj] = @app.bind\make dep, @
 
 				if routes.scripts
 					for s in *routes.scripts
