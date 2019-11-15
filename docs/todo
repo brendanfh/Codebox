@@ -23,6 +23,9 @@
 	X Shouldn't be much overhead, just removing all instances where searching for currently active competition
 	* Guarantee there will be errors somewhere to find
 
+[ ] Admin - Fix the way testcases are added and managed
+	* Don't know how atm, just make it better
+
 [ ] Add shortcuts around the site
 	* Problem description -> Problem submissions
 	* Job result -> Problem description

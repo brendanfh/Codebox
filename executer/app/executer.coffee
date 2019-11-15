@@ -120,6 +120,7 @@ class Executer
 					exec_file.delete_file()
 					# General error
 					yield { status: 10, data: { completed: completed, total: total_cases, run_times: run_times } }
+					return
 
 				when 'TIME_LIMIT_EXCEEDED'
 					exec_file.delete_file()
