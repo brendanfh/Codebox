@@ -111,10 +111,11 @@ class Scoring extends Injectable
                     points: points
                     attempts: leader.bytes
                 points -= third_points if points > 0
+				points = 2 if points <= 0
             else
                 lp\update
                     status: LeaderboardProblems.statuses.wrong
-                    points: 0
+                    points: 1
                     attempts: 0
 
 	score_word_for_user: (user_id, problem) =>
