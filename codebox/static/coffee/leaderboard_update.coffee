@@ -5,8 +5,10 @@ $time_left = null
 $progress_meter = null
 duration = 0
 
+competition_name = (window.location.pathname.split '/')[1]
+
 updateLeaderboard = ->
-	$.get '/leaderboard/update', {}, (html, _, data) ->
+	$.get "/#{competition_name}/leaderboard/update", {}, (html, _, data) ->
 		$('#leaderboard-container').html html
 
 updateTime = ->
