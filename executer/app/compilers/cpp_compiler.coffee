@@ -15,6 +15,7 @@ class CPPCompiler extends BaseCompiler
 			source_file.file_path,
 			'./app/compilers/secure/seccomp.c',
 			'-lseccomp',
+			'-lm',
 			'-std=c++14',
 			'-o',
 			exec_file.file_path
