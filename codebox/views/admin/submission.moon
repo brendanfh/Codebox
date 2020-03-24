@@ -36,7 +36,10 @@ class AdminSubmission extends html.Widget
 						span ""
 						a href: (@url_for 'admin.submission.edit', {}, { submission_id: job.job_id }), ->
 							div class: 'highlight pad-12 split-6', ->
-								span "#{job.user.username}"
+								unless job.user
+									span "#{job.user.username}"
+								else
+									span "UNKNOWN: #{job.user_id}"
 								span "#{job.problem.short_name}"
 								span "#{job.competition_id}"
 								span "#{Jobs.statuses\to_name job.status}"
