@@ -14,6 +14,10 @@ make_controller
 		}
 
 		@competition = Competitions\find short_name: @params.competition_name
+
+		if CompetitionUsers\find user_id: @user.id, competition_id: @competition.id
+			return redirect_to: @url_for 'leaderboard', { competition_name: @competition.short_name }
+
 		CompetitionUsers\create
 			user_id: @user.id
 			competition_id: @competition.id
